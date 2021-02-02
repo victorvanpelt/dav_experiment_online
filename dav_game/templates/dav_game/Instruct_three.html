@@ -1,0 +1,53 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+
+{% block title %}
+    Instructions (Page 3/3)
+{% endblock %}
+
+{% block content %}
+    <style>
+    .otree-timer {
+        display: none;
+    }
+    </style>
+<div class="card card-body bg-light instructions">
+    <ul>
+        <li>
+            Your team keeps the difference between the funds provided by corporate headquarters (based on the team’s cost report) and the actual project cost.
+        </li>
+        <li>
+            Next, this difference will be split equally between you and the other participant
+        </li>
+        <li>
+            In addition to your share of this difference, you and the other participant will also receive the base salary of 500 Lira.
+        </li>
+        <li>
+            Afterward, we will give you an overview of the project costs, your cost report, the other participant’s cost report, whether you were selected as the team’s manager, your team’s cost report, and the difference your team got to keep.
+        </li>
+    </ul>
+</div>
+<br>
+    <p>
+        <b>Please evaluate the following statement.</b>
+    </p>
+    <p>
+        {% formfield player.Instr3 label="The team’s cost report determines how many Lira the other participant and I earn." %}
+    </p>
+<br>
+
+{% next_button %}
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+    $(function () {
+        $('.otree-timer__time-left').on('update.countdown', function (event) {
+            if (event.offset.totalSeconds === 30) {
+                $('.otree-timer').show();
+            }
+        });
+    });
+</script>
+{% endblock %}

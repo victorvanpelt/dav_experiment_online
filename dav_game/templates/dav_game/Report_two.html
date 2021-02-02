@@ -1,0 +1,112 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Cost report – Round {{ subsession.round_number }} of {{ Constants.num_rounds }}
+{% endblock %}
+
+{% block content %}
+    <style>
+    .otree-timer {
+        display: none;
+    }
+    .myclass::-webkit-slider-thumb {
+        box-shadow: 1px 1px 1px #000000, 0px 0px 1px #007afe;
+        border: 1px solid #000000;
+        height: 21px !important;
+        width: 10px !important;
+        border-radius: 0px !important;
+        background: #ffffff !important;
+        cursor: pointer !important !important;
+        -webkit-appearance: none !important;
+        margin-top: -7px !important;
+    }
+
+    input[name=report_two] {
+        -webkit-appearance: none;
+        margin: 18px 0;
+        width: 100%;
+    }
+
+    input[name=report_two]:focus {
+        outline: none;
+    }
+
+    input[name=report_two]::-webkit-slider-runnable-track {
+        width: 100%;
+        height: 8.4px;
+        cursor: pointer;
+        animate: 0.2s;
+        {#box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;#}
+        background: #007afe;
+        border-radius: 0px;
+        border: 0.0px solid #ffffff;
+    }
+
+    input[name=report_two]::-webkit-slider-thumb {
+        border: 0px;
+        height: 0px;
+        width: 0px;
+        border-radius: 0px;
+        -webkit-appearance: none;
+    }
+    </style>
+    <div class="card card-body bg-light instructions" align="center">
+    {% if group.self_selection == 1 %}
+        {% if group.select_two == 1 %}
+            You have volunteered to assume the manager's role.<br>
+        {% endif %}
+    {% endif %}
+        The project cost is {{ cost_realization|to0 }} Lia.<br>
+    {% if group.communication == 1 %}
+    {% if group.recommendation_two_to == True and group.recommendation_two == 0 %}
+        You did not submit a cost report recommendation.<br>
+    {% else %}
+        You submitted the following cost report recommendation: {{ group.recommendation_two }}<br>
+    {% endif %}
+    {% if group.recommendation_one_to == True and group.recommendation_one == 0 %}
+        The other participant did not submit a cost report recommendation.<br>
+    {% else%}
+        The other participant submitted the following cost report recommendation: {{ group.recommendation_one }}<br>
+    {% endif %}
+    {% endif %}
+    <br>
+    Please choose the cost report that you would like your team to submit.<br>
+    Remember that your decision will serve as your team’s cost report if you assume the role of the manager.
+    </div>
+    <br>
+    <div align="center">
+    <p>
+        Please drag the slider (or use the left and right arrow keys) to choose your cost report.
+    </p>
+    <p id="feedback_report_two"><br></p>
+{#    {% formfield group.report_two label=None %}#}
+        <input type="range" id="report_two" name="report_two" step="1">
+    <br>
+    </div>
+    {% next_button %}
+    <input type="hidden" name="check_report_two" value="" id="id_check_report_two"/>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    $(function () {
+        $('.otree-timer__time-left').on('update.countdown', function (event) {
+            if (event.offset.totalSeconds === 30) {
+                $('.otree-timer').show();
+            }
+        });
+    });
+</script>
+<script>
+	$(document).ready(function () {
+    	$('input[name=report_two]').on('input change', function () {
+            $('input[name=report_two]').addClass('myclass');
+        });
+	    $('input[name=report_two]').on('input', function() {
+        	document.getElementById("feedback_report_two").innerHTML = `You have selected `+$(this).val()+' Points!';
+        	$('#id_check_report_two').val(1);
+    	});
+    });
+</script>
+{% endblock %}

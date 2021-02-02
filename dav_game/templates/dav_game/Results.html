@@ -1,0 +1,102 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Results
+{% endblock %}
+
+{% block content %}
+    <style>
+    .otree-timer {
+        display: none;
+    }
+    </style>
+    <div class="card card-body bg-light instructions" align="center">
+    The table below gives you an overview of what happened.<br>
+    In total, you have earned a total of {{ payoff }} for this part of the study.
+</div>
+<br>
+<table class="table">
+    <tr>
+        <th>Project cost</th>
+        <th>Your cost report</th>
+        <th>Other's cost report</th>
+        <th>Were you selected as manager?</th>
+        <th>Team's cost report</th>
+        <th>Difference kept by the team</th>
+    </tr>
+    {% for p in player.in_all_rounds %}
+        <tr>
+            <td>
+                {{ p.group.cost_realization }}
+            </td>
+            <td>
+                {% if p.id_in_group == 1 %}
+                    {% if p.group.check_report_one == 1 %}
+                        {{ p.group.report_one }}
+                    {% else %}
+                        None
+                    {% endif %}
+                {% else %}
+                    {% if p.group.check_report_two == 1 %}
+                        {{ p.group.report_two }}
+                    {% else %}
+                        None
+                    {% endif %}
+                {% endif %}
+            </td>
+            <td>
+                {% if p.id_in_group == 1 %}
+                    {% if p.group.check_report_two == 1 %}
+                        {{ p.group.report_two }}
+                    {% else %}
+                        None
+                    {% endif %}
+                {% else %}
+                    {% if p.group.check_report_one == 1 %}
+                        {{ p.group.report_one }}
+                    {% else %}
+                        None
+                    {% endif %}
+                {% endif %}
+            </td>
+            <td>
+                {% if p.id_in_group == 1 %}
+                    {% if p.group.select_report_one == 1 %}
+                        Yes
+                    {% else %}
+                        No
+                    {% endif %}
+                {% else %}
+                    {% if p.group.select_report_two == 1 %}
+                        Yes
+                    {% else %}
+                        No
+                    {% endif %}
+                {% endif %}
+            </td>
+            <td>
+                {{ p.group.group_report }}
+            </td>
+            <td>
+                {{ p.group.group_profit }}
+            </td>
+        </tr>
+    {% endfor %}
+</table>
+<br>
+    {% next_button %}
+{% endblock %}
+{% block scripts %}
+<script>
+    $(function () {
+        $('.otree-timer__time-left').on('update.countdown', function (event) {
+            if (event.offset.totalSeconds === 30) {
+                $('.otree-timer').show();
+            }
+        });
+    });
+</script>
+{% endblock %}
+
+

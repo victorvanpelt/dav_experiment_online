@@ -1,0 +1,32 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Please be warned!
+{% endblock %}
+
+{% block content %}
+    <style>
+    .otree-timer {
+        display: none;
+    }
+    </style>
+    <div class="card card-body bg-light instructions" align="center">
+        You are about to start and be matched to another participant.<br>
+        Please click “Next” to continue.
+    </div>
+
+{% next_button %}
+
+{% endblock %}
+{% block scripts %}
+<script>
+    $(function () {
+        $('.otree-timer__time-left').on('update.countdown', function (event) {
+            if (event.offset.totalSeconds === 25) {
+                $('.otree-timer').show();
+            }
+        });
+    });
+</script>
+{% endblock %}

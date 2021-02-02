@@ -1,0 +1,96 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+
+{% block title %}
+    Instructions (Page 2/3)
+{% endblock %}
+
+{% block content %}
+    <style>
+    .otree-timer {
+        display: none;
+    }
+    </style>
+<div class="card card-body bg-light instructions">
+    <p>Please find an overview of what will happen below.</p>
+    {% if group.communication == 0 %}
+        {% if group.self_selection == 0 %}
+            <ol>
+                <li>
+                    You and the other participant observe the project cost and choose the cost report you would like to submit if you assume the role of the manager.
+                </li>
+                <li>
+                    The computer randomly selects one of you as the manager and submits that ’participant’s cost report as the team’s cost report for the round.
+                </li>
+            </ol>
+        {% endif %}
+    {% elif group.communication == 0 %}
+        {% if group.self_selection == 1 %}
+            <ol>
+                <li>
+                    Both you and the other participant choose whether you prefer to be the manager or the assistant.
+                </li>
+                <li>
+                    Both of you observe the project cost and choose the cost report you would like to submit if you assume the role of the manager.
+                </li>
+                <li>
+                    If only one of you has opted to become the team’s manager, the computer will submit that participants’ cost report as the team’s cost report. However, if both of you or none of you have opted to become the team’s manager, the computer will randomly submit one of the two cost reports as the team’s cost report.
+                </li>
+            </ol>
+        {% endif %}
+    {% elif group.communication == 1 %}
+        {% if group.self_selection == 0 %}
+            <ol>
+                <li>
+                    You and the other participant observe the project cost and recommend which cost your team should report to corporate headquarters.
+                </li>
+                <li>
+                    Both of you will observe each other’s recommendation and choose the cost report you would like to submit if you assume the role of the manager. Recommendations are not binding and you are free to choose the cost report as you wish.
+                </li>
+                <li>
+                    The computer randomly selects one of you as the manager and submits that ’participant’s cost report as the team’s cost report for the round.
+                </li>
+            </ol>
+        {% endif %}
+    {% elif group.communication == 1 %}
+        {% if group.self_selection == 1 %}
+            <ol>
+                <li>
+                    Both you and the other participant choose whether you prefer to be the manager or the assistant.
+                </li>
+                <li>
+                    Both of you observe the project cost and make a recommendation about which cost your team should report to corporate headquarters.
+                </li>
+                <li>
+                    Both of you will observe each other’s recommendation and choose the cost report you would like to submit if you assume the role of the manager. Recommendations are not binding and you are free to choose the cost report as you wish.
+                </li>
+                <li>
+                    If only one of you has opted to become the manager and the other the assistant, the computer will submit that participants’ cost report as the team’s cost report. However, if both of you or none of you have opted to become the team’s manager, the computer will randomly submit one of the two cost reports as the team’s cost report.
+                </li>
+            </ol>
+        {% endif %}
+    {% endif %}
+</div>
+<br>
+    <p>
+        <b>Please evaluate the following statement.</b>
+    </p>
+    <p>
+        {% formfield player.Instr2 label="Both your and the other participant’s cost report will be selected as the team’s cost report." %}
+    </p>
+<br>
+{% next_button %}
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+    $(function () {
+        $('.otree-timer__time-left').on('update.countdown', function (event) {
+            if (event.offset.totalSeconds === 30) {
+                $('.otree-timer').show();
+            }
+        });
+    });
+</script>
+{% endblock %}

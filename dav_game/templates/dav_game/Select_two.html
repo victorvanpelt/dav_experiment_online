@@ -1,0 +1,35 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Choosing a role
+{% endblock %}
+
+{% block content %}
+    <style>
+    .otree-timer {
+        display: none;
+    }
+    </style>
+    <div class="card card-body bg-light instructions" align="center">
+    Please whether you prefer the manager’s role or the assistant’s role.<br>
+
+    If both of you or none of you have opted to become the manager, the computer will randomly submit one of the two cost reports as the team’s cost report.
+    </div>
+    <br>
+    {% formfield group.select_two label="Your choice" %}
+    <br>
+    {% next_button %}
+
+{% endblock %}
+{% block scripts %}
+<script>
+    $(function () {
+        $('.otree-timer__time-left').on('update.countdown', function (event) {
+            if (event.offset.totalSeconds === 30) {
+                $('.otree-timer').show();
+            }
+        });
+    });
+</script>
+{% endblock %}

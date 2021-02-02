@@ -1,0 +1,47 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+
+{% block title %}
+    Before you begin...
+{% endblock %}
+{% block content %}
+    <style>
+    .otree-timer {
+        display: none;
+    }
+    </style>
+    <div class="card card-body bg-light instructions">
+    <ul>
+        <li>
+            During this study, we will ask you to make some decisions that have real financial consequences for you and another person.
+        </li>
+        <li>
+             We use “Lira” as experimental currency and every 100 Lira will be converted into $X.
+        </li>
+        <li>
+            Please read all information carefully and be aware that you cannot go back to previous screens.
+        </li>
+    </ul>
+    </div>
+<br>
+
+{#{% formfield player.accept_conditions label="I accept and would like to continue."%}#}
+<input name="accept_conditions" id="accept_conditions" type="checkbox" />
+<label for="accept_conditions">I would like to continue.</label>
+    <br>
+    <br>
+
+{% next_button %}
+{% endblock %}
+
+{% block scripts %}
+<script>
+    $(function () {
+        $('.otree-timer__time-left').on('update.countdown', function (event) {
+            if (event.offset.totalSeconds === 30) {
+                $('.otree-timer').show();
+            }
+        });
+    });
+</script>
+{% endblock %}
