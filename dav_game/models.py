@@ -260,5 +260,5 @@ class Player(BasePlayer):
     Instr2 = models.IntegerField(choices=[[1, 'True'], [2, 'False']], widget=widgets.RadioSelect)
     Instr3 = models.IntegerField(choices=[[1, 'True'], [2, 'False']], widget=widgets.RadioSelect)
 
-    pay_this_round = models.BooleanField()
-    round_result = models.CurrencyField()
+    # pay_this_round = models.BooleanField()
+    # round_result = models.CurrencyField()
