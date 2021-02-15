@@ -67,7 +67,7 @@ class Instruct_two(Page):
                 self.group.drop_out_trigger_one()
             elif self.player.id_in_group == 2:
                 self.group.drop_out_trigger_two()
-        if self.player.Instr2 != 2:
+        if self.player.Instr2 != 1:
             if self.player.id_in_group == 1:
                 self.group.drop_out_trigger_one()
             elif self.player.id_in_group == 2:
