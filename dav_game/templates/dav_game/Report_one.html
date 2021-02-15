@@ -2,7 +2,7 @@
 {% load otree static %}
 
 {% block title %}
-    Cost report – Round {{ subsession.round_number }} of {{ Constants.num_rounds }}
+    Cost report
 {% endblock %}
 
 {% block content %}
@@ -25,7 +25,7 @@
     input[name=report_one] {
         -webkit-appearance: none;
         margin: 18px 0;
-        width: 100%;
+        width: 50%;
     }
 
     input[name=report_one]:focus {
@@ -52,23 +52,13 @@
     }
     </style>
     <div class="card card-body bg-light instructions" align="center">
-    {% if group.self_selection == 1 %}
-        {% if group.select_one == 1 %}
-            You have volunteered to assume the manager's role.<br>
-        {% endif %}
+    {% if group.self_selection == 1 and group.select_one == 1 %}
+        You have volunteered to assume the manager's role.<br>
     {% endif %}
-        The project cost is  {{ cost_realization|to0 }} Lira.<br>
+        The project cost is {{ cost_realization|to0 }} Lira.<br>
     {% if group.communication == 1 %}
-    {% if group.recommendation_one_to == True and group.recommendation_one == 0 %}
-        You did not submit a cost report recommendation.<br>
-    {% else %}
         You submitted the following cost report recommendation: {{ group.recommendation_one }}<br>
-    {% endif %}
-    {% if group.recommendation_two_to == True and group.recommendation_two == 0 %}
-        The other participant did not submit a cost report recommendation.<br>
-    {% else %}
         The other participant submitted the following cost report recommendation: {{ group.recommendation_two }}<br>
-    {% endif %}
     {% endif %}
     <br>
     Please choose the cost report that you would like your team to submit.<br>
@@ -80,8 +70,7 @@
         Please drag the slider (or use the left and right arrow keys) to choose your cost report.
     </p>
     <p id="feedback_report_one"><br></p>
-{#    {% formfield group.report_one label=None %}#}
-        <input type="range" id="report_one" name="report_one" step="1">
+        <input type="range" id="report_one" name="report_one" step="1" min={{ group.cost_realization }} max="6000">
     <br>
     </div>
     {% next_button %}

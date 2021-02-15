@@ -39,7 +39,7 @@ class Group(BaseGroup):
     self_selection = models.IntegerField()
 
     def assign_stuff(self):
-        self.cost_realization = c(round(random.randint(4000,6000)))
+        self.cost_realization = c(random.randint(4000,6000))
         if self.session.config['communication'] == 1:
             self.communication = 1
         elif self.session.config['communication'] == 0:
