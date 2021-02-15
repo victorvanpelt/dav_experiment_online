@@ -65,15 +65,15 @@ class Player(BasePlayer):
     task_rounds = models.StringField()
 
     #All timeouts
-    introduction_to = models.BooleanField(initial=False)
-    checks_to = models.BooleanField(initial=False)
-    page_one_to = models.BooleanField(initial=False)
-    page_two_to = models.BooleanField(initial=False)
-    page_three_to = models.BooleanField(initial=False)
-    page_four_to = models.BooleanField(initial=False)
-    page_five_to = models.BooleanField(initial=False)
-    page_six_to = models.BooleanField(initial=False)
-    demo_to = models.BooleanField(initial=False)
+    # introduction_to = models.BooleanField(initial=False)
+    # checks_to = models.BooleanField(initial=False)
+    # page_one_to = models.BooleanField(initial=False)
+    # page_two_to = models.BooleanField(initial=False)
+    # page_three_to = models.BooleanField(initial=False)
+    # page_four_to = models.BooleanField(initial=False)
+    # page_five_to = models.BooleanField(initial=False)
+    # page_six_to = models.BooleanField(initial=False)
+    # demo_to = models.BooleanField(initial=False)
 
     # EPQ 1 - Randomization, understandability, and motivation
     serious = models.IntegerField(

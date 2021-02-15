@@ -10,18 +10,7 @@ class Introduction(Page):
         return progress
 
     def is_displayed(self):
-        return self.round_number == self.participant.vars['task_rounds']['A']
-
-    def get_timeout_seconds(self):
-        if self.participant.vars.get('is_dropout'):
-            return 1
-        else:
-            return 120
-
-    def before_next_page(self):
-        if self.timeout_happened:
-            self.participant.vars['is_dropout'] = True
-            self.player.introduction_to = True
+        return self.round_number == self.participant.vars['task_rounds']['A'] and self.participant.vars['is_dropout'] == False and self.participant.vars['is_dropout_mate'] == False
 
 class Checks(Page):
     form_model = 'player'
@@ -44,24 +33,13 @@ class Checks(Page):
         return progress
 
     def is_displayed(self):
-        return self.round_number == self.participant.vars['task_rounds']['B']
+        return self.round_number == self.participant.vars['task_rounds']['B'] and self.participant.vars['is_dropout'] == False and self.participant.vars['is_dropout_mate'] == False
 
     def vars_for_template(self):
         progress = self.progress()
         return {
             'progress': progress
         }
-
-    def get_timeout_seconds(self):
-        if self.participant.vars.get('is_dropout'):
-            return 1
-        else:
-            return 120
-
-    def before_next_page(self):
-        if self.timeout_happened:
-            self.participant.vars['is_dropout'] = True
-            self.player.checks_to = True
 
 class Page_2(Page):
     form_model = 'player'
@@ -83,24 +61,13 @@ class Page_2(Page):
         return progress
 
     def is_displayed(self):
-        return self.round_number == self.participant.vars['task_rounds']['C']
+        return self.round_number == self.participant.vars['task_rounds']['C'] and self.participant.vars['is_dropout'] == False and self.participant.vars['is_dropout_mate'] == False
 
     def vars_for_template(self):
         progress = self.progress()
         return {
             'progress': progress
         }
-
-    def get_timeout_seconds(self):
-        if self.participant.vars.get('is_dropout'):
-            return 1
-        else:
-            return 120
-
-    def before_next_page(self):
-        if self.timeout_happened:
-            self.participant.vars['is_dropout'] = True
-            self.player.page_two_to = True
 
 class Page_3(Page):
     form_model = 'player'
@@ -122,24 +89,13 @@ class Page_3(Page):
         return progress
 
     def is_displayed(self):
-        return self.round_number == self.participant.vars['task_rounds']['D']
+        return self.round_number == self.participant.vars['task_rounds']['D'] and self.participant.vars['is_dropout'] == False and self.participant.vars['is_dropout_mate'] == False
 
     def vars_for_template(self):
         progress = self.progress()
         return {
             'progress': progress
         }
-
-    def get_timeout_seconds(self):
-        if self.participant.vars.get('is_dropout'):
-            return 1
-        else:
-            return 120
-
-    def before_next_page(self):
-        if self.timeout_happened:
-            self.participant.vars['is_dropout'] = True
-            self.player.page_three_to = True
 
 class Page_4(Page):
     form_model = 'player'
@@ -161,24 +117,13 @@ class Page_4(Page):
         return progress
 
     def is_displayed(self):
-        return self.round_number == self.participant.vars['task_rounds']['E']
+        return self.round_number == self.participant.vars['task_rounds']['E'] and self.participant.vars['is_dropout'] == False and self.participant.vars['is_dropout_mate'] == False
 
     def vars_for_template(self):
         progress = self.progress()
         return {
             'progress': progress
         }
-
-    def get_timeout_seconds(self):
-        if self.participant.vars.get('is_dropout'):
-            return 1
-        else:
-            return 120
-
-    def before_next_page(self):
-        if self.timeout_happened:
-            self.participant.vars['is_dropout'] = True
-            self.player.page_four_to = True
 
 class Page_5(Page):
     form_model = 'player'
@@ -208,69 +153,13 @@ class Page_5(Page):
         return progress
 
     def is_displayed(self):
-        return self.round_number == self.participant.vars['task_rounds']['F']
+        return self.round_number == self.participant.vars['task_rounds']['F'] and self.participant.vars['is_dropout'] == False and self.participant.vars['is_dropout_mate'] == False
 
     def vars_for_template(self):
         progress = self.progress()
         return {
             'progress': progress
         }
-
-    def get_timeout_seconds(self):
-        if self.participant.vars.get('is_dropout'):
-            return 1
-        else:
-            return 120
-
-    def before_next_page(self):
-        if self.timeout_happened:
-            self.participant.vars['is_dropout'] = True
-            self.player.page_five_to = True
-
-# class Page_6(Page):
-#     form_model = 'player'
-#     form_fields = [
-#         'big1',
-#         'big2',
-#         'big3',
-#         'big4',
-#         'big5',
-#         'big6',
-#         'big7',
-#         'big8',
-#         'big9',
-#         'big10'
-#     ]
-#
-#     def progress(self):
-#         curpageindex = self.round_number-1
-#         progress = curpageindex / tot_pages * 100
-#         return progress
-#
-#     def get_form_fields(self):
-#         fields = self.form_fields
-#         random.shuffle(fields)
-#         return fields
-#
-#     def is_displayed(self):
-#         return self.round_number == self.participant.vars['task_rounds']['G']
-#
-#     def vars_for_template(self):
-#         progress = self.progress()
-#         return {
-#             'progress': progress
-#         }
-#
-#     def get_timeout_seconds(self):
-#         if self.participant.vars.get('is_dropout'):
-#             return 1
-#         else:
-#             return 120
-#
-#     def before_next_page(self):
-#         if self.timeout_happened:
-#             self.participant.vars['is_dropout'] = True
-#             self.player.page_six_to = True
 
 class Demographics(Page):
     form_model = 'player'
@@ -289,7 +178,7 @@ class Demographics(Page):
         return fields
 
     def is_displayed(self):
-        return self.round_number == self.participant.vars['task_rounds']['G']
+        return self.round_number == self.participant.vars['task_rounds']['G'] and self.participant.vars['is_dropout'] == False and self.participant.vars['is_dropout_mate'] == False
 
     def progress(self):
         curpageindex = self.round_number-1
@@ -301,17 +190,6 @@ class Demographics(Page):
         return {
             'progress': progress
         }
-
-    def get_timeout_seconds(self):
-        if self.participant.vars.get('is_dropout'):
-            return 1
-        else:
-            return 120
-
-    def before_next_page(self):
-        if self.timeout_happened:
-            self.participant.vars['is_dropout'] = True
-            self.player.demo_to = True
 
 page_sequence = [
     Introduction,

@@ -9,7 +9,7 @@ class WaitForMatch(WaitPage):
     group_by_arrival_time = True
     after_all_players_arrive = "assign_stuff"
     title_text = "Please wait"
-    body_text = "Please wait to be matched to another participant."
+    body_text = "Please wait for the other participant."
 
 class Intro(Page):
     timeout_seconds = 100
@@ -21,147 +21,141 @@ class Intro(Page):
         return self.subsession.round_number == 1
 
     def before_next_page(self):
+        self.participant.vars['is_dropout'] = False
+        self.participant.vars['is_dropout_mate'] = False
         if self.timeout_happened:
-            self.participant.vars['is_dropout'] = True
-            self.player.intro_to = True
+            if self.player.id_in_group == 1:
+                self.group.drop_out_trigger_one()
+            elif self.player.id_in_group == 2:
+                self.group.drop_out_trigger_two()
 
 class Instruct_one(Page):
     form_model = 'player'
     form_fields = ['Instr1']
 
     def is_displayed(self):
-        return self.subsession.round_number == 1
+        return self.participant.vars['is_dropout'] == False and self.participant.vars['is_dropout_mate'] == False
 
     def get_timeout_seconds(self):
-        if self.participant.vars.get('is_dropout'):
-            return 1
-        else:
-            return 100
+        return 120
 
-    def error_message(self, value):
-        if value["Instr1"] != 2:
-            return 'Your answer is incorrect. The team’s cost report must not exceed 6000 Lira, nor can it be lower than the actual project costs. Please try again.'
+    # def error_message(self, value):
+    #     if value["Instr1"] != 2:
+    #         return 'Your answer is incorrect. The team’s cost report must not exceed 6000 Lira, nor can it be lower than the actual project costs. Please try again.'
 
     def before_next_page(self):
         if self.timeout_happened:
-            self.participant.vars['is_dropout'] = True
-            self.player.instruct_one_to = True
+            if self.player.id_in_group == 1:
+                self.group.drop_out_trigger_one()
+            elif self.player.id_in_group == 2:
+                self.group.drop_out_trigger_two()
+        if self.player.Instr1 != 2:
+            if self.player.id_in_group == 1:
+                self.group.drop_out_trigger_one()
+            elif self.player.id_in_group == 2:
+                self.group.drop_out_trigger_two()
 
 class Instruct_two(Page):
     form_model = 'player'
     form_fields = ['Instr2']
 
     def is_displayed(self):
-        return self.subsession.round_number == 1
+        return self.participant.vars['is_dropout'] == False and self.participant.vars['is_dropout_mate'] == False
 
     def get_timeout_seconds(self):
-        if self.participant.vars.get('is_dropout'):
-            return 1
-        else:
-            return 100
-
-    def error_message(self, value):
-        if value["Instr2"] != 2:
-            return "Your answer is incorrect. Either your or the other participant's cost report will be submitted as the team's cost report. Please try again."
+        return 120
 
     def before_next_page(self):
         if self.timeout_happened:
-            self.participant.vars['is_dropout'] = True
-            self.player.instruct_two_to = True
+            if self.player.id_in_group == 1:
+                self.group.drop_out_trigger_one()
+            elif self.player.id_in_group == 2:
+                self.group.drop_out_trigger_two()
+        if self.player.Instr2 != 2:
+            if self.player.id_in_group == 1:
+                self.group.drop_out_trigger_one()
+            elif self.player.id_in_group == 2:
+                self.group.drop_out_trigger_two()
 
 class Instruct_three(Page):
     form_model = 'player'
     form_fields = ['Instr3']
 
     def is_displayed(self):
-        return self.subsession.round_number == 1
+        return self.participant.vars['is_dropout'] == False and self.participant.vars['is_dropout_mate'] == False
 
     def get_timeout_seconds(self):
-        if self.participant.vars.get('is_dropout'):
-            return 1
-        else:
-            return 100
-
-    def error_message(self, value):
-        if value["Instr3"] != 1:
-            return 'Your answer is incorrect. The team’s cost report affects how many Lira the other participant and you earn. Please try again.'
+        return 120
 
     def before_next_page(self):
         if self.timeout_happened:
-            self.participant.vars['is_dropout'] = True
-            self.player.instruct_three_to = True
+            if self.player.id_in_group == 1:
+                self.group.drop_out_trigger_one()
+            elif self.player.id_in_group == 2:
+                self.group.drop_out_trigger_two()
+        if self.player.Instr3 != 1:
+            if self.player.id_in_group == 1:
+                self.group.drop_out_trigger_one()
+            elif self.player.id_in_group == 2:
+                self.group.drop_out_trigger_two()
 
 class Start_study(Page):
+    def is_displayed(self):
+        return self.participant.vars['is_dropout'] == False and self.participant.vars['is_dropout_mate'] == False
+
     def get_timeout_seconds(self):
-        if self.participant.vars.get('is_dropout'):
-            return 1
-        else:
-            return 60
+        return 120
 
     def before_next_page(self):
         if self.timeout_happened:
-            self.participant.vars['is_dropout'] = True
-            self.player.start_study_to = True
+            if self.player.id_in_group == 1:
+                self.group.drop_out_trigger_one()
+            elif self.player.id_in_group == 2:
+                self.group.drop_out_trigger_two()
 
 class Select_one(Page):
     form_model = 'group'
     form_fields = ['select_one']
 
     def is_displayed(self):
-        if self.group.self_selection == 1:
-            return self.player.id_in_group == 1
+        return self.group.self_selection == 1 and self.player.id_in_group == 1 and self.participant.vars['is_dropout'] == False and self.participant.vars['is_dropout_mate'] == False
 
     def get_timeout_seconds(self):
-        if self.participant.vars.get('is_dropout'):
-            return 1
-        else:
-            return 60
+        return 60
 
     def before_next_page(self):
         if self.timeout_happened:
-            self.participant.vars['is_dropout'] = True
-            self.group.select_one_to = True
-            self.group.select_one = 0
+            self.group.drop_out_trigger_one()
 
 class Select_two(Page):
     form_model = 'group'
     form_fields = ['select_two']
 
     def is_displayed(self):
-        if self.group.self_selection == 1:
-            return self.player.id_in_group == 2
+        return self.group.self_selection == 1 and self.player.id_in_group == 2 and self.participant.vars['is_dropout'] == False and self.participant.vars['is_dropout_mate'] == False
 
     def get_timeout_seconds(self):
-        if self.participant.vars.get('is_dropout'):
-            return 1
-        else:
-            return 60
+        return 60
 
     def before_next_page(self):
         if self.timeout_happened:
-            self.participant.vars['is_dropout'] = True
-            self.group.select_two_to = True
-            self.group.select_two = 0
+            self.group.drop_out_trigger_two()
 
 class WaitForSelection(WaitPage):
+    title_text = "Please wait"
+    body_text = "Please wait for the other participant."
     def is_displayed(self):
-        return self.group.self_selection == 1
+        return self.group.self_selection == 1 and self.participant.vars['is_dropout'] == False and self.participant.vars['is_dropout_mate'] == False
 
 class Recommendation_one(Page):
     form_model = 'group'
     form_fields = ['recommendation_one', 'check_recommendation_one']
 
     def is_displayed(self):
-        if self.group.communication == 1:
-            return self.player.id_in_group == 1
-        else:
-            return False
+        return self.group.communication == 1 and self.player.id_in_group == 1 and self.participant.vars['is_dropout'] == False and self.participant.vars['is_dropout_mate'] == False
 
     def get_timeout_seconds(self):
-        if self.participant.vars.get('is_dropout'):
-            return 1
-        else:
-            return 60
+        return 60
 
     def vars_for_template(self):
         return {
@@ -174,25 +168,17 @@ class Recommendation_one(Page):
 
     def before_next_page(self):
         if self.timeout_happened:
-            self.participant.vars['is_dropout'] = True
-            self.group.recommendation_one_to = True
-            self.group.recommendation_one = c(0)
+            self.group.drop_out_trigger_one()
 
 class Recommendation_two(Page):
     form_model = 'group'
     form_fields = ['recommendation_two', 'check_recommendation_two']
 
     def is_displayed(self):
-        if self.group.communication == 1:
-            return self.player.id_in_group == 2
-        else:
-            return False
+        return self.group.communication == 1 and self.player.id_in_group == 2 and self.participant.vars['is_dropout'] == False and self.participant.vars['is_dropout_mate'] == False
 
     def get_timeout_seconds(self):
-        if self.participant.vars.get('is_dropout'):
-            return 1
-        else:
-            return 60
+        return 60
 
     def vars_for_template(self):
         return {
@@ -205,31 +191,28 @@ class Recommendation_two(Page):
 
     def before_next_page(self):
         if self.timeout_happened:
-            self.participant.vars['is_dropout'] = True
-            self.group.recommendation_two_to = True
-            self.group.recommendation_two = c(0)
+            self.group.drop_out_trigger_two()
 
 class WaitForRecommendation(WaitPage):
+    title_text = "Please wait"
+    body_text = "Please wait for the other participant."
     def is_displayed(self):
-        return self.group.communication == 1
+        return self.group.communication == 1 and self.participant.vars['is_dropout'] == False and self.participant.vars['is_dropout_mate'] == False
 
 class Report_one(Page):
     form_model = 'group'
     form_fields = ['report_one', 'check_report_one']
 
+    def is_displayed(self):
+        return self.player.id_in_group == 1 and self.participant.vars['is_dropout'] == False and self.participant.vars['is_dropout_mate'] == False
+
+    def get_timeout_seconds(self):
+        return 60
+
     def vars_for_template(self):
         return {
             'cost_realization': self.group.cost_realization
         }
-
-    def is_displayed(self):
-        return self.player.id_in_group == 1
-
-    def get_timeout_seconds(self):
-        if self.participant.vars.get('is_dropout'):
-            return 1
-        else:
-            return 60
 
     def error_message(self, value):
         if value["check_report_one"] == None:
@@ -237,10 +220,7 @@ class Report_one(Page):
 
     def before_next_page(self):
         if self.timeout_happened:
-            self.participant.vars['is_dropout'] = True
-            self.group.report_one_to = True
-            if self.group.report_one == c(0):
-                self.group.report_one = self.group.cost_realization
+            self.group.drop_out_trigger_one()
 
 class Report_two(Page):
     form_model = 'group'
@@ -252,13 +232,10 @@ class Report_two(Page):
         }
 
     def is_displayed(self):
-        return self.player.id_in_group == 2
+        return self.player.id_in_group == 2 and self.participant.vars['is_dropout'] == False and self.participant.vars['is_dropout_mate'] == False
 
     def get_timeout_seconds(self):
-        if self.participant.vars.get('is_dropout'):
-            return 1
-        else:
-            return 60
+        return 60
 
     def error_message(self, value):
         if value["check_report_two"] == None:
@@ -266,27 +243,22 @@ class Report_two(Page):
 
     def before_next_page(self):
         if self.timeout_happened:
-            self.group.report_two_to = True
-            self.participant.vars['is_dropout'] = True
-            if self.group.report_two == c(0):
-                self.group.report_two = self.group.cost_realization
+            self.group.drop_out_trigger_two()
 
 class WaitForResults(WaitPage):
+    title_text = "Please wait"
+    body_text = "Please wait for the other participant."
     after_all_players_arrive = 'set_report_payoffs'
 
-class Results(Page):
-    # def is_displayed(self):
-    #     return self.subsession.round_number == Constants.num_rounds
+    def is_displayed(self):
+        return self.participant.vars['is_dropout'] == False and self.participant.vars['is_dropout_mate'] == False
 
-    def get_timeout_seconds(self):
-        if self.participant.vars.get('is_dropout'):
-            return 1
-        else:
-            return 100
+class Results(Page):
+    def is_displayed(self):
+        return self.participant.vars['is_dropout'] == False and self.participant.vars['is_dropout_mate'] == False
 
     def vars_for_template(self):
         return {
-            # 'round_to_pay': self.participant.vars['round_to_pay'],
             'payoff': self.participant.payoff
         }
 

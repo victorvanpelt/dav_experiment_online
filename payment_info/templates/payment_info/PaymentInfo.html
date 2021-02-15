@@ -12,21 +12,43 @@
     </div>
     </div>
     <br>
+    {% if is_dropout == 1 and is_dropout_mate == 1 or is_dropout == 1 and is_dropout_mate == 0 %}
+    <div class="card card-body bg-light instructions">
+        <ul>
+        <li>
+            You answered one of the control questions incorrectly or your session timed out.
+        </li>
+        <li>
+            Accordingly, you cannot participate in this study and will earn the base fee of <b>{{ participation_fee|to2 }}</b>.
+        </li>
+        </ul>
+    </div>
+    {% elif is_dropout_mate == 1 and is_dropout == 0 %}
+    <div class="card card-body bg-light instructions">
+        <ul>
+        <li>
+            The other participant answered one of the control questions incorrectly or their session timed out.
+        </li>
+        <li>
+            Accordingly, you cannot participate in this study and will earn the base fee of <b>{{ participation_fee|to2 }}</b>.
+        </li>
+        </ul>
+    </div>
+    {% else %}
     <div class="card card-body bg-light instructions">
         <ul>
         <li>
             You have earned <b>{{ total_payoff|to2 }} Lira</b>, which is comprised of your share of <b>{{ participant.payoff|to2 }} Lira</b> and a base salary of <b>500 Lira</b>.
         <li>
             Thus, you will receive a total amount of <b>&euro;{{ eur|to2 }}</b>.
-        </li>
-{#        <li>#}
-{#            <b>IMPORTANT</b>: please write down the following participant number for payment: <b>{{ player.tn }}</b>#}
-{#        </li>#}
-{#        <li>#}
-{#            You will have to fill in this participant number in the future, so the university can wire you the money.#}
-{#        </li>#}
         <li>
-            Please do not forget to click finish to complete the study!
+            Your completion code is <b>{{ completion_code }}</b>. Please enter it in the MTurk window.
+        </li>
+        <li>
+            If you have any feedback for us, please leave it in the comments below.
+        </li>
+        <li>
+            Please do not forget to click "Submit" below to complete the study.
         </li>
         </ul>
     </div>

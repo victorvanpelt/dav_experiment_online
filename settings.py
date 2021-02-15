@@ -7,7 +7,8 @@ SESSION_CONFIGS = [
         'num_demo_participants': 4,
         'app_sequence': ['dav_game', 'epq', 'payment_info'],
         'communication': 3,
-        'self_selection': 1
+        'self_selection': 1,
+        'completion_code': "RPT20210209"
     },
     {
         'name': 'run_dav_experiment_full_no_ss',
@@ -15,7 +16,8 @@ SESSION_CONFIGS = [
         'num_demo_participants': 4,
         'app_sequence': ['dav_game', 'epq', 'payment_info'],
         'communication': 3,
-        'self_selection': 0
+        'self_selection': 0,
+        'completion_code': "RPT20210209"
     },
     {
         'name': 'dav_session_no_comm_ss',
@@ -23,7 +25,8 @@ SESSION_CONFIGS = [
         'num_demo_participants': 4,
         'app_sequence': ['dav_game', 'payment_info'],
         'communication': 0,
-        'self_selection': 1
+        'self_selection': 1,
+        'completion_code': "RPT20210209"
     },
     {
         'name': 'dav_session_no_comm_no_ss',
@@ -31,7 +34,8 @@ SESSION_CONFIGS = [
         'num_demo_participants': 4,
         'app_sequence': ['dav_game', 'payment_info'],
         'communication': 0,
-        'self_selection': 0
+        'self_selection': 0,
+        'completion_code': "RPT20210209"
     },
     {
         'name': 'dav_session_comm_ss',
@@ -39,7 +43,8 @@ SESSION_CONFIGS = [
         'num_demo_participants': 4,
         'app_sequence': ['dav_game', 'payment_info'],
         'communication': 1,
-        'self_selection': 1
+        'self_selection': 1,
+        'completion_code': "RPT20210209"
     },
     {
         'name': 'dav_session_comm_no_ss',
@@ -47,13 +52,15 @@ SESSION_CONFIGS = [
         'num_demo_participants': 4,
         'app_sequence': ['dav_game', 'payment_info'],
         'communication': 1,
-        'self_selection': 0
+        'self_selection': 0,
+        'completion_code': "RPT20210209"
     },
     {
         'name': 'epq',
         'display_name': "Test EPQ",
         'num_demo_participants': 1,
         'app_sequence': ['epq', 'payment_info'],
+        'completion_code': "RPT20210209"
     },
     # {
     #     'name': 'dav_session_nocomm_all',
@@ -74,6 +81,7 @@ SESSION_CONFIGS = [
         'display_name': "Test payment info",
         'num_demo_participants': 1,
         'app_sequence': ['payment_info'],
+        'completion_code': "RPT20210209"
     },
 ]
 

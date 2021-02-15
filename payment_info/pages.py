@@ -16,7 +16,10 @@ class PaymentInfo(Page):
             'payoff_eur': self.participant.payoff.to_real_world_currency(self.session),
             'participation_fee': self.session.config['participation_fee'],
             'eur': self.participant.payoff_plus_participation_fee(),
-            'total_payoff': self.participant.payoff + c(500)
+            'total_payoff': self.participant.payoff + c(500),
+            'is_dropout': self.participant.vars.get('is_dropout'),
+            'is_dropout_mate': self.participant.vars.get('is_dropout_mate'),
+            'completion_code': self.session.config['completion_code']
         }
 
 page_sequence = [PaymentInfo]
