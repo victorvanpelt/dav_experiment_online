@@ -39,10 +39,6 @@ class Instruct_one(Page):
     def get_timeout_seconds(self):
         return 120
 
-    # def error_message(self, value):
-    #     if value["Instr1"] != 2:
-    #         return 'Your answer is incorrect. The team’s cost report must not exceed 6000 Lira, nor can it be lower than the actual project costs. Please try again.'
-
     def before_next_page(self):
         if self.timeout_happened:
             if self.player.id_in_group == 1:
