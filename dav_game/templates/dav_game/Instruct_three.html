@@ -2,7 +2,7 @@
 {% load staticfiles otree %}
 
 {% block title %}
-    Instructions (Page 3/3)
+    Instructions (Page 3/4)
 {% endblock %}
 
 {% block content %}
@@ -12,30 +12,65 @@
     }
     </style>
 <div class="card card-body bg-light instructions">
-    <ul>
-        <li>
-            Your team keeps the difference between the funds provided by corporate headquarters (based on the team’s cost report) and the actual project cost.
-        </li>
-        <li>
-            Next, this difference will be split equally between you and the other participant
-        </li>
-        <li>
-            In addition to your share of this difference, you and the other participant will also receive the base salary of 500 Lira.
-        </li>
-        <li>
-            Afterward, we will give you an overview of the project costs, your cost report, the other participant’s cost report, whether you were selected as the team’s manager, your team’s cost report, and the difference your team got to keep.
-        </li>
-    </ul>
+    <p>Please find an overview of what will happen below.</p>
+    {% if group.communication == 0 and group.self_selection == 0 %}
+            <ol>
+                <li>
+                    You and the other participant observe the project cost and choose the cost report you would like to submit if you assume the role of the manager.
+                </li>
+                <li>
+                    The computer randomly selects one of you as the manager and submits that ’participant’s cost report as the team’s cost report for the round.
+                </li>
+            </ol>
+    {% elif group.communication == 0 and group.self_selection == 1 %}
+            <ol>
+                <li>
+                    Both you and the other participant choose whether you prefer to be the manager or the assistant.
+                </li>
+                <li>
+                    Both of you observe the project cost and choose the cost report you would like to submit if you assume the role of the manager.
+                </li>
+                <li>
+                    If only one of you has opted to become the team’s manager, the computer will submit that participants’ cost report as the team’s cost report. However, if both of you or none of you have opted to become the team’s manager, the computer will randomly submit one of the two cost reports as the team’s cost report.
+                </li>
+            </ol>
+    {% elif group.communication == 1 and group.self_selection == 0 %}
+            <ol>
+                <li>
+                    You and the other participant observe the project cost and recommend which cost your team should report to corporate headquarters.
+                </li>
+                <li>
+                    Both of you will observe each other’s recommendation and choose the cost report you would like to submit if you assume the role of the manager. Recommendations are not binding and you are free to choose the cost report as you wish.
+                </li>
+                <li>
+                    The computer randomly selects one of you as the manager and submits that ’participant’s cost report as the team’s cost report for the round.
+                </li>
+            </ol>
+    {% elif group.communication == 1 and group.self_selection == 1 %}
+            <ol>
+                <li>
+                    Both you and the other participant choose whether you prefer to be the manager or the assistant.
+                </li>
+                <li>
+                    Both of you observe the project cost and make a recommendation about which cost your team should report to corporate headquarters.
+                </li>
+                <li>
+                    Both of you will observe each other’s recommendation and choose the cost report you would like to submit if you assume the role of the manager. Recommendations are not binding and you are free to choose the cost report as you wish.
+                </li>
+                <li>
+                    If only one of you has opted to become the manager and the other the assistant, the computer will submit that participants’ cost report as the team’s cost report. However, if both of you or none of you have opted to become the team’s manager, the computer will randomly submit one of the two cost reports as the team’s cost report.
+                </li>
+            </ol>
+    {% endif %}
 </div>
 <br>
     <p>
         <b>Please evaluate the following statement.</b>
     </p>
     <p>
-        {% formfield player.Instr3 label="The team’s cost report determines how many Lira the other participant and I earn." %}
+        {% formfield player.Instr3 label="Both your and the other participant’s cost report will be selected as the team’s cost report." %}
     </p>
 <br>
-
 {% next_button %}
 
 {% endblock %}

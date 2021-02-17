@@ -39,7 +39,13 @@ class Group(BaseGroup):
     self_selection = models.IntegerField()
 
     def assign_stuff(self):
+        # Assign cost realization and base dropout variables
         self.cost_realization = c(random.randint(4000,6000))
+        for p in self.get_players():
+            p.participant.vars['is_dropout'] = False
+            p.participant.vars['is_dropout_mate'] = False
+
+        # Assign conditions based on session config else randomize per dyad
         if self.session.config['communication'] == 1:
             self.communication = 1
         elif self.session.config['communication'] == 0:
@@ -191,3 +197,4 @@ class Player(BasePlayer):
     Instr1 = models.IntegerField(choices=[[1, 'True'], [2, 'False']], widget=widgets.RadioSelect)
     Instr2 = models.IntegerField(choices=[[1, 'True'], [2, 'False']], widget=widgets.RadioSelect)
     Instr3 = models.IntegerField(choices=[[1, 'True'], [2, 'False']], widget=widgets.RadioSelect)
+    Instr4 = models.IntegerField(choices=[[1, 'True'], [2, 'False']], widget=widgets.RadioSelect)

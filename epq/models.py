@@ -89,14 +89,14 @@ class Player(BasePlayer):
         choices=Constants.StandardChoicesSeven
     )
     recommendation_check = models.IntegerField(
-        label="I was unaware of the project costs the other participant wanted our team to submit before I submitted my cost report.",
+        label="I was unaware of the project costs the other person wanted our team to submit before I submitted my cost report.",
         choices=[
             [0, 'False'],
             [1, 'True'],
         ]
     )
     self_select_check = models.IntegerField(
-        label="I could not express a preference for assuming the role of manager or assistant.",
+        label="I was unable to express a preference for assuming the role of manager or assistant.",
         choices=[
             [0, 'False'],
             [1, 'True'],
@@ -107,7 +107,7 @@ class Player(BasePlayer):
         choices=Constants.StandardChoicesSeven
     )
     attractive_dishonesty = models.IntegerField(
-        label="It was attractive to report project cost above the actual project cost.",
+        label="It was economically attractive to report project cost above the actual project cost.",
         choices=Constants.StandardChoicesSeven
     )
 
@@ -346,10 +346,6 @@ class Player(BasePlayer):
             [5, '4-year College or University (BS, BA, or similar)'],
             [6, 'Postgraduate (MS, MA, PhD, MBA, or MD.)']
         ]
-    )
-    attention_check = models.IntegerField(
-        label="Please select the answer 'Disagree'.",
-        choices=Constants.StandardChoicesFive
     )
     english = models.IntegerField(
         label="Please rate your English on a percentage scale between 0 (not proficient) and 100 (proficient).",

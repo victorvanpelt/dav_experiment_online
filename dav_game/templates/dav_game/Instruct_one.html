@@ -2,7 +2,7 @@
 {% load staticfiles otree %}
 
 {% block title %}
-    Instructions (Page 1/3)
+    Instructions (Page 1/4)
 {% endblock %}
 
 {% block content %}
@@ -22,18 +22,6 @@
         <li>
             One of you will fulfill the role of the team’s manager and the other one the role of the assistant.
         </li>
-        <li>
-            The computer will randomly draw your team’s project cost from the following set of Lira:: {4000,4001,…,5999,6000}, where each whole number is equally likely to be drawn.
-        </li>
-        <li>
-            The team’s manager requests the funds for financing the project by submitting his or her cost report to corporate headquarters.
-        </li>
-        <li>
-            Corporate headquarters only knows that the actual project costs never exceed 6000 Lira and are never lower than 4000 Lira.
-        </li>
-        <li>
-            Thus, to receive funds from corporate headquarters and execute the project, the team’s cost report must not exceed 6000 Lira, nor can it be lower than the actual project costs.
-        </li>
     </ul>
 </div>
 <br>
@@ -41,7 +29,7 @@
         <b>Please evaluate the following statement.</b>
     </p>
     <p>
-        {% formfield player.Instr1 label="The team’s cost report can be any whole number ranging from the actual project costs through 6000 Lira." %}
+        {% formfield player.Instr1 label="Both of us will earn a fixed salary of 500 Lira." %}
     </p>
 <br>
 {% next_button %}

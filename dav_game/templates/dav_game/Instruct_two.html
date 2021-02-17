@@ -2,7 +2,7 @@
 {% load staticfiles otree %}
 
 {% block title %}
-    Instructions (Page 2/3)
+    Instructions (Page 2/4)
 {% endblock %}
 
 {% block content %}
@@ -12,63 +12,27 @@
     }
     </style>
 <div class="card card-body bg-light instructions">
-    <p>Please find an overview of what will happen below.</p>
-    {% if group.communication == 0 and group.self_selection == 0 %}
-            <ol>
-                <li>
-                    You and the other participant observe the project cost and choose the cost report you would like to submit if you assume the role of the manager.
-                </li>
-                <li>
-                    The computer randomly selects one of you as the manager and submits that ’participant’s cost report as the team’s cost report for the round.
-                </li>
-            </ol>
-    {% elif group.communication == 0 and group.self_selection == 1 %}
-            <ol>
-                <li>
-                    Both you and the other participant choose whether you prefer to be the manager or the assistant.
-                </li>
-                <li>
-                    Both of you observe the project cost and choose the cost report you would like to submit if you assume the role of the manager.
-                </li>
-                <li>
-                    If only one of you has opted to become the team’s manager, the computer will submit that participants’ cost report as the team’s cost report. However, if both of you or none of you have opted to become the team’s manager, the computer will randomly submit one of the two cost reports as the team’s cost report.
-                </li>
-            </ol>
-    {% elif group.communication == 1 and group.self_selection == 0 %}
-            <ol>
-                <li>
-                    You and the other participant observe the project cost and recommend which cost your team should report to corporate headquarters.
-                </li>
-                <li>
-                    Both of you will observe each other’s recommendation and choose the cost report you would like to submit if you assume the role of the manager. Recommendations are not binding and you are free to choose the cost report as you wish.
-                </li>
-                <li>
-                    The computer randomly selects one of you as the manager and submits that ’participant’s cost report as the team’s cost report for the round.
-                </li>
-            </ol>
-    {% elif group.communication == 1 and group.self_selection == 1 %}
-            <ol>
-                <li>
-                    Both you and the other participant choose whether you prefer to be the manager or the assistant.
-                </li>
-                <li>
-                    Both of you observe the project cost and make a recommendation about which cost your team should report to corporate headquarters.
-                </li>
-                <li>
-                    Both of you will observe each other’s recommendation and choose the cost report you would like to submit if you assume the role of the manager. Recommendations are not binding and you are free to choose the cost report as you wish.
-                </li>
-                <li>
-                    If only one of you has opted to become the manager and the other the assistant, the computer will submit that participants’ cost report as the team’s cost report. However, if both of you or none of you have opted to become the team’s manager, the computer will randomly submit one of the two cost reports as the team’s cost report.
-                </li>
-            </ol>
-    {% endif %}
+    <ul>
+        <li>
+            The computer will randomly draw your team’s project cost from the following set of Lira: {4000,4001,…,5999,6000}, where each whole number is equally likely to be drawn.
+        </li>
+        <li>
+            The team’s manager requests the funds for financing the project by submitting his or her cost report to corporate headquarters.
+        </li>
+        <li>
+            Corporate headquarters only knows that the actual project costs never exceed 6000 Lira and are never lower than 4000 Lira.
+        </li>
+        <li>
+            Thus, to receive funds from corporate headquarters and execute the project, the team’s cost report must not exceed 6000 Lira, nor can it be lower than the actual project costs.
+        </li>
+    </ul>
 </div>
 <br>
     <p>
         <b>Please evaluate the following statement.</b>
     </p>
     <p>
-        {% formfield player.Instr2 label="Both your and the other participant’s cost report will be selected as the team’s cost report." %}
+        {% formfield player.Instr2 label="The team’s cost report can be any whole number ranging from the actual project costs through 6000 Lira." %}
     </p>
 <br>
 {% next_button %}

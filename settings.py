@@ -90,9 +90,48 @@ SESSION_CONFIGS = [
 # the session config can be accessed from methods in your apps as self.session.config,
 # e.g. self.session.config['participation_fee']
 
+mturk_hit_settings_cd = {
+    'keywords': ['decision-making', 'study', 'academic'],
+    'title': 'Academic study (earn up to $4.05 for +-10 minutes)',
+    'description': 'Academic study in which you can earn money based on your and another person`s decisions. Takes approximately 10 minutes to complete).',
+    'frame_height': 500,
+    'template': 'global/mturk_template.html',
+    'minutes_allotted_per_assignment': 45,
+    'expiration_hours': 7*24, # 7 days
+
+    #'grant_qualification_id': 'YOUR_QUALIFICATION_ID_HERE',# to prevent retakes
+    'qualification_requirements': [
+        # No-retakers
+        {
+            'QualificationTypeId': "30LLG2NWCXJ09FSUO3LGVGEKYUS095",
+            'Comparator': "DoesNotExist",
+        },
+        # Only US
+        {
+            'QualificationTypeId': "00000000000000000071",
+            'Comparator': "EqualTo",
+            'LocaleValues': [{'Country': "US"}]
+        },
+        # At least x HITs approved
+        {
+            'QualificationTypeId': "00000000000000000040",
+            'Comparator': "GreaterThanOrEqualTo",
+            'IntegerValues': [500]
+        },
+        # At least x% of HITs approved
+        {
+            'QualificationTypeId': "000000000000000000L0",
+            'Comparator': "GreaterThanOrEqualTo",
+            'IntegerValues': [98]
+        },
+        ]
+}
+
+POINTS_CUSTOM_NAME = 'Lira'
+
 SESSION_CONFIG_DEFAULTS = dict(
-    real_world_currency_per_point=0.03,
-    participation_fee=3.00,
+    real_world_currency_per_point=0.0027,
+    participation_fee=1.35,
     doc="",
     #use_browser_bots=True
 )

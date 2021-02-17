@@ -52,12 +52,12 @@
     }
     </style>
     <div class="card card-body bg-light instructions" align="center">
-    {% if group.self_selection == 1 %}
-        {% if group.select_one == 1 %}
+    {% if group.self_selection == 1 and group.select_one == 1 %}
             You have volunteered to assume the manager's role.<br>
-        {% endif %}
+    {% elif group.self_selection == 1 and group.select_one == 0 %}
+            You have volunteered to assume the assistant's role.<br>
     {% endif %}
-    The project cost equals is {{ cost_realization|to0 }} Lira.<br>
+    The project cost equals is {{ group.cost_realization|to0 }}.<br>
 
     You can now make a cost report recommendation that we will pass on to the other group member.<br>
 
@@ -93,7 +93,7 @@
             $('input[name=recommendation_one]').addClass('myclass');
         });
 	    $('input[name=recommendation_one]').on('input', function() {
-        	document.getElementById("feedback_recommendation_one").innerHTML = `You have selected `+$(this).val()+' Points!';
+        	document.getElementById("feedback_recommendation_one").innerHTML = `You have selected `+$(this).val()+' Lira!';
         	$('#id_check_recommendation_one').val(1);
     	});
     });

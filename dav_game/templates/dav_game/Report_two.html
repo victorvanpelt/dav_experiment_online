@@ -53,10 +53,13 @@
     </style>
     <div class="card card-body bg-light instructions" align="center">
     {% if group.self_selection == 1 and group.select_two == 1 %}
-        You have volunteered to assume the manager's role.<br>
+            You have volunteered to assume the manager's role.<br>
+    {% elif group.self_selection == 1 and group.select_two == 0 %}
+            You have volunteered to assume the assistant's role.<br>
     {% endif %}
-        The project cost is {{ cost_realization|to0 }} Lira.<br>
+        The project cost is {{ group.cost_realization|to0 }}.<br>
     {% if group.communication == 1 %}
+        <br>
         You submitted the following cost report recommendation: {{ group.recommendation_two }}<br>
         The other participant submitted the following cost report recommendation: {{ group.recommendation_one }}<br>
     {% endif %}
@@ -93,7 +96,7 @@
             $('input[name=report_two]').addClass('myclass');
         });
 	    $('input[name=report_two]').on('input', function() {
-        	document.getElementById("feedback_report_two").innerHTML = `You have selected `+$(this).val()+' Points!';
+        	document.getElementById("feedback_report_two").innerHTML = `You have selected `+$(this).val()+' Lira!';
         	$('#id_check_report_two').val(1);
     	});
     });

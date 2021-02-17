@@ -168,7 +168,6 @@ class Demographics(Page):
         'age',
         'trust',
         'education',
-        'attention_check',
         'english'
     ]
 

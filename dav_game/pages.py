@@ -21,8 +21,6 @@ class Intro(Page):
         return self.subsession.round_number == 1
 
     def before_next_page(self):
-        self.participant.vars['is_dropout'] = False
-        self.participant.vars['is_dropout_mate'] = False
         if self.timeout_happened:
             if self.player.id_in_group == 1:
                 self.group.drop_out_trigger_one()
@@ -67,7 +65,7 @@ class Instruct_two(Page):
                 self.group.drop_out_trigger_one()
             elif self.player.id_in_group == 2:
                 self.group.drop_out_trigger_two()
-        if self.player.Instr2 != 2:
+        if self.player.Instr2 != 1:
             if self.player.id_in_group == 1:
                 self.group.drop_out_trigger_one()
             elif self.player.id_in_group == 2:
@@ -89,7 +87,29 @@ class Instruct_three(Page):
                 self.group.drop_out_trigger_one()
             elif self.player.id_in_group == 2:
                 self.group.drop_out_trigger_two()
-        if self.player.Instr3 != 1:
+        if self.player.Instr3 != 2:
+            if self.player.id_in_group == 1:
+                self.group.drop_out_trigger_one()
+            elif self.player.id_in_group == 2:
+                self.group.drop_out_trigger_two()
+
+class Instruct_four(Page):
+    form_model = 'player'
+    form_fields = ['Instr4']
+
+    def is_displayed(self):
+        return self.participant.vars['is_dropout'] == False and self.participant.vars['is_dropout_mate'] == False
+
+    def get_timeout_seconds(self):
+        return 120
+
+    def before_next_page(self):
+        if self.timeout_happened:
+            if self.player.id_in_group == 1:
+                self.group.drop_out_trigger_one()
+            elif self.player.id_in_group == 2:
+                self.group.drop_out_trigger_two()
+        if self.player.Instr4 != 1:
             if self.player.id_in_group == 1:
                 self.group.drop_out_trigger_one()
             elif self.player.id_in_group == 2:
@@ -153,11 +173,6 @@ class Recommendation_one(Page):
     def get_timeout_seconds(self):
         return 60
 
-    def vars_for_template(self):
-        return {
-            'cost_realization': self.group.cost_realization
-        }
-
     def error_message(self, value):
         if value["check_recommendation_one"] == None:
             return 'Please use the slider to make a decision.'
@@ -175,11 +190,6 @@ class Recommendation_two(Page):
 
     def get_timeout_seconds(self):
         return 60
-
-    def vars_for_template(self):
-        return {
-            'cost_realization': self.group.cost_realization
-        }
 
     def error_message(self, value):
         if value["check_recommendation_two"] == None:
@@ -205,10 +215,10 @@ class Report_one(Page):
     def get_timeout_seconds(self):
         return 60
 
-    def vars_for_template(self):
-        return {
-            'cost_realization': self.group.cost_realization
-        }
+    # def vars_for_template(self):
+    #     return {
+    #         'cost_realization': self.group.cost_realization
+    #     }
 
     def error_message(self, value):
         if value["check_report_one"] == None:
@@ -222,10 +232,10 @@ class Report_two(Page):
     form_model = 'group'
     form_fields = ['report_two', 'check_report_two']
 
-    def vars_for_template(self):
-        return {
-            'cost_realization': self.group.cost_realization
-        }
+    # def vars_for_template(self):
+    #     return {
+    #         'cost_realization': self.group.cost_realization
+    #     }
 
     def is_displayed(self):
         return self.player.id_in_group == 2 and self.participant.vars['is_dropout'] == False and self.participant.vars['is_dropout_mate'] == False
@@ -264,6 +274,7 @@ page_sequence = [
     Instruct_one,
     Instruct_two,
     Instruct_three,
+    Instruct_four,
     Start_study,
     Select_one,
     Select_two,

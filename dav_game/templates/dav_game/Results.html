@@ -13,7 +13,7 @@
     </style>
     <div class="card card-body bg-light instructions" align="center">
     The table below gives you an overview of what happened.<br>
-    In total, you have earned a total of {{ payoff }} for this part of the study.
+    You and the other person have earned {{ payoff }} each for this part of the study.
 </div>
 <br>
 <table class="table">
@@ -28,7 +28,7 @@
     {% for p in player.in_all_rounds %}
         <tr>
             <td>
-                {{ p.group.cost_realization }}
+                {{ p.group.cost_realization|to0 }}
             </td>
             <td>
                 {% if p.id_in_group == 1 %}
