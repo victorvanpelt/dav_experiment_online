@@ -55,13 +55,13 @@ SESSION_CONFIGS = [
         'self_selection': 0,
         'completion_code': "RPT20210209"
     },
-    {
-        'name': 'epq',
-        'display_name': "Test EPQ",
-        'num_demo_participants': 1,
-        'app_sequence': ['epq', 'payment_info'],
-        'completion_code': "RPT20210209"
-    },
+    # {
+    #     'name': 'epq',
+    #     'display_name': "Test EPQ",
+    #     'num_demo_participants': 1,
+    #     'app_sequence': ['epq', 'payment_info'],
+    #     'completion_code': "RPT20210209"
+    # },
     # {
     #     'name': 'dav_session_nocomm_all',
     #     'display_name': "Test dav experiment no comm + epq",
@@ -76,13 +76,13 @@ SESSION_CONFIGS = [
     #     'app_sequence': ['dav_game', 'epq', 'payment_info'],
     #     'communication': 1
     # },
-    {
-        'name': 'payment_info',
-        'display_name': "Test payment info",
-        'num_demo_participants': 1,
-        'app_sequence': ['payment_info'],
-        'completion_code': "RPT20210209"
-    },
+    # {
+    #     'name': 'payment_info',
+    #     'display_name': "Test payment info",
+    #     'num_demo_participants': 1,
+    #     'app_sequence': ['payment_info'],
+    #     'completion_code': "RPT20210209"
+    # },
 ]
 
 # if you set a property in SESSION_CONFIG_DEFAULTS, it will be inherited by all configs
