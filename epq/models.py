@@ -354,3 +354,8 @@ class Player(BasePlayer):
         blank=False,
         initial=None
     )
+    corona = models.IntegerField(
+        label="I am worried about the Corona virus (COVID2019).",
+        blank=False,
+        choices=Constants.StandardChoicesSeven
+    )

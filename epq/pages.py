@@ -168,7 +168,8 @@ class Demographics(Page):
         'age',
         'trust',
         'education',
-        'english'
+        'english',
+        'corona'
     ]
 
     def get_form_fields(self):
