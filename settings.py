@@ -62,7 +62,7 @@ SESSION_CONFIGS = [
 # the session config can be accessed from methods in your apps as self.session.config,
 # e.g. self.session.config['participation_fee']
 
-mturk_hit_settings_cd = {
+mturk_hit_settings = {
     'keywords': ['decision-making', 'study', 'academic'],
     'title': 'Academic study (earn up to $4.05 for +-10 minutes)',
     'description': 'Academic study in which you can earn money based on your and another person`s decisions. Takes approximately 10 minutes to complete).',
@@ -105,7 +105,7 @@ SESSION_CONFIG_DEFAULTS = dict(
     real_world_currency_per_point=0.0027,
     participation_fee=0,
     doc="",
-    #use_browser_bots=True
+    mturk_hit_settings=mturk_hit_settings
 )
 
 # ISO-639 code
