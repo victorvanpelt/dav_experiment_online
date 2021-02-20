@@ -12,7 +12,7 @@ class WaitForMatch(WaitPage):
     body_text = "Please wait for the other participant."
 
 class Intro(Page):
-    timeout_seconds = 100
+    timeout_seconds = 120
 
     form_model = 'player'
     form_fields = ['accept_conditions']
@@ -137,7 +137,7 @@ class Select_one(Page):
         return self.group.self_selection == 1 and self.player.id_in_group == 1 and self.participant.vars['is_dropout'] == False and self.participant.vars['is_dropout_mate'] == False
 
     def get_timeout_seconds(self):
-        return 60
+        return 90
 
     def before_next_page(self):
         if self.timeout_happened:
@@ -151,7 +151,7 @@ class Select_two(Page):
         return self.group.self_selection == 1 and self.player.id_in_group == 2 and self.participant.vars['is_dropout'] == False and self.participant.vars['is_dropout_mate'] == False
 
     def get_timeout_seconds(self):
-        return 60
+        return 90
 
     def before_next_page(self):
         if self.timeout_happened:
@@ -171,7 +171,7 @@ class Recommendation_one(Page):
         return self.group.communication == 1 and self.player.id_in_group == 1 and self.participant.vars['is_dropout'] == False and self.participant.vars['is_dropout_mate'] == False
 
     def get_timeout_seconds(self):
-        return 60
+        return 90
 
     def error_message(self, value):
         if value["check_recommendation_one"] == None:
@@ -189,7 +189,7 @@ class Recommendation_two(Page):
         return self.group.communication == 1 and self.player.id_in_group == 2 and self.participant.vars['is_dropout'] == False and self.participant.vars['is_dropout_mate'] == False
 
     def get_timeout_seconds(self):
-        return 60
+        return 90
 
     def error_message(self, value):
         if value["check_recommendation_two"] == None:
@@ -213,12 +213,7 @@ class Report_one(Page):
         return self.player.id_in_group == 1 and self.participant.vars['is_dropout'] == False and self.participant.vars['is_dropout_mate'] == False
 
     def get_timeout_seconds(self):
-        return 60
-
-    # def vars_for_template(self):
-    #     return {
-    #         'cost_realization': self.group.cost_realization
-    #     }
+        return 90
 
     def error_message(self, value):
         if value["check_report_one"] == None:
@@ -232,16 +227,11 @@ class Report_two(Page):
     form_model = 'group'
     form_fields = ['report_two', 'check_report_two']
 
-    # def vars_for_template(self):
-    #     return {
-    #         'cost_realization': self.group.cost_realization
-    #     }
-
     def is_displayed(self):
         return self.player.id_in_group == 2 and self.participant.vars['is_dropout'] == False and self.participant.vars['is_dropout_mate'] == False
 
     def get_timeout_seconds(self):
-        return 60
+        return 90
 
     def error_message(self, value):
         if value["check_report_two"] == None:

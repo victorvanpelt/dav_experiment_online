@@ -19,16 +19,6 @@ class Constants(BaseConstants):
     tasks = ['A', 'B', 'C', 'D', 'E', 'F', 'G']
     num_rounds = len(tasks)
 
-    # Standard Likert scale choices
-    StandardChoicesSeven=[
-        [1, 'Disagree strongly'],
-        [2, 'Disagree'],
-        [3, 'Somewhat disagree'],
-        [4, 'Neither agree nor disagree'],
-        [5, 'Somewhat agree'],
-        [6, 'Agree'],
-        [7, 'Agree strongly'],
-    ]
     StandardChoicesFive=[
         [1, 'Disagree strongly'],
         [2, 'Disagree'],
@@ -64,39 +54,28 @@ class Player(BasePlayer):
     randomized_pages = models.StringField()
     task_rounds = models.StringField()
 
-    #All timeouts
-    # introduction_to = models.BooleanField(initial=False)
-    # checks_to = models.BooleanField(initial=False)
-    # page_one_to = models.BooleanField(initial=False)
-    # page_two_to = models.BooleanField(initial=False)
-    # page_three_to = models.BooleanField(initial=False)
-    # page_four_to = models.BooleanField(initial=False)
-    # page_five_to = models.BooleanField(initial=False)
-    # page_six_to = models.BooleanField(initial=False)
-    # demo_to = models.BooleanField(initial=False)
-
     # EPQ 1 - Randomization, understandability, and motivation
     serious = models.IntegerField(
         label="I participated seriously in the study.",
-        choices=Constants.StandardChoicesSeven
+        choices=Constants.StandardChoicesFive
     )
     lose_interest = models.IntegerField(
         label="I started to lose my interest as the study progressed.",
-        choices=Constants.StandardChoicesSeven
+        choices=Constants.StandardChoicesFive
     )
     cared = models.IntegerField(
         label="I cared about the outcomes of my decisions.",
-        choices=Constants.StandardChoicesSeven
+        choices=Constants.StandardChoicesFive
     )
     recommendation_check = models.IntegerField(
-        label="I was unaware of the project costs the other person wanted our team to submit before I submitted my cost report.",
+        label="Before I submitted my cost report, I did not know about the project costs the other participant wanted our team to report.",
         choices=[
             [0, 'False'],
             [1, 'True'],
         ]
     )
     self_select_check = models.IntegerField(
-        label="I was unable to express a preference for assuming the role of manager or assistant.",
+        label="I expressed a preference for assuming the role of manager or assistant.",
         choices=[
             [0, 'False'],
             [1, 'True'],
@@ -104,11 +83,11 @@ class Player(BasePlayer):
     )
     concerned_about_honest = models.IntegerField(
         label="I was concerned about reporting about our team’s project cost honestly to corporate headquarters.",
-        choices=Constants.StandardChoicesSeven
+        choices=Constants.StandardChoicesFive
     )
     attractive_dishonesty = models.IntegerField(
-        label="It was economically attractive to report project cost above the actual project cost.",
-        choices=Constants.StandardChoicesSeven
+        label="It was attractive to report a project cost above the actual project cost.",
+        choices=Constants.StandardChoicesFive
     )
 
     # EPQ 2 - Mach
@@ -278,43 +257,43 @@ class Player(BasePlayer):
     # # EPQ 6 - Big 5 Short
     # big1 = models.IntegerField(
     #     label="I see myself as extraverted, enthusiastic.",
-    #     choices=Constants.StandardChoicesSeven
+    #     choices=Constants.StandardChoicesFive
     # )
     # big2 = models.IntegerField(
     #     label="I see myself as critical, quarrelsome.",
-    #     choices=Constants.StandardChoicesSeven
+    #     choices=Constants.StandardChoicesFive
     # )
     # big3 = models.IntegerField(
     #     label="I see myself as dependable, self-disciplined.",
-    #     choices=Constants.StandardChoicesSeven
+    #     choices=Constants.StandardChoicesFive
     # )
     # big4 = models.IntegerField(
     #     label="I see myself as anxious, easily upset.",
-    #     choices=Constants.StandardChoicesSeven
+    #     choices=Constants.StandardChoicesFive
     # )
     # big5 = models.IntegerField(
     #     label="I see myself as open to new experiences, complex.",
-    #     choices=Constants.StandardChoicesSeven
+    #     choices=Constants.StandardChoicesFive
     # )
     # big6 = models.IntegerField(
     #     label="I see myself as reserved, quiet.",
-    #     choices=Constants.StandardChoicesSeven
+    #     choices=Constants.StandardChoicesFive
     # )
     # big7 = models.IntegerField(
     #     label="I see myself as sympathetic, warm.",
-    #     choices=Constants.StandardChoicesSeven
+    #     choices=Constants.StandardChoicesFive
     # )
     # big8 = models.IntegerField(
     #     label="I see myself as disorganized, careless.",
-    #     choices=Constants.StandardChoicesSeven
+    #     choices=Constants.StandardChoicesFive
     # )
     # big9 = models.IntegerField(
     #     label="I see myself as calm, emotionally stable.",
-    #     choices=Constants.StandardChoicesSeven
+    #     choices=Constants.StandardChoicesFive
     # )
     # big10 = models.IntegerField(
     #     label="I see myself as conventional, uncreative.",
-    #     choices=Constants.StandardChoicesSeven
+    #     choices=Constants.StandardChoicesFive
     # )
 
     # EPQ 6 - Demographics
@@ -357,5 +336,5 @@ class Player(BasePlayer):
     corona = models.IntegerField(
         label="I am worried about the Corona virus (COVID2019).",
         blank=False,
-        choices=Constants.StandardChoicesSeven
+        choices=Constants.StandardChoicesFive
     )

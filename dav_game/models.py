@@ -25,10 +25,11 @@ class Constants(BaseConstants):
     num_rounds = 1
 
     #Maximum cost realization and report
-    max_cost = c(6000.00)
+    max_cost = c(6000)
 
-    # Randomly drawn cost realizations
-    #cost_realization = [c(251.00), c(379.00), c(44.00), c(343.00), c(61.00), c(199.00), c(73.00), c(300.00), c(96.00), c(195.00), c(65.00)]
+    #Fixed salary
+    fixed_salary = c(500)
+
 
 class Subsession(BaseSubsession):
     pass
@@ -63,24 +64,30 @@ class Group(BaseGroup):
             self.self_selection = next(sel_condition)
             # return self.self_selection
 
-    # This method triggers when a participant dropsout either due to time-out or getting a question wrong
+    # This method triggers when a participant drop out either due to time-out or getting a question wrong
     def drop_out_trigger_one(self):
         for p in self.get_players():
             if p.id_in_group == 1:
                 p.participant.vars['is_dropout'] = True
                 p.drop_out = True
+                p.payoff = c(0)
             elif p.id_in_group == 2:
                 p.participant.vars['is_dropout_mate'] = True
                 p.drop_out_mate = True
+                if p.participant.vars['is_dropout'] == False:
+                    p.payoff = c(185)
 
     def drop_out_trigger_two(self):
         for p in self.get_players():
             if p.id_in_group == 2:
                 p.participant.vars['is_dropout'] = True
                 p.drop_out = True
+                p.payoff = c(0)
             elif p.id_in_group == 1:
                 p.participant.vars['is_dropout_mate'] = True
                 p.drop_out_mate = True
+                if p.participant.vars['is_dropout'] == False:
+                    p.payoff = c(185)
 
     check_recommendation_one = models.IntegerField(initial=None, blank=True)
     recommendation_one = models.CurrencyField(initial=None, blank=False, max=Constants.max_cost)
@@ -181,9 +188,24 @@ class Group(BaseGroup):
 
         for p in self.get_players():
             if p.id_in_group == 1:
-                p.payoff = self.payoff_one
+                p.payoff = self.payoff_one + Constants.fixed_salary
             elif p.id_in_group == 2:
-                p.payoff = self.payoff_two
+                p.payoff = self.payoff_two + Constants.fixed_salary
+
+        # for p in self.get_players():
+        #     if p.id_in_group == 1 and p.participant.vars['is_dropout'] == True:
+        #         p.payoff = c(0)
+        #     elif p.id_in_group == 1 and p.participant.vars['is_dropout_mate'] == True and p.participant.vars['is_dropout'] == False:
+        #         p.payoff = c(185)
+        #     elif p.id_in_group == 1 and p.participant.vars['is_dropout_mate'] == False and p.participant.vars['is_dropout'] == False:
+        #         p.payoff = self.payoff_one + Constants.fixed_salary
+        #     elif p.id_in_group == 2 and p.participant.vars['is_dropout'] == True:
+        #         p.payoff = c(0)
+        #     elif p.id_in_group == 2 and p.participant.vars['is_dropout_mate'] == True and p.participant.vars['is_dropout'] == False:
+        #         p.payoff = c(185)
+        #     elif p.id_in_group == 2 and p.participant.vars['is_dropout_mate'] == False and p.participant.vars['is_dropout'] == False:
+        #         p.payoff = self.payoff_two + Constants.fixed_salary
+
 
 class Player(BasePlayer):
     #Dropout indicator

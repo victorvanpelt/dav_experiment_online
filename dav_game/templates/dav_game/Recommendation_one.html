@@ -52,17 +52,16 @@
     }
     </style>
     <div class="card card-body bg-light instructions" align="center">
-    {% if group.self_selection == 1 and group.select_one == 1 %}
-            You have volunteered to assume the manager's role.<br>
-    {% elif group.self_selection == 1 and group.select_one == 0 %}
-            You have volunteered to assume the assistant's role.<br>
-    {% endif %}
     The project cost equals is {{ group.cost_realization|to0 }}.<br>
-
-    You can now make a cost report recommendation that we will pass on to the other group member.<br>
-
+        {% if group.self_selection == 1 and group.select_one == 1 %}
+            <br>
+            You have volunteered to assume the manager's role.<br>
+        {% elif group.self_selection == 1 and group.select_one == 0 %}
+            <br>
+            You have volunteered to assume the assistant's role.<br>
+        {% endif %}
+    <br>
     You can recommend the project cost you want your team to report to corporate headquarters.<br>
-
     The computer will pass your cost report recommendation on to the other participant.
     </div>
     <br>

@@ -10,10 +10,10 @@
     <div class="card card-body bg-light instructions">
         <ul>
         <li>
-            You answered one of the control questions incorrectly or your session timed out.
+            You answered one of the control questions incorrectly, or your session timed out.
         </li>
         <li>
-            Accordingly, you cannot participate in this study and will earn the fixed salary of 500 Lira which equals <b>{{ participation_fee|to2 }}</b>.
+            Accordingly, you cannot participate in this study any further. We thank you for your willingness to participate.</b>.
         </li>
         </ul>
     </div>
@@ -21,10 +21,10 @@
     <div class="card card-body bg-light instructions">
         <ul>
         <li>
-            The other participant answered one of the control questions incorrectly or their session timed out.
+            The other participant answered one of the control questions incorrectly, or their session timed out.
         </li>
         <li>
-            Accordingly, you cannot participate in this study and will earn the fixed salary of 500 Lira which equals <b>{{ participation_fee|to2 }}</b>.
+            Accordingly, you cannot participate any further and will earn <b>{{ payoff_eur|to2 }}</b>.
         </li>
         </ul>
     </div>
@@ -38,14 +38,9 @@
         <div class="card card-body bg-light instructions">
         <ul>
         <li>
-            You have earned <b>{{ total_payoff|to2 }}</b>, which is comprised of your share of <b>{{ participant.payoff|to2 }}</b> and a base salary of <b>500 Lira</b>.
-        <li>
-            Thus, you will receive a total amount of <b>{{ eur|to2 }}</b>.
+            You have earned <b>{{ total_payoff|to2 }}</b>, which equals <b>{{ payoff_eur|to2 }}</b> at the conversion rate of $0.27 per 100 Lira.
         <li>
             Your completion code is <b>{{ completion_code }}</b>. Please enter it in the MTurk window.
-        </li>
-        <li>
-            If you have any feedback for us, please leave it in the comments below.
         </li>
         <li>
             Please do not forget to click "Submit" below to complete the study.
@@ -55,7 +50,7 @@
     {% endif %}
     {% formfield player.mturk_feedback %}
 
-    <button class="otree-btn-next btn btn-primary">Finish</button>
+    <button class="otree-btn-next btn btn-primary">Submit</button>
 
 {% endblock %}
 

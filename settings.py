@@ -8,7 +8,7 @@ SESSION_CONFIGS = [
         'app_sequence': ['dav_game', 'epq', 'payment_info'],
         'communication': 3,
         'self_selection': 1,
-        'completion_code': "RPT20210209"
+        'completion_code': "RPT20210222"
     },
     {
         'name': 'run_dav_experiment_full_no_ss',
@@ -17,7 +17,7 @@ SESSION_CONFIGS = [
         'app_sequence': ['dav_game', 'epq', 'payment_info'],
         'communication': 3,
         'self_selection': 0,
-        'completion_code': "RPT20210209"
+        'completion_code': "RPT20210222"
     },
     {
         'name': 'dav_session_no_comm_ss',
@@ -26,7 +26,7 @@ SESSION_CONFIGS = [
         'app_sequence': ['dav_game', 'payment_info'],
         'communication': 0,
         'self_selection': 1,
-        'completion_code': "RPT20210209"
+        'completion_code': "RPT20210222"
     },
     {
         'name': 'dav_session_no_comm_no_ss',
@@ -35,7 +35,7 @@ SESSION_CONFIGS = [
         'app_sequence': ['dav_game', 'payment_info'],
         'communication': 0,
         'self_selection': 0,
-        'completion_code': "RPT20210209"
+        'completion_code': "RPT20210222"
     },
     {
         'name': 'dav_session_comm_ss',
@@ -44,7 +44,7 @@ SESSION_CONFIGS = [
         'app_sequence': ['dav_game', 'payment_info'],
         'communication': 1,
         'self_selection': 1,
-        'completion_code': "RPT20210209"
+        'completion_code': "RPT20210222"
     },
     {
         'name': 'dav_session_comm_no_ss',
@@ -53,36 +53,8 @@ SESSION_CONFIGS = [
         'app_sequence': ['dav_game', 'payment_info'],
         'communication': 1,
         'self_selection': 0,
-        'completion_code': "RPT20210209"
+        'completion_code': "RPT20210222"
     },
-    # {
-    #     'name': 'epq',
-    #     'display_name': "Test EPQ",
-    #     'num_demo_participants': 1,
-    #     'app_sequence': ['epq', 'payment_info'],
-    #     'completion_code': "RPT20210209"
-    # },
-    # {
-    #     'name': 'dav_session_nocomm_all',
-    #     'display_name': "Test dav experiment no comm + epq",
-    #     'num_demo_participants': 2,
-    #     'app_sequence': ['dav_game', 'epq', 'payment_info'],
-    #     'communication': 0
-    # },
-    # {
-    #     'name': 'dav_session_comm_all',
-    #     'display_name': "Test dav experiment comm + epq",
-    #     'num_demo_participants': 2,
-    #     'app_sequence': ['dav_game', 'epq', 'payment_info'],
-    #     'communication': 1
-    # },
-    # {
-    #     'name': 'payment_info',
-    #     'display_name': "Test payment info",
-    #     'num_demo_participants': 1,
-    #     'app_sequence': ['payment_info'],
-    #     'completion_code': "RPT20210209"
-    # },
 ]
 
 # if you set a property in SESSION_CONFIG_DEFAULTS, it will be inherited by all configs
@@ -101,11 +73,11 @@ mturk_hit_settings_cd = {
 
     #'grant_qualification_id': 'YOUR_QUALIFICATION_ID_HERE',# to prevent retakes
     'qualification_requirements': [
-        # No-retakers
-        {
-            'QualificationTypeId': "30LLG2NWCXJ09FSUO3LGVGEKYUS095",
-            'Comparator': "DoesNotExist",
-        },
+        # # No-retakers
+        # {
+        #     'QualificationTypeId': "30LLG2NWCXJ09FSUO3LGVGEKYUS095",
+        #     'Comparator': "DoesNotExist",
+        # },
         # Only US
         {
             'QualificationTypeId': "00000000000000000071",
@@ -131,7 +103,7 @@ POINTS_CUSTOM_NAME = 'Lira'
 
 SESSION_CONFIG_DEFAULTS = dict(
     real_world_currency_per_point=0.0027,
-    participation_fee=1.35,
+    participation_fee=0,
     doc="",
     #use_browser_bots=True
 )

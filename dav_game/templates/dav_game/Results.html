@@ -13,7 +13,12 @@
     </style>
     <div class="card card-body bg-light instructions" align="center">
     The table below gives you an overview of what happened.<br>
-    You and the other person have earned {{ payoff }} each for this part of the study.
+    You and the other participant have both earned {{ payoff }} each.<br>
+    {% if player.id_in_group == 1 %}
+        This amount consists of the fixed salary of 500 Lira and your share of the difference, which is {{ group.payoff_one }}.
+    {% elif player.id_in_group == 2 %}
+        This amount consists of the fixed salary of 500 Lira and your share of the difference, which is {{ group.payoff_two }}.
+    {% endif %}
 </div>
 <br>
 <table class="table">
@@ -21,7 +26,7 @@
         <th>Project cost</th>
         <th>Your cost report</th>
         <th>Other's cost report</th>
-        <th>Were you selected as manager?</th>
+        <th>Were you selected as the manager?</th>
         <th>Team's cost report</th>
         <th>Difference kept by the team</th>
     </tr>

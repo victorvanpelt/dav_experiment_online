@@ -23,6 +23,18 @@ class Group(BaseGroup):
     pass
 
 class Player(BasePlayer):
+    # #Dropout indicator
+    # is_dropout = models.BooleanField(initial=False)
+    # is_dropout_mate = models.BooleanField(initial=False)
+
+    # def start(self):
+    #     self.is_dropout = self.participant.vars['is_dropout']
+    #     self.is_dropout_mate = self.participant.vars['is_dropout_mate']
+    #     if self.is_dropout == True:
+    #         self.payoff = c(0)
+    #     elif self.is_dropout_mate == True and self.is_dropout == False:
+    #         self.payoff = c(185)
+
     mturk_feedback = models.TextField(
         label="Do you have any feedback for us or anything you would like to say to us?",
         blank=True
