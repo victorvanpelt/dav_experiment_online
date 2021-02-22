@@ -101,30 +101,34 @@ class Group(BaseGroup):
     def recommendation_two_min(self):
         return self.cost_realization
 
-    select_one = models.IntegerField(
-        blank=False,
-        widget=widgets.RadioSelect
-    )
-    def select_one_choices(self):
-        choices = [
-            [0, 'I want to assume the assistant`s role'],
-            [1, 'I want to assume the manager`s role']
-        ]
-        random.shuffle(choices)
-        return choices
+    select_one = models.BooleanField(initial=False, blank=True)
 
-    select_two = models.IntegerField(
-        blank=False,
-        widget=widgets.RadioSelect
-    )
+    # select_one = models.IntegerField(
+    #     blank=False,
+    #     widget=widgets.RadioSelect
+    # )
+    # def select_one_choices(self):
+    #     choices = [
+    #         [0, 'I do not want to assume the manager`s role'],
+    #         [1, 'I want to assume the manager`s role']
+    #     ]
+    #     random.shuffle(choices)
+    #     return choices
 
-    def select_two_choices(self):
-        choices = [
-            [0, 'I want to assume the assistant`s role'],
-            [1, 'I want to assume the manager`s role']
-        ]
-        random.shuffle(choices)
-        return choices
+    select_two = models.BooleanField(initial=False, blank=True)
+
+    # select_two = models.IntegerField(
+    #     blank=False,
+    #     widget=widgets.RadioSelect
+    # )
+    #
+    # def select_two_choices(self):
+    #     choices = [
+    #         [0, 'I do not want to assume the manager`s role'],
+    #         [1, 'I want to assume the manager`s role']
+    #     ]
+    #     random.shuffle(choices)
+    #     return choices
 
     check_report_one = models.IntegerField(initial=None, blank=True)
     report_one = models.CurrencyField(initial=None,blank=False,max=Constants.max_cost)
