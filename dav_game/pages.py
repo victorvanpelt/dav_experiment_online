@@ -256,7 +256,7 @@ class Results(Page):
     def vars_for_template(self):
         return {
             'payoff': self.participant.payoff,
-            'firm_profit': c(6000) - self.group.group_report
+            # 'firm_profit': c(6000) - self.group.group_report
         }
 
 page_sequence = [
