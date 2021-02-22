@@ -78,6 +78,11 @@ mturk_hit_settings = {
         #     'QualificationTypeId': "30LLG2NWCXJ09FSUO3LGVGEKYUS095",
         #     'Comparator': "DoesNotExist",
         # },
+        # Masters
+        {
+                'QualificationTypeId': "2F1QJWKUDD8XADTFD2Q0G6UTO95ALH",
+                'Comparator': "Exists",
+        },
         # Only US
         {
             'QualificationTypeId': "00000000000000000071",
@@ -94,7 +99,7 @@ mturk_hit_settings = {
         {
             'QualificationTypeId': "000000000000000000L0",
             'Comparator': "GreaterThanOrEqualTo",
-            'IntegerValues': [98]
+            'IntegerValues': [95]
         },
         ]
 }
