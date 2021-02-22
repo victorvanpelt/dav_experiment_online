@@ -9,7 +9,7 @@ class WaitForMatch(WaitPage):
     group_by_arrival_time = True
     after_all_players_arrive = "assign_stuff"
     title_text = "Please wait"
-    body_text = "Please wait for the other participant."
+    body_text = "Please wait to be matched to another participant."
 
 class Intro(Page):
     timeout_seconds = 120
