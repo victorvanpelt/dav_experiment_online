@@ -196,20 +196,6 @@ class Group(BaseGroup):
             elif p.id_in_group == 2:
                 p.payoff = self.payoff_two + Constants.fixed_salary
 
-        # for p in self.get_players():
-        #     if p.id_in_group == 1 and p.participant.vars['is_dropout'] == True:
-        #         p.payoff = c(0)
-        #     elif p.id_in_group == 1 and p.participant.vars['is_dropout_mate'] == True and p.participant.vars['is_dropout'] == False:
-        #         p.payoff = c(185)
-        #     elif p.id_in_group == 1 and p.participant.vars['is_dropout_mate'] == False and p.participant.vars['is_dropout'] == False:
-        #         p.payoff = self.payoff_one + Constants.fixed_salary
-        #     elif p.id_in_group == 2 and p.participant.vars['is_dropout'] == True:
-        #         p.payoff = c(0)
-        #     elif p.id_in_group == 2 and p.participant.vars['is_dropout_mate'] == True and p.participant.vars['is_dropout'] == False:
-        #         p.payoff = c(185)
-        #     elif p.id_in_group == 2 and p.participant.vars['is_dropout_mate'] == False and p.participant.vars['is_dropout'] == False:
-        #         p.payoff = self.payoff_two + Constants.fixed_salary
-
 
 class Player(BasePlayer):
     #Dropout indicator

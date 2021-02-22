@@ -8,7 +8,7 @@ SESSION_CONFIGS = [
         'app_sequence': ['dav_game', 'epq', 'payment_info'],
         'communication': 3,
         'self_selection': 1,
-        'completion_code': "RPT20210222"
+        'completion_code': "RPT20210223"
     },
     {
         'name': 'run_dav_experiment_full_no_ss',
@@ -17,7 +17,7 @@ SESSION_CONFIGS = [
         'app_sequence': ['dav_game', 'epq', 'payment_info'],
         'communication': 3,
         'self_selection': 0,
-        'completion_code': "RPT20210222"
+        'completion_code': "RPT20210223"
     },
     {
         'name': 'dav_session_no_comm_ss',
@@ -26,7 +26,7 @@ SESSION_CONFIGS = [
         'app_sequence': ['dav_game', 'payment_info'],
         'communication': 0,
         'self_selection': 1,
-        'completion_code': "RPT20210222"
+        'completion_code': "RPT20210223"
     },
     {
         'name': 'dav_session_no_comm_no_ss',
@@ -35,7 +35,7 @@ SESSION_CONFIGS = [
         'app_sequence': ['dav_game', 'payment_info'],
         'communication': 0,
         'self_selection': 0,
-        'completion_code': "RPT20210222"
+        'completion_code': "RPT20210223"
     },
     {
         'name': 'dav_session_comm_ss',
@@ -44,7 +44,7 @@ SESSION_CONFIGS = [
         'app_sequence': ['dav_game', 'payment_info'],
         'communication': 1,
         'self_selection': 1,
-        'completion_code': "RPT20210222"
+        'completion_code': "RPT20210223"
     },
     {
         'name': 'dav_session_comm_no_ss',
@@ -53,7 +53,7 @@ SESSION_CONFIGS = [
         'app_sequence': ['dav_game', 'payment_info'],
         'communication': 1,
         'self_selection': 0,
-        'completion_code': "RPT20210222"
+        'completion_code': "RPT20210223"
     },
 ]
 
@@ -65,7 +65,7 @@ SESSION_CONFIGS = [
 mturk_hit_settings = {
     'keywords': ['decision-making', 'study', 'academic'],
     'title': 'Academic study (earn up to $4.05 for +-10 minutes)',
-    'description': 'Academic study in which you can earn money based on your and another person`s decisions. Takes approximately 10 minutes to complete).',
+    'description': 'Short academic study. Earn up to $4.05 for approximately 10 minutes).',
     'frame_height': 500,
     'template': 'global/mturk_template.html',
     'minutes_allotted_per_assignment': 45,
