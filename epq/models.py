@@ -68,7 +68,7 @@ class Player(BasePlayer):
         choices=Constants.StandardChoicesFive
     )
     recommendation_check = models.IntegerField(
-        label="Before I submitted my cost report, I did not know about the project costs the other participant wanted our team to report.",
+        label="Before I submitted my cost report, I did not know about the project costs the other participant recommended our team to report.",
         choices=[
             [0, 'False'],
             [1, 'True'],
