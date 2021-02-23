@@ -64,7 +64,7 @@ SESSION_CONFIGS = [
 
 mturk_hit_settings = {
     'keywords': ['decision-making', 'study', 'academic'],
-    'title': 'Academic study (earn up to $4.05 for +-10 minutes)',
+    'title': 'Cost reporting study (earn up to $4.05 for +-10 minutes)',
     'description': 'Short academic study. Earn up to $4.05 for approximately 10 minutes).',
     'frame_height': 500,
     'template': 'global/mturk_template.html',

@@ -29,7 +29,7 @@
         <th>Were you selected as the manager?</th>
         <th>Team's cost report</th>
         <th>Difference kept by the team</th>
-{#        <th>Profit for the firm</th>#}
+        <th>Profit for the firm</th>
     </tr>
     {% for p in player.in_all_rounds %}
         <tr>
@@ -87,9 +87,9 @@
             <td>
                 {{ p.group.group_profit }}
             </td>
-{#            <td>#}
-{#                {{ firm_profit }}#}
-{#            </td>#}
+            <td>
+                {{ firm_profit }}
+            </td>
         </tr>
     {% endfor %}
 </table>
