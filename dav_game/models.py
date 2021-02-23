@@ -52,17 +52,26 @@ class Group(BaseGroup):
         elif self.session.config['communication'] == 0:
             self.communication = 0
         else:
-            comm_condition = itertools.cycle([1, 0])
-            self.communication = next(comm_condition)
+            # comm_condition = itertools.cycle([0, 1])
+            # self.communication = next(comm_condition)
+            # self.communication = random.randint(0,1)
+            if self.id_in_subsession % 2 == 0:
+                self.communication = 1
+            else:
+                self.communication = 0
         if self.session.config['self_selection'] == 1:
             self.self_selection = 1
         elif self.session.config['self_selection'] == 0:
             self.self_selection = 0
             # return self.self_selection
         else:
-            sel_condition = itertools.cycle([1, 0])
-            self.self_selection = next(sel_condition)
-            # return self.self_selection
+            # sel_condition = itertools.cycle([0, 1])
+            # self.self_selection = next(sel_condition)
+            # self.self_selection = random.randint(0,1)
+            if self.id_in_subsession % 2 == 0:
+                self.self_selection = 1
+            else:
+                self.self_selection = 0
 
     # This method triggers when a participant drop out either due to time-out or getting a question wrong
     def drop_out_trigger_one(self):
