@@ -174,6 +174,7 @@ class Group(BaseGroup):
         for p in self.get_players():
             if p.dofus == 1:
                 p.payoff = c(0)
+
 class Player(BasePlayer):
     #Dropout indicator
     drop_out = models.BooleanField(initial=False)

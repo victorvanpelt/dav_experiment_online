@@ -55,18 +55,18 @@ class Player(BasePlayer):
     task_rounds = models.StringField()
 
     # EPQ 1 - Randomization, understandability, and motivation
-    serious = models.IntegerField(
-        label="I participated seriously in the study.",
-        choices=Constants.StandardChoicesFive
-    )
-    lose_interest = models.IntegerField(
-        label="I started to lose my interest as the study progressed.",
-        choices=Constants.StandardChoicesFive
-    )
-    cared = models.IntegerField(
-        label="I cared about the outcomes of my decisions.",
-        choices=Constants.StandardChoicesFive
-    )
+    # serious = models.IntegerField(
+    #     label="I participated seriously in the study.",
+    #     choices=Constants.StandardChoicesFive
+    # )
+    # lose_interest = models.IntegerField(
+    #     label="I started to lose my interest as the study progressed.",
+    #     choices=Constants.StandardChoicesFive
+    # )
+    # cared = models.IntegerField(
+    #     label="I cared about the outcomes of my decisions.",
+    #     choices=Constants.StandardChoicesFive
+    # )
     recommendation_check = models.IntegerField(
         label="Before I submitted my cost report, I knew the project costs the other participant recommended our team to report.",
         choices=[

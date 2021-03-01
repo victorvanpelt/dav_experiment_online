@@ -19,7 +19,6 @@ class Checks(Page):
         'self_select_check',
         'concerned_about_honest',
         'attractive_dishonesty'
-
     ]
 
     def get_form_fields(self):
