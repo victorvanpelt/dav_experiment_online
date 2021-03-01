@@ -1,19 +1,7 @@
-<head>
+
 <script src="https://assets.crowd.aws/crowd-html-elements.js"></script>
-<script>
-    var buttonone = document.getElementById("buttonOne");
-    buttonone.addEventListener('click', function() {
-        if (buttonone.getAttribute("data-text-swap") == buttonone.innerHTML) {
-            buttonone.innerHTML = buttonone.getAttribute("data-text-original");
-        } else {
-            buttonone.setAttribute("data-text-original", buttonone.innerHTML);
-            buttonone.innerHTML = buttonone.getAttribute("data-text-swap");
-        }
-    },
-        false);
-</script>
-</head>
-<body>
+
+
 <crowd-form>
     <div style="padding: 20px">
 {#    Please read the information carefully and be aware that you cannot go back to previous screens.#}
@@ -35,23 +23,6 @@
 {#        The last page will display a completion code. Please copy/paste that code in the box below so we can approve the HIT and transfer your earnings.#}
 {#    </li>#}
     </ul>
-
-<button id="buttonone" data-text-swap="Hide data and consent" data-toggle="collapse" type="button" class="btn btn-info" style="color: rgb(0,51,102); background-color: #fff; width:130px; border-color: #003366" data-target="#demo6">Show data and consent</button>
-</button>
-<div id="demo6" style="font-size: 16px;" class="collapse">
-<p></p>
-        <ul>
-    <li>
-        There is no physical discomfort nor any deception in this study.
-    </li>
-    <li>
-        Your decisions and the payment procedure are anonymous. None of the participants will learn the identity or the other participants’ earnings, and we will not ask for any personally identifying information.
-    </li>
-    <li>
-        Your data will only be used for academic purposes and will be treated as highly confidential. No individual responses will be shared. We will only analyze responses on the aggregate.
-    </li>
-    </ul>
-</div>
 
 <b>Data and consent</b>
     <ul>
@@ -81,4 +52,3 @@
 
     </div>
 </crowd-form>
-</body>
