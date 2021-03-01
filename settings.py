@@ -7,8 +7,7 @@ SESSION_CONFIGS = [
         'num_demo_participants': 4,
         'app_sequence': ['dav_game', 'epq', 'payment_info'],
         'communication': 3,
-        'self_selection': 1,
-        'completion_code': "RPT20210223"
+        'self_selection': 1
     },
     {
         'name': 'run_dav_experiment_full_no_ss',
@@ -16,8 +15,7 @@ SESSION_CONFIGS = [
         'num_demo_participants': 4,
         'app_sequence': ['dav_game', 'epq', 'payment_info'],
         'communication': 3,
-        'self_selection': 0,
-        'completion_code': "RPT20210223"
+        'self_selection': 0
     },
     {
         'name': 'dav_session_no_comm_ss',
@@ -25,8 +23,7 @@ SESSION_CONFIGS = [
         'num_demo_participants': 4,
         'app_sequence': ['dav_game', 'payment_info'],
         'communication': 0,
-        'self_selection': 1,
-        'completion_code': "RPT20210223"
+        'self_selection': 1
     },
     {
         'name': 'dav_session_no_comm_no_ss',
@@ -34,8 +31,7 @@ SESSION_CONFIGS = [
         'num_demo_participants': 4,
         'app_sequence': ['dav_game', 'payment_info'],
         'communication': 0,
-        'self_selection': 0,
-        'completion_code': "RPT20210223"
+        'self_selection': 0
     },
     {
         'name': 'dav_session_comm_ss',
@@ -43,8 +39,7 @@ SESSION_CONFIGS = [
         'num_demo_participants': 4,
         'app_sequence': ['dav_game', 'payment_info'],
         'communication': 1,
-        'self_selection': 1,
-        'completion_code': "RPT20210223"
+        'self_selection': 1
     },
     {
         'name': 'dav_session_comm_no_ss',
@@ -52,8 +47,7 @@ SESSION_CONFIGS = [
         'num_demo_participants': 4,
         'app_sequence': ['dav_game', 'payment_info'],
         'communication': 1,
-        'self_selection': 0,
-        'completion_code': "RPT20210223"
+        'self_selection': 0
     },
 ]
 
@@ -64,7 +58,7 @@ SESSION_CONFIGS = [
 
 mturk_hit_settings = {
     'keywords': ['decision-making', 'study', 'academic'],
-    'title': 'Cost reporting study (earn up to $4.05 for +-10 minutes)',
+    'title': 'Reporting game (earn up to $4.05 for +-10 minutes)',
     'description': 'Short academic study. Earn up to $4.05 for approximately 10 minutes).',
     'frame_height': 500,
     'template': 'global/mturk_template.html',
@@ -108,7 +102,7 @@ POINTS_CUSTOM_NAME = 'Lira'
 
 SESSION_CONFIG_DEFAULTS = dict(
     real_world_currency_per_point=0.0027,
-    participation_fee=0,
+    participation_fee=1.35,
     doc="",
     mturk_hit_settings=mturk_hit_settings
 )

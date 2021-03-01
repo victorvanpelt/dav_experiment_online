@@ -27,10 +27,6 @@ class Constants(BaseConstants):
     #Maximum cost realization and report
     max_cost = c(6000)
 
-    #Fixed salary
-    fixed_salary = c(500)
-
-
 class Subsession(BaseSubsession):
     pass
 
@@ -45,6 +41,7 @@ class Group(BaseGroup):
         for p in self.get_players():
             p.participant.vars['is_dropout'] = False
             p.participant.vars['is_dropout_mate'] = False
+            p.participant.vars['is_dofus'] = False
 
         # Assign conditions based on session config else randomize per dyad
         if self.session.config['communication'] == 1:
@@ -52,9 +49,6 @@ class Group(BaseGroup):
         elif self.session.config['communication'] == 0:
             self.communication = 0
         else:
-            # comm_condition = itertools.cycle([0, 1])
-            # self.communication = next(comm_condition)
-            # self.communication = random.randint(0,1)
             if self.id_in_subsession % 2 == 0:
                 self.communication = 1
             else:
@@ -63,11 +57,7 @@ class Group(BaseGroup):
             self.self_selection = 1
         elif self.session.config['self_selection'] == 0:
             self.self_selection = 0
-            # return self.self_selection
         else:
-            # sel_condition = itertools.cycle([0, 1])
-            # self.self_selection = next(sel_condition)
-            # self.self_selection = random.randint(0,1)
             if self.id_in_subsession % 2 == 0:
                 self.self_selection = 1
             else:
@@ -79,24 +69,24 @@ class Group(BaseGroup):
             if p.id_in_group == 1:
                 p.participant.vars['is_dropout'] = True
                 p.drop_out = True
-                p.payoff = c(0)
+                p.payoff = -c(500)
             elif p.id_in_group == 2:
                 p.participant.vars['is_dropout_mate'] = True
                 p.drop_out_mate = True
                 if p.participant.vars['is_dropout'] == False:
-                    p.payoff = c(185)
+                    p.payoff = c(0)
 
     def drop_out_trigger_two(self):
         for p in self.get_players():
             if p.id_in_group == 2:
                 p.participant.vars['is_dropout'] = True
                 p.drop_out = True
-                p.payoff = c(0)
+                p.payoff = -c(500)
             elif p.id_in_group == 1:
                 p.participant.vars['is_dropout_mate'] = True
                 p.drop_out_mate = True
                 if p.participant.vars['is_dropout'] == False:
-                    p.payoff = c(185)
+                    p.payoff = c(0)
 
     check_recommendation_one = models.IntegerField(initial=None, blank=True)
     recommendation_one = models.CurrencyField(initial=None, blank=False, max=Constants.max_cost)
@@ -112,32 +102,7 @@ class Group(BaseGroup):
 
     select_one = models.BooleanField(initial=False, blank=True)
 
-    # select_one = models.IntegerField(
-    #     blank=False,
-    #     widget=widgets.RadioSelect
-    # )
-    # def select_one_choices(self):
-    #     choices = [
-    #         [0, 'I do not want to assume the manager`s role'],
-    #         [1, 'I want to assume the manager`s role']
-    #     ]
-    #     random.shuffle(choices)
-    #     return choices
-
     select_two = models.BooleanField(initial=False, blank=True)
-
-    # select_two = models.IntegerField(
-    #     blank=False,
-    #     widget=widgets.RadioSelect
-    # )
-    #
-    # def select_two_choices(self):
-    #     choices = [
-    #         [0, 'I do not want to assume the manager`s role'],
-    #         [1, 'I want to assume the manager`s role']
-    #     ]
-    #     random.shuffle(choices)
-    #     return choices
 
     check_report_one = models.IntegerField(initial=None, blank=True)
     report_one = models.CurrencyField(initial=None,blank=False,max=Constants.max_cost)
@@ -201,18 +166,22 @@ class Group(BaseGroup):
 
         for p in self.get_players():
             if p.id_in_group == 1:
-                p.payoff = self.payoff_one + Constants.fixed_salary
+                p.payoff = self.payoff_one
             elif p.id_in_group == 2:
-                p.payoff = self.payoff_two + Constants.fixed_salary
+                p.payoff = self.payoff_two
 
-
+    def dofus_trigger(self):
+        for p in self.get_players():
+            if p.dofus == 1:
+                p.payoff = c(0)
 class Player(BasePlayer):
     #Dropout indicator
     drop_out = models.BooleanField(initial=False)
     drop_out_mate = models.BooleanField(initial=False)
+    dofus = models.BooleanField(initial=False)
 
-    # Agree to terms of participation at start.
-    accept_conditions = models.BooleanField(blank=False)
+    # # Agree to terms of participation at start.
+    # accept_conditions = models.BooleanField(blank=False)
 
     # Control questions for instructions (removed blank=False)
     Instr1 = models.IntegerField(choices=[[1, 'True'], [2, 'False']], widget=widgets.RadioSelect)

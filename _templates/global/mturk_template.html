@@ -1,5 +1,15 @@
 <script src="https://assets.crowd.aws/crowd-html-elements.js"></script>
-
+<script>
+    var buttonone = document.getElementById("ButtonOne");
+buttonone.addEventListener('click', function() {
+  if (buttonone.getAttribute("data-text-swap") == buttonone.innerHTML) {
+    buttonone.innerHTML = buttonone.getAttribute("data-text-original");
+  } else {
+    buttonone.setAttribute("data-text-original", buttonone.innerHTML);
+    buttonone.innerHTML = buttonone.getAttribute("data-text-swap");
+  }
+}, false);
+</script>
 <crowd-form>
     <div style="padding: 20px">
 {#    Please read the information carefully and be aware that you cannot go back to previous screens.#}
@@ -9,18 +19,37 @@
         This HIT takes approximately 10 minutes to complete.
     </li>
     <li>
-        You will earn $1.35 for completing the HIT, but you can also earn up to an additional $2.70 depending on your decisions, another participant’s decisions, and a random process.
+        In this study, we use “Lira” as currency, and every 100 Lira will be converted into $0.27 after you complete the study.
     </li>
     <li>
-        The instructions at the start have four simple questions. If you or the other participant answers one of them incorrectly or takes exceptionally long to finish a page, both of you cannot participate any further.
+        You will earn $1.35 for completing the HIT, and you can earn up to an additional $2.70 on top of this amount depending on your decisions, another participant’s decisions, and a random process.
     </li>
     <li>
-        In that case, the person who answered one of the four questions incorrectly or took exceptionally long to finish a page will receive no earnings, while the other person will receive $0.50.
+        The instructions at the start have four simple questions. If you answer one of them incorrectly or do not complete the HIT, you will not receive any additional pay.
+    </li>
+{#    <li>#}
+{#        The last page will display a completion code. Please copy/paste that code in the box below so we can approve the HIT and transfer your earnings.#}
+{#    </li>#}
+    </ul>
+
+<button id="buttonone" data-text-swap="Hide data and consent" data-toggle="collapse" type="button" class="btn btn-info" style="color: rgb(0,51,102); background-color: #fff; width:130px; border-color: #003366" data-target="#demo6">Show data and consent</button>
+ Download Paper
+</button>
+<div id="demo6" style="font-size: 16px;" class="collapse">
+<p></p>
+        <ul>
+    <li>
+        There is no physical discomfort nor any deception in this study.
     </li>
     <li>
-        If both of you answer the four control questions correctly and you complete the study, the last page will display a completion code. Please copy/paste that code in the box below so we can approve the HIT and transfer your earnings.
+        Your decisions and the payment procedure are anonymous. None of the participants will learn the identity or the other participants’ earnings, and we will not ask for any personally identifying information.
+    </li>
+    <li>
+        Your data will only be used for academic purposes and will be treated as highly confidential. No individual responses will be shared. We will only analyze responses on the aggregate.
     </li>
     </ul>
+</div>
+
 <b>Data and consent</b>
     <ul>
     <li>
@@ -43,9 +72,9 @@
     The research team<br>
     WHU – Otto Beisheim School of Management<br>
     </p>
-    <hr>
-    <crowd-input name="completion_code" label="Enter your completion code here" required></crowd-input>
-    <br>
+{#    <hr>#}
+{#    <crowd-input name="completion_code" label="Enter your completion code here" required></crowd-input>#}
+{#    <br>#}
 
     </div>
 </crowd-form>

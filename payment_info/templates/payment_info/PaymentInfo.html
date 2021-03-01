@@ -6,28 +6,49 @@
 {% endblock %}
 
 {% block content %}
-    {% if is_dropout == 1 and is_dropout_mate == 1 or is_dropout == 1 and is_dropout_mate == 0 %}
+    {% if is_dropout == 1 and is_dropout_mate == 1 and is_dofus == 0 or is_dropout == 1 and is_dropout_mate == 0 and is_dofus == 0 %}
     <div class="card card-body bg-light instructions">
         <ul>
         <li>
-            You answered one of the control questions incorrectly, or your session timed out.
+            Your session timed out. Accordingly, you cannot participate in this study any further.
         </li>
         <li>
-            Accordingly, you cannot participate in this study any further. We thank you for your willingness to participate.</b>.
+            We thank you for your willingness to participate.
         </li>
+{#        <li>#}
+{#            Your completion code is <b>{{ completion_code }}</b>. Please enter it in the MTurk window.#}
+{#        </li>#}
         </ul>
     </div>
-    {% elif is_dropout_mate == 1 and is_dropout == 0 %}
+    {% elif is_dropout_mate == 1 and is_dropout == 0 and is_dofus == 0 %}
     <div class="card card-body bg-light instructions">
         <ul>
         <li>
-            The other participant answered one of the control questions incorrectly, or their session timed out.
+            The other participant’s their session timed out. Accordingly, you cannot participate in this study any further.
         </li>
         <li>
-            Accordingly, you cannot participate any further and will earn <b>{{ payoff_eur|to2 }}</b>.
+            We can still give you the base fee of 500 Lira, which equals <b>{{ total_eur }}</b> at the conversion rate of $0.27 per 100 Lira.
         </li>
+        <li>
+            Please do not forget to click “Submit” below to complete the study.
+        </li>
+{#        <li>#}
+{#            Your completion code is <b>{{ completion_code }}</b>. Please enter it in the MTurk window.#}
+{#        </li>#}
         </ul>
     </div>
+    {% elif is_dofus == 1 %}
+        <ul>
+        <li>
+            You answered one of the control questions in the instructions incorrectly.
+        </li>
+        <li>
+            Accordingly, we can only give you the base fee of 500 Lira, which equals <b>{{ total_eur }}</b> at the conversion rate of $0.27 per 100 Lira.
+        </li>
+        <li>
+            Please do not forget to click “Submit” below to complete the study.
+        </li>
+        </ul>
     {% else %}
     <div class="progress" style="height: 30px;">
     <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width:100%; text-align:center">
@@ -38,10 +59,10 @@
         <div class="card card-body bg-light instructions">
         <ul>
         <li>
-            You have earned <b>{{ total_payoff|to2 }}</b>, which equals <b>{{ payoff_eur|to2 }}</b> at the conversion rate of $0.27 per 100 Lira.
-        <li>
-            Your completion code is <b>{{ completion_code }}</b>. Please enter it in the MTurk window.
-        </li>
+            You have earned <b>{{ total_payoff|to2 }}</b>, which equals <b>{{ total_eur|to2 }}</b> at the conversion rate of $0.27 per 100 Lira.
+{#        <li>#}
+{#            Your completion code is <b>{{ completion_code }}</b>. Please enter it in the MTurk window.#}
+{#        </li>#}
         <li>
             Please do not forget to click "Submit" below to complete the study.
         </li>

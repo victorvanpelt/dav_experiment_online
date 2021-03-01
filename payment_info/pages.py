@@ -12,11 +12,13 @@ class PaymentInfo(Page):
     def vars_for_template(self):
         return {
             #'redemption_code': self.participant.label or self.participant.code,
-            'payoff_eur': self.participant.payoff.to_real_world_currency(self.session),
-            'total_payoff': self.participant.payoff,
+            'participation_fee': self.session.config['participation_fee'],
+            'payoff': self.participant.payoff,
+            'total_payoff': self.participant.payoff + c(500),
+            'total_eur': self.participant.payoff_plus_participation_fee(),
             'is_dropout': self.participant.vars['is_dropout'],
             'is_dropout_mate': self.participant.vars['is_dropout_mate'],
-            'completion_code': self.session.config['completion_code']
+            'is_dofus': self.participant.vars['is_dofus']
         }
 
 page_sequence = [PaymentInfo]

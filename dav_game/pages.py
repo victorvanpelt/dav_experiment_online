@@ -11,21 +11,21 @@ class WaitForMatch(WaitPage):
     title_text = "Please wait"
     body_text = "Please wait to be matched to another participant."
 
-class Intro(Page):
-    timeout_seconds = 120
-
-    form_model = 'player'
-    form_fields = ['accept_conditions']
-
-    def is_displayed(self):
-        return self.subsession.round_number == 1
-
-    def before_next_page(self):
-        if self.timeout_happened:
-            if self.player.id_in_group == 1:
-                self.group.drop_out_trigger_one()
-            elif self.player.id_in_group == 2:
-                self.group.drop_out_trigger_two()
+# class Intro(Page):
+#     timeout_seconds = 120
+#
+#     form_model = 'player'
+#     form_fields = ['accept_conditions']
+#
+#     def is_displayed(self):
+#         return self.subsession.round_number == 1
+#
+#     def before_next_page(self):
+#         if self.timeout_happened:
+#             if self.player.id_in_group == 1:
+#                 self.group.drop_out_trigger_one()
+#             elif self.player.id_in_group == 2:
+#                 self.group.drop_out_trigger_two()
 
 class Instruct_one(Page):
     form_model = 'player'
@@ -43,11 +43,11 @@ class Instruct_one(Page):
                 self.group.drop_out_trigger_one()
             elif self.player.id_in_group == 2:
                 self.group.drop_out_trigger_two()
-        if self.player.Instr1 != 1:
-            if self.player.id_in_group == 1:
-                self.group.drop_out_trigger_one()
-            elif self.player.id_in_group == 2:
-                self.group.drop_out_trigger_two()
+        # if self.player.Instr1 != 1:
+        #     if self.player.id_in_group == 1:
+        #         self.group.drop_out_trigger_one()
+        #     elif self.player.id_in_group == 2:
+        #         self.group.drop_out_trigger_two()
 
 class Instruct_two(Page):
     form_model = 'player'
@@ -65,11 +65,11 @@ class Instruct_two(Page):
                 self.group.drop_out_trigger_one()
             elif self.player.id_in_group == 2:
                 self.group.drop_out_trigger_two()
-        if self.player.Instr2 != 1:
-            if self.player.id_in_group == 1:
-                self.group.drop_out_trigger_one()
-            elif self.player.id_in_group == 2:
-                self.group.drop_out_trigger_two()
+        # if self.player.Instr2 != 1:
+        #     if self.player.id_in_group == 1:
+        #         self.group.drop_out_trigger_one()
+        #     elif self.player.id_in_group == 2:
+        #         self.group.drop_out_trigger_two()
 
 class Instruct_three(Page):
     form_model = 'player'
@@ -87,11 +87,11 @@ class Instruct_three(Page):
                 self.group.drop_out_trigger_one()
             elif self.player.id_in_group == 2:
                 self.group.drop_out_trigger_two()
-        if self.player.Instr3 != 2:
-            if self.player.id_in_group == 1:
-                self.group.drop_out_trigger_one()
-            elif self.player.id_in_group == 2:
-                self.group.drop_out_trigger_two()
+        # if self.player.Instr3 != 2:
+        #     if self.player.id_in_group == 1:
+        #         self.group.drop_out_trigger_one()
+        #     elif self.player.id_in_group == 2:
+        #         self.group.drop_out_trigger_two()
 
 class Instruct_four(Page):
     form_model = 'player'
@@ -109,11 +109,11 @@ class Instruct_four(Page):
                 self.group.drop_out_trigger_one()
             elif self.player.id_in_group == 2:
                 self.group.drop_out_trigger_two()
-        if self.player.Instr4 != 1:
-            if self.player.id_in_group == 1:
-                self.group.drop_out_trigger_one()
-            elif self.player.id_in_group == 2:
-                self.group.drop_out_trigger_two()
+        # if self.player.Instr4 != 1:
+        #     if self.player.id_in_group == 1:
+        #         self.group.drop_out_trigger_one()
+        #     elif self.player.id_in_group == 2:
+        #         self.group.drop_out_trigger_two()
 
 class Start_study(Page):
     def is_displayed(self):
@@ -238,6 +238,9 @@ class Report_two(Page):
             return 'Please use the slider to make a decision.'
 
     def before_next_page(self):
+        if self.player.Instr1 != 2 or self.player.Instr2 != 1 or self.player.Instr3 != 1 or self.player.Instr4 != 1:
+            self.player.participant.vars['is_dofus'] = True
+            self.player.dofus = True
         if self.timeout_happened:
             self.group.drop_out_trigger_two()
 
@@ -255,13 +258,15 @@ class Results(Page):
 
     def vars_for_template(self):
         return {
-            'payoff': self.participant.payoff,
+            'total_payoff': self.participant.payoff + c(500),
             'firm_profit': c(6000) - self.group.group_report
         }
 
+    def before_next_page(self):
+        self.group.dofus_trigger()
+
 page_sequence = [
     WaitForMatch,
-    Intro,
     Instruct_one,
     Instruct_two,
     Instruct_three,
