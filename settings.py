@@ -2,7 +2,15 @@ from os import environ
 
 SESSION_CONFIGS = [
     {
-        'name': 'run_dav_experiment_full_ss',
+        'name': 'dav_full_ss',
+        'display_name': "Dav full select comm",
+        'num_demo_participants': 4,
+        'app_sequence': ['dav_game', 'epq', 'payment_info'],
+        'communication': 1,
+        'self_selection': 1
+    },
+    {
+        'name': 'dav_full_ss',
         'display_name': "Dav full select",
         'num_demo_participants': 4,
         'app_sequence': ['dav_game', 'epq', 'payment_info'],
@@ -10,7 +18,7 @@ SESSION_CONFIGS = [
         'self_selection': 1
     },
     {
-        'name': 'run_dav_experiment_full_no_ss',
+        'name': 'dav_full_no_ss',
         'display_name': "DAV full no select",
         'num_demo_participants': 4,
         'app_sequence': ['dav_game', 'epq', 'payment_info'],
@@ -18,32 +26,32 @@ SESSION_CONFIGS = [
         'self_selection': 0
     },
     {
-        'name': 'dav_session_no_comm_ss',
-        'display_name': "DAV no comm select",
+        'name': 'dav_simple_no_comm_ss',
+        'display_name': "DAV simple no comm select",
         'num_demo_participants': 4,
         'app_sequence': ['dav_game', 'payment_info'],
         'communication': 0,
         'self_selection': 1
     },
     {
-        'name': 'dav_session_no_comm_no_ss',
-        'display_name': "DAV no comm no select",
+        'name': 'dav_simple_no_comm_no_ss',
+        'display_name': "DAV simple no comm no select",
         'num_demo_participants': 4,
         'app_sequence': ['dav_game', 'payment_info'],
         'communication': 0,
         'self_selection': 0
     },
     {
-        'name': 'dav_session_comm_ss',
-        'display_name': "DAV comm select",
+        'name': 'dav_simple_comm_ss',
+        'display_name': "DAV simple comm select",
         'num_demo_participants': 4,
         'app_sequence': ['dav_game', 'payment_info'],
         'communication': 1,
         'self_selection': 1
     },
     {
-        'name': 'dav_session_comm_no_ss',
-        'display_name': "DAV comm no select",
+        'name': 'dav_simple_comm_no_ss',
+        'display_name': "DAV simple comm no select",
         'num_demo_participants': 4,
         'app_sequence': ['dav_game', 'payment_info'],
         'communication': 1,
