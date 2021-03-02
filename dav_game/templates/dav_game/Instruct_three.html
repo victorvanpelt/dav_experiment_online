@@ -16,7 +16,10 @@
     {% if group.communication == 0 and group.self_selection == 0 %}
             <ol>
                 <li>
-                    You and the other participant observe the actual project cost and choose the cost report you would like to submit in case you become the manager.
+                    You and the other participant observe the actual project cost.
+                </li>
+                <li>
+                    Both of you  choose the cost report you would like to submit in case you become the manager.
                 </li>
                 <li>
                     The computer randomly selects one of you as the manager and submits that participant’s cost report to corporate headquarters.
@@ -28,19 +31,28 @@
                     You and the other participant choose whether you would like to become the manager.
                 </li>
                 <li>
-                    Both of you observe the actual project cost and choose the cost report you would like to submit in case you become the manager.
+                    Both of you observe the actual project cost.
                 </li>
                 <li>
-                    If only one of you has opted to become the manager, the computer will submit that participant’s cost report. However, if both of you or none of you have opted to become the manager, the computer will randomly submit one of your cost reports.
+                    Both of you choose the cost report you would like to submit in case you become the manager.
+                </li>
+                <li>
+                    If only one of you expresses a preference to become the manager, the computer will submit that participant’s cost report. However, if both of you or none of you express a preference to become the manager, the computer will randomly submit one of the two cost reports to corporate headquarters.
                 </li>
             </ol>
     {% elif group.communication == 1 and group.self_selection == 0 %}
             <ol>
                 <li>
-                    You and the other participant observe the actual project cost and recommend to each other which cost your team should report to corporate headquarters. Recommendations are not binding, and you are free to choose your recommendation as you wish.
+                    You and the other participant observe the actual project cost.
                 </li>
                 <li>
-                    Both of you will observe each other’s recommendations and choose the cost report you would like to submit in case you become the manager.
+                    Both of you recommend to each other which cost your team should report to corporate headquarters. Recommendations are not binding, and you are free to choose your recommendation as you wish.
+                </li>
+                <li>
+                    Both of you will observe each other’s recommendations.
+                </li>
+                <li>
+                    Both of you choose the cost report you would like to submit in case you become the manager
                 </li>
                 <li>
                     The computer randomly selects one of you as the manager and submits that participant’s cost report to corporate headquarters.
@@ -52,13 +64,19 @@
                     You and the other participant choose whether you would like to become the manager.
                 </li>
                 <li>
-                    Both of you observe the actual project cost and recommend to each other which cost your team should report to corporate headquarters. Recommendations are not binding, and you are free to choose your recommendation as you wish.
+                    Both of you observe the actual project cost.
                 </li>
                 <li>
-                    Both of you will observe each other’s recommendations and choose the cost report you would like to submit in case you become the manager.
+                    Both of you recommend to each other which cost your team should report to corporate headquarters. Recommendations are not binding, and you are free to choose your recommendation as you wish.
                 </li>
                 <li>
-                    If only one of you has opted to become the manager, the computer will submit that participant’s cost report. However, if both of you or none of you have opted to become the manager, the computer will randomly submit one of your cost reports.
+                    Both of you will observe each other’s recommendations.
+                </li>
+                <li>
+                    Both of you choose the cost report you would like to submit in case you become the manager.
+                </li>
+                <li>
+                    If only one of you expresses a preference to become the manager, the computer will submit that participant’s cost report. However, if both of you or none of you express a preference to become the manager, the computer will randomly submit one of the two cost reports to corporate headquarters.
                 </li>
             </ol>
     {% endif %}

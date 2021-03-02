@@ -55,10 +55,10 @@
     The project cost equals is {{ group.cost_realization|to0 }}.<br>
         {% if group.self_selection == 1 and group.select_one == 1 %}
             <br>
-            You have volunteered to become the manager.<br>
+            You expressed a preference to become the manager.<br>
         {% elif group.self_selection == 1 and group.select_one == 0 %}
             <br>
-            You have not volunteered to become the manager.<br>
+            You did not express a preference to become the manager.<br>
         {% endif %}
     <br>
     You can now recommend the project cost you want your team to report to corporate headquarters.<br>

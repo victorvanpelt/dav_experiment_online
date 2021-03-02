@@ -55,10 +55,10 @@
         The project cost is {{ group.cost_realization|to0 }}.<br>
     {% if group.self_selection == 1 and group.select_two == 1 %}
         <br>
-        You have volunteered to become the manager.<br>
+        You expressed a preference to become the manager.<br>
     {% elif group.self_selection == 1 and group.select_two == 0 %}
         <br>
-        You have not volunteered to become the manager.<br>
+        You did not express a preference to become the manager.<br>
     {% endif %}
 
     {% if group.communication == 1 %}
@@ -68,7 +68,7 @@
     {% endif %}
     <br>
     Please choose the cost report that you would like your team to submit.<br>
-    Remember that your decision will serve as the team’s cost report if you become the manager.
+    Remember that your decision will serve as your team’s cost report if you become the manager.
     </div>
     <br>
     <div align="center">
