@@ -181,9 +181,6 @@ class Player(BasePlayer):
     drop_out_mate = models.BooleanField(initial=False)
     dofus = models.BooleanField(initial=False)
 
-    # # Agree to terms of participation at start.
-    # accept_conditions = models.BooleanField(blank=False)
-
     # Control questions for instructions (removed blank=False)
     Instr1 = models.IntegerField(choices=[[1, 'True'], [2, 'False']], widget=widgets.RadioSelect)
     Instr2 = models.IntegerField(choices=[[1, 'True'], [2, 'False']], widget=widgets.RadioSelect)

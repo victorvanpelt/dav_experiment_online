@@ -31,8 +31,8 @@ class Instruct_one(Page):
     form_model = 'player'
     form_fields = ['Instr1']
 
-    def is_displayed(self):
-        return self.participant.vars['is_dropout'] == False and self.participant.vars['is_dropout_mate'] == False
+    # def is_displayed(self):
+    #     return self.participant.vars['is_dropout'] == False and self.participant.vars['is_dropout_mate'] == False
 
     def get_timeout_seconds(self):
         return 120
@@ -220,6 +220,9 @@ class Report_one(Page):
             return 'Please use the slider to make a decision.'
 
     def before_next_page(self):
+        if self.player.Instr1 != 2 or self.player.Instr2 != 1 or self.player.Instr3 != 1 or self.player.Instr4 != 1:
+            self.player.participant.vars['is_dofus'] = True
+            self.player.dofus = True
         if self.timeout_happened:
             self.group.drop_out_trigger_one()
 
