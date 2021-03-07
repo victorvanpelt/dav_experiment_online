@@ -1,4 +1,4 @@
-from otree.api import Currency as c, currency_range, SubmissionMustFail
+from otree.api import Currency as cu, currency_range, SubmissionMustFail
 from . import pages
 from ._builtin import Bot
 from .models import Constants, Player
@@ -50,31 +50,31 @@ class PlayerBot(Bot):
                 if light == 1:
                     yield pages.Recommendation_one, dict(recommendation_one=cost_realization, check_recommendation_one=1)
                 else:
-                    yield pages.Recommendation_one, dict(recommendation_one=c(400), check_recommendation_one=1)
+                    yield pages.Recommendation_one, dict(recommendation_one=cu(400), check_recommendation_one=1)
             else:
                 if light == 1:
                     yield pages.Recommendation_two, dict(recommendation_two=cost_realization, check_recommendation_two=1)
                 else:
-                    yield pages.Recommendation_two, dict(recommendation_two=c(400), check_recommendation_two=1)
+                    yield pages.Recommendation_two, dict(recommendation_two=cu(400), check_recommendation_two=1)
         if self.player.id_in_group == 1:
             if light == 1:
-                if self.group.communication == 1 and self.group.recommendation_two == c(400):
-                    yield pages.Report_one, dict(report_one=c(400), check_report_one=1)
+                if self.group.communication == 1 and self.group.recommendation_two == cu(400):
+                    yield pages.Report_one, dict(report_one=cu(400), check_report_one=1)
                 elif self.group.communication == 1 and self.group.recommendation_two == cost_realization:
                     yield pages.Report_one, dict(report_one=cost_realization, check_report_one=1)
                 else:
                     yield pages.Report_one, dict(report_one=cost_realization, check_report_one=1)
             else:
-                yield pages.Report_one, dict(report_one=c(400), check_report_one=1)
+                yield pages.Report_one, dict(report_one=cu(400), check_report_one=1)
         else:
             if light == 1:
-                if self.group.communication == 1 and self.group.recommendation_one == c(400):
-                    yield pages.Report_two, dict(report_two=c(400), check_report_two=1)
+                if self.group.communication == 1 and self.group.recommendation_one == cu(400):
+                    yield pages.Report_two, dict(report_two=cu(400), check_report_two=1)
                 elif self.group.communication == 1 and self.group.recommendation_one == cost_realization:
                     yield pages.Report_two, dict(report_two=cost_realization, check_report_two=1)
                 else:
                     yield pages.Report_two, dict(report_two=cost_realization, check_report_two=1)
             else:
-                yield pages.Report_two, dict(report_two=c(400), check_report_two=1)
+                yield pages.Report_two, dict(report_two=cu(400), check_report_two=1)
         if self.subsession.round_number == Constants.num_rounds:
             yield pages.Results

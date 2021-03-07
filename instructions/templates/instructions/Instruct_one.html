@@ -2,7 +2,7 @@
 {% load staticfiles otree %}
 
 {% block title %}
-    Instructions (Page 2/4)
+    Part 1 (Page 1/4)
 {% endblock %}
 
 {% block content %}
@@ -14,13 +14,19 @@
 <div class="card card-body bg-light instructions">
     <ul>
         <li>
-            To determine the project’s cost, the computer will randomly draw a number between 4000 Lira and 6000 Lira. Each whole number on that range is equally likely to be drawn.
+            In part 2 of this study, we will use “Lira” as currency, and every 100 Lira will be converted into $0.27 after you complete the study.
         </li>
         <li>
-            Your team’s manager requests the funds for financing the project by submitting his or her cost report to your firm’s corporate headquarters.
+            You will randomly and anonymously form a team together with another participant.
         </li>
         <li>
-            Corporate headquarters only knows that the actual project cost are never lower than 4000 Lira and never exceed 6000 Lira.
+            Your teams’ task is to manage a project for your firm, which will generate 6000 Lira in revenue for your firm.
+        </li>
+        <li>
+            Only one of you will fulfill the role of your team’s manager.
+        </li>
+        <li>
+            Both of you will earn a fixed salary of 500 Lira.
         </li>
     </ul>
 </div>
@@ -29,7 +35,7 @@
         <b>Please evaluate the following statement.</b>
     </p>
     <p>
-        {% formfield player.Instr2 label="To determine the project’s cost, the computer will randomly draw a number between 4000 Lira and 6000 Lira." %}
+        {% formfield player.Instr1 label="Both of us will fulfill the role of manager." %}
     </p>
 <br>
 {% next_button %}

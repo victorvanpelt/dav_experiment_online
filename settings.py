@@ -5,7 +5,7 @@ SESSION_CONFIGS = [
         'name': 'dav_full_ss_comm',
         'display_name': "Dav full select comm",
         'num_demo_participants': 4,
-        'app_sequence': ['dav_game', 'epq', 'payment_info'],
+        'app_sequence': ['instructions','dav_game', 'epq', 'payment_info'],
         'communication': 1,
         'self_selection': 1
     },
@@ -13,7 +13,7 @@ SESSION_CONFIGS = [
         'name': 'dav_full_ss',
         'display_name': "Dav full select",
         'num_demo_participants': 4,
-        'app_sequence': ['dav_game', 'epq', 'payment_info'],
+        'app_sequence': ['instructions','dav_game', 'epq', 'payment_info'],
         'communication': 3,
         'self_selection': 1
     },
@@ -21,7 +21,7 @@ SESSION_CONFIGS = [
         'name': 'dav_full_no_ss',
         'display_name': "DAV full no select",
         'num_demo_participants': 4,
-        'app_sequence': ['dav_game', 'epq', 'payment_info'],
+        'app_sequence': ['instructions','dav_game', 'epq', 'payment_info'],
         'communication': 3,
         'self_selection': 0
     },
@@ -29,7 +29,7 @@ SESSION_CONFIGS = [
         'name': 'dav_simple_no_comm_ss',
         'display_name': "DAV simple no comm select",
         'num_demo_participants': 4,
-        'app_sequence': ['dav_game', 'payment_info'],
+        'app_sequence': ['instructions','dav_game', 'payment_info'],
         'communication': 0,
         'self_selection': 1
     },
@@ -37,7 +37,7 @@ SESSION_CONFIGS = [
         'name': 'dav_simple_no_comm_no_ss',
         'display_name': "DAV simple no comm no select",
         'num_demo_participants': 4,
-        'app_sequence': ['dav_game', 'payment_info'],
+        'app_sequence': ['instructions','dav_game', 'payment_info'],
         'communication': 0,
         'self_selection': 0
     },
@@ -45,7 +45,7 @@ SESSION_CONFIGS = [
         'name': 'dav_simple_comm_ss',
         'display_name': "DAV simple comm select",
         'num_demo_participants': 4,
-        'app_sequence': ['dav_game', 'payment_info'],
+        'app_sequence': ['instructions','dav_game', 'payment_info'],
         'communication': 1,
         'self_selection': 1
     },
@@ -53,7 +53,7 @@ SESSION_CONFIGS = [
         'name': 'dav_simple_comm_no_ss',
         'display_name': "DAV simple comm no select",
         'num_demo_participants': 4,
-        'app_sequence': ['dav_game', 'payment_info'],
+        'app_sequence': ['instructions','dav_game', 'payment_info'],
         'communication': 1,
         'self_selection': 0
     },
@@ -110,7 +110,7 @@ POINTS_CUSTOM_NAME = 'Lira'
 
 SESSION_CONFIG_DEFAULTS = dict(
     real_world_currency_per_point=0.0027,
-    participation_fee=1.35,
+    participation_fee=1.60,
     doc="",
     mturk_hit_settings=mturk_hit_settings
 )
@@ -138,3 +138,12 @@ SECRET_KEY = '^i7o@zmr9=x$gdx(pxmcr@u3l8g%-hnysv6k8ap8y@4!^qho!q'
 
 # if an app is included in SESSION_CONFIGS, you don't need to list it here
 INSTALLED_APPS = ['otree']
+
+PARTICIPANT_FIELDS = [
+    'is_dropout',
+    'is_dropout_mate',
+    'is_dofus',
+    'communication',
+    'self_selection',
+    'task_rounds'
+]

@@ -2,7 +2,7 @@
 {% load otree static %}
 
 {% block title %}
-    Results
+    Part 2 - Results
 {% endblock %}
 
 {% block content %}
@@ -12,13 +12,18 @@
     }
     </style>
     <div class="card card-body bg-light instructions" align="center">
-    The table below gives you an overview of what happened.<br>
-    You and the other participant have both earned {{ total_payoff }} each.<br>
+    You and the other participant have both earned {{ total_payoff }} each for part 2.<br>
     {% if player.id_in_group == 1 %}
-        This amount consists of the fixed salary of 500 Lira and your share of the difference, which is {{ group.payoff_one }}.
+        This amount consists of the fixed salary of 500 Lira and your share of the difference, which is {{ group.payoff_one }}.<br>
     {% elif player.id_in_group == 2 %}
-        This amount consists of the fixed salary of 500 Lira and your share of the difference, which is {{ group.payoff_two }}.
+        This amount consists of the fixed salary of 500 Lira and your share of the difference, which is {{ group.payoff_two }}.<br>
     {% endif %}
+    This amount corresponds to {{ total_eur }} at the conversion rate of $0.27 per 100 Lira.
+    </div>
+    <br>
+    <div class="card card-body bg-light instructions" align="center">
+        The table below gives you an overview of what happened in part 2 of this study.
+    </div>
 </div>
 <br>
 <table class="table">

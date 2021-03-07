@@ -1,6 +1,6 @@
 from . import models
 from ._builtin import Page, WaitPage
-from otree.api import Currency as c, currency_range
+from otree.api import Currency as cu, currency_range
 from .models import Constants
 
 class PaymentInfo(Page):
@@ -13,12 +13,13 @@ class PaymentInfo(Page):
         return {
             #'redemption_code': self.participant.label or self.participant.code,
             'participation_fee': self.session.config['participation_fee'],
-            'payoff': self.participant.payoff,
-            'total_payoff': self.participant.payoff + c(500),
-            'total_eur': self.participant.payoff_plus_participation_fee(),
-            'is_dropout': self.participant.vars['is_dropout'],
-            'is_dropout_mate': self.participant.vars['is_dropout_mate'],
-            'is_dofus': self.participant.vars['is_dofus']
+            'payoff': self.player.participant.payoff,
+            'total_payoff': self.player.participant.payoff + cu(500),
+            'total_eur_main': (self.player.participant.payoff + cu(500)).to_real_world_currency(self.player.session),
+            'total_eur': self.player.participant.payoff_plus_participation_fee(),
+            'is_dropout': self.player.participant.is_dropout,
+            'is_dropout_mate': self.player.participant.is_dropout_mate,
+            'is_dofus': self.player.participant.is_dofus
         }
 
 page_sequence = [PaymentInfo]

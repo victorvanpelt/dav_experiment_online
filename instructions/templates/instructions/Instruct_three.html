@@ -2,7 +2,7 @@
 {% load staticfiles otree %}
 
 {% block title %}
-    Instructions (Page 3/4)
+    Part 1 - Instructions (Page 3/4)
 {% endblock %}
 
 {% block content %}
@@ -12,8 +12,8 @@
     }
     </style>
 <div class="card card-body bg-light instructions">
-    <p>Please find an overview of what will happen below.</p>
-    {% if group.communication == 0 and group.self_selection == 0 %}
+    <p>Please read the following an overview about what will happen in part 2 below.</p>
+    {% if player.communication == 0 and player.self_selection == 0 %}
             <ol>
                 <li>
                     You and the other participant observe the actual project cost.
@@ -25,7 +25,7 @@
                     The computer randomly selects one of you as the manager and submits that participant’s cost report to corporate headquarters.
                 </li>
             </ol>
-    {% elif group.communication == 0 and group.self_selection == 1 %}
+    {% elif player.communication == 0 and player.self_selection == 1 %}
             <ol>
                 <li>
                     You and the other participant choose whether you would like to become the manager.
@@ -40,7 +40,7 @@
                     If only one of you expresses a preference to become the manager, the computer will submit that participant’s cost report. However, if both of you or none of you express a preference to become the manager, the computer will randomly submit one of the two cost reports to corporate headquarters.
                 </li>
             </ol>
-    {% elif group.communication == 1 and group.self_selection == 0 %}
+    {% elif player.communication == 1 and player.self_selection == 0 %}
             <ol>
                 <li>
                     You and the other participant observe the actual project cost.
@@ -58,7 +58,7 @@
                     The computer randomly selects one of you as the manager and submits that participant’s cost report to corporate headquarters.
                 </li>
             </ol>
-    {% elif group.communication == 1 and group.self_selection == 1 %}
+    {% elif player.communication == 1 and player.self_selection == 1 %}
             <ol>
                 <li>
                     You and the other participant choose whether you would like to become the manager.

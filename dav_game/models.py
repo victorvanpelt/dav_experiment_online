@@ -7,7 +7,7 @@ from otree.api import (
     BaseSubsession,
     BaseGroup,
     BasePlayer,
-    Currency as c,
+    Currency as cu,
     currency_range,
 )
 
@@ -25,7 +25,7 @@ class Constants(BaseConstants):
     num_rounds = 1
 
     #Maximum cost realization and report
-    max_cost = c(6000)
+    max_cost = cu(6000)
 
 class Subsession(BaseSubsession):
     pass
@@ -37,56 +37,48 @@ class Group(BaseGroup):
 
     def assign_stuff(self):
         # Assign cost realization and base dropout variables
-        self.cost_realization = c(random.randint(4000,6000))
-        for p in self.get_players():
-            p.participant.vars['is_dropout'] = False
-            p.participant.vars['is_dropout_mate'] = False
-            p.participant.vars['is_dofus'] = False
+        self.cost_realization = cu(random.randint(4000,6000))
 
-        # Assign conditions based on session config else randomize per dyad
-        if self.session.config['communication'] == 1:
-            self.communication = 1
-        elif self.session.config['communication'] == 0:
-            self.communication = 0
-        else:
-            if self.id_in_subsession % 2 == 0:
+        # Load dropout variables
+        for p in self.get_players():
+            p.drop_out = p.participant.is_dropout
+            p.drop_out_mate = p.participant.is_dropout_mate
+            p.dofus = p.participant.is_dofus
+
+        # Load conditions based on session config else randomize per dyad
+            if p.participant.communication == 1:
                 self.communication = 1
-            else:
+            elif p.participant.communication == 0:
                 self.communication = 0
-        if self.session.config['self_selection'] == 1:
-            self.self_selection = 1
-        elif self.session.config['self_selection'] == 0:
-            self.self_selection = 0
-        else:
-            if self.id_in_subsession % 2 == 0:
+            if p.participant.self_selection == 1:
                 self.self_selection = 1
-            else:
+            elif p.participant.self_selection == 0:
                 self.self_selection = 0
 
-    # This method triggers when a participant drop out either due to time-out or getting a question wrong
+    # This method triggers when a participant drop out due to time-out
     def drop_out_trigger_one(self):
         for p in self.get_players():
             if p.id_in_group == 1:
-                p.participant.vars['is_dropout'] = True
+                p.participant.is_dropout = True
                 p.drop_out = True
-                p.payoff = -c(500)
+                p.payoff = -cu(500)
             elif p.id_in_group == 2:
-                p.participant.vars['is_dropout_mate'] = True
+                p.participant.is_dropout_mate = True
                 p.drop_out_mate = True
-                if p.participant.vars['is_dropout'] == False:
-                    p.payoff = c(0)
+                if p.participant.is_dropout == False:
+                    p.payoff = cu(0)
 
     def drop_out_trigger_two(self):
         for p in self.get_players():
             if p.id_in_group == 2:
-                p.participant.vars['is_dropout'] = True
+                p.participant.is_dropout = True
                 p.drop_out = True
-                p.payoff = -c(500)
+                p.payoff = -cu(500)
             elif p.id_in_group == 1:
-                p.participant.vars['is_dropout_mate'] = True
+                p.participant.is_dropout_mate = True
                 p.drop_out_mate = True
-                if p.participant.vars['is_dropout'] == False:
-                    p.payoff = c(0)
+                if p.participant.is_dropout == False:
+                    p.payoff = cu(0)
 
     check_recommendation_one = models.IntegerField(initial=None, blank=True)
     recommendation_one = models.CurrencyField(initial=None, blank=False, max=Constants.max_cost)
@@ -170,10 +162,10 @@ class Group(BaseGroup):
             elif p.id_in_group == 2:
                 p.payoff = self.payoff_two
 
-    def dofus_trigger(self):
-        for p in self.get_players():
-            if p.dofus == 1:
-                p.payoff = c(0)
+    # def dofus_trigger(self):
+    #     for p in self.get_players():
+    #         if p.dofus == 1:
+    #             p.payoff = cu(0)
 
 class Player(BasePlayer):
     #Dropout indicator

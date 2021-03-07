@@ -10,7 +10,7 @@ class Introduction(Page):
         return progress
 
     def is_displayed(self):
-        return self.round_number == self.participant.vars['task_rounds']['A'] and self.participant.vars['is_dropout'] == False and self.participant.vars['is_dropout_mate'] == False
+        return self.round_number == self.participant.vars['task_rounds']['A'] and self.participant.is_dropout == False and self.participant.is_dropout_mate == False
 
 class Checks(Page):
     form_model = 'player'
@@ -32,7 +32,7 @@ class Checks(Page):
         return progress
 
     def is_displayed(self):
-        return self.round_number == self.participant.vars['task_rounds']['B'] and self.participant.vars['is_dropout'] == False and self.participant.vars['is_dropout_mate'] == False
+        return self.round_number == self.participant.vars['task_rounds']['B'] and self.participant.is_dropout == False and self.participant.is_dropout_mate == False
 
     def vars_for_template(self):
         progress = self.progress()
@@ -60,7 +60,7 @@ class Page_2(Page):
         return progress
 
     def is_displayed(self):
-        return self.round_number == self.participant.vars['task_rounds']['C'] and self.participant.vars['is_dropout'] == False and self.participant.vars['is_dropout_mate'] == False
+        return self.round_number == self.participant.vars['task_rounds']['C'] and self.participant.is_dropout == False and self.participant.is_dropout_mate == False
 
     def vars_for_template(self):
         progress = self.progress()
@@ -88,7 +88,7 @@ class Page_3(Page):
         return progress
 
     def is_displayed(self):
-        return self.round_number == self.participant.vars['task_rounds']['D'] and self.participant.vars['is_dropout'] == False and self.participant.vars['is_dropout_mate'] == False
+        return self.round_number == self.participant.vars['task_rounds']['D'] and self.participant.is_dropout == False and self.participant.is_dropout_mate == False
 
     def vars_for_template(self):
         progress = self.progress()
@@ -116,7 +116,7 @@ class Page_4(Page):
         return progress
 
     def is_displayed(self):
-        return self.round_number == self.participant.vars['task_rounds']['E'] and self.participant.vars['is_dropout'] == False and self.participant.vars['is_dropout_mate'] == False
+        return self.round_number == self.participant.vars['task_rounds']['E'] and self.participant.is_dropout == False and self.participant.is_dropout_mate == False
 
     def vars_for_template(self):
         progress = self.progress()
@@ -152,7 +152,7 @@ class Page_5(Page):
         return progress
 
     def is_displayed(self):
-        return self.round_number == self.participant.vars['task_rounds']['F'] and self.participant.vars['is_dropout'] == False and self.participant.vars['is_dropout_mate'] == False
+        return self.round_number == self.participant.vars['task_rounds']['F'] and self.participant.is_dropout == False and self.participant.is_dropout_mate == False
 
     def vars_for_template(self):
         progress = self.progress()
@@ -177,7 +177,7 @@ class Demographics(Page):
         return fields
 
     def is_displayed(self):
-        return self.round_number == self.participant.vars['task_rounds']['G'] and self.participant.vars['is_dropout'] == False and self.participant.vars['is_dropout_mate'] == False
+        return self.round_number == self.participant.vars['task_rounds']['G'] and self.participant.is_dropout == False and self.participant.is_dropout_mate == False
 
     def progress(self):
         curpageindex = self.round_number-1
