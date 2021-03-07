@@ -68,14 +68,14 @@ class Player(BasePlayer):
     #     choices=Constants.StandardChoicesFive
     # )
     recommendation_check = models.IntegerField(
-        label="Before I submitted my cost report, I knew the project costs the other participant recommended our team to report.",
+        label="Before I submitted my cost report, I received a cost report recommendation from the other participant.",
         choices=[
             [0, 'False'],
             [1, 'True'],
         ]
     )
     self_select_check = models.IntegerField(
-        label="I chose whether I wanted to become my team’s manager",
+        label="I chose whether I wanted to become my team’s manager.",
         choices=[
             [0, 'False'],
             [1, 'True'],

@@ -16,7 +16,7 @@ class Start_study(Page):
         return self.player.participant.is_dropout == False and self.player.participant.is_dropout_mate == False
 
     def get_timeout_seconds(self):
-        return 120
+        return 60
 
     def before_next_page(self):
         if self.timeout_happened:

@@ -51,29 +51,31 @@
         -webkit-appearance: none;
     }
     </style>
+{#    <div class="card card-body bg-light instructions" align="center">#}
+{#        {% if group.self_selection == 1 and group.select_one == 1 %}#}
+{#            You expressed a preference to become the manager.#}
+{#        {% elif group.self_selection == 1 and group.select_one == 0 %}#}
+{#            You did not express a preference to become the manager.#}
+{#        {% endif %}#}
+{#    </div>#}
+{#    <br>#}
     <div class="card card-body bg-light instructions" align="center">
-    The project cost equals is {{ group.cost_realization|to0 }}.<br>
-        {% if group.self_selection == 1 and group.select_one == 1 %}
-            <br>
-            You expressed a preference to become the manager.<br>
-        {% elif group.self_selection == 1 and group.select_one == 0 %}
-            <br>
-            You did not express a preference to become the manager.<br>
-        {% endif %}
-    <br>
-    You can now recommend the project cost you want your team to report to corporate headquarters.<br>
-    The computer will pass your cost report recommendation on to the other participant.
+    The project cost equals {{ group.cost_realization|to0 }}.
     </div>
     <br>
     <div align="center">
     <p>
-        Please click on the bar and drag the slider (or use the left and right arrow keys) to make your cost report recommendation.
+    Please click on the bar and drag the slider (or use the arrow keys) to recommend the project cost you want your team to report to corporate headquarters.<br>
+    The computer will pass your cost report recommendation on to the other participant.
     </p>
-    <p id="feedback_recommendation_one"><br></p>
+    <br>
+    <p id="feedback_recommendation_one">
+        <br>
+    </p>
         <input type="range" id="recommendation_one" name="recommendation_one" step="1" min={{ group.cost_realization }} max="6000">
     <br>
-    </div>
     {% next_button %}
+    </div>
     <input type="hidden" name="check_recommendation_one" value="" id="id_check_recommendation_one"/>
 {% endblock %}
 {% block scripts %}

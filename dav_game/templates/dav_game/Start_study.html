@@ -12,12 +12,17 @@
     }
     </style>
     <div class="card card-body bg-light instructions" align="center">
-        You have successfully completed part 1 of this study and earned $0.25.<br>
+        You have successfully completed part 1 of this study and earned $0.25.
+    </div>
+    <br>
+    <div class="card card-body bg-light instructions" align="center">
+        Part 1 contained instructions about part 2.<br>
         Please click “Next” to start part 2.
     </div>
-<br>
-{% next_button %}
-
+    <div align="center">
+        <br>
+        {% next_button %}
+    </div>
 {% endblock %}
 {% block scripts %}
 <script>

@@ -18,7 +18,7 @@
     {% elif player.id_in_group == 2 %}
         This amount consists of the fixed salary of 500 Lira and your share of the difference, which is {{ group.payoff_two }}.<br>
     {% endif %}
-    This amount corresponds to {{ total_eur }} at the conversion rate of $0.27 per 100 Lira.
+    This amount converts to {{ total_eur }} at the conversion rate of $0.27 per 100 Lira.
     </div>
     <br>
     <div class="card card-body bg-light instructions" align="center">
@@ -99,7 +99,9 @@
     {% endfor %}
 </table>
 <br>
+    <div align="center">
     {% next_button %}
+    </div>
 {% endblock %}
 {% block scripts %}
 <script>
