@@ -66,8 +66,8 @@ SESSION_CONFIGS = [
 
 mturk_hit_settings = {
     'keywords': ['decision-making', 'study', 'academic'],
-    'title': 'Short academic study (earn up to $4.05 for +-10 minutes)',
-    'description': 'Short academic study that pays up to $4.05 for approximately 10 minutes.',
+    'title': 'Academic study (earn up to $4.30 for +-10 minutes)',
+    'description': 'Academic study that pays up to $4.35 for approximately 10 minutes.',
     'frame_height': 500,
     'template': 'global/mturk_template.html',
     'minutes_allotted_per_assignment': 45,
@@ -131,7 +131,7 @@ ADMIN_USERNAME = 'admin'
 ADMIN_PASSWORD = environ.get('OTREE_ADMIN_PASSWORD')
 
 DEMO_PAGE_INTRO_HTML = """
- Server for research on team misreporting and team composition
+ Server for research on team cost reporting and team composition.
  """
 
 SECRET_KEY = '^i7o@zmr9=x$gdx(pxmcr@u3l8g%-hnysv6k8ap8y@4!^qho!q'
