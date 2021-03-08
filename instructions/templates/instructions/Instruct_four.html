@@ -2,7 +2,7 @@
 {% load staticfiles otree %}
 
 {% block title %}
-    Part 1 - Instructions (Page 4/4)
+    Part 1 - Instructions (Page 3/4)
 {% endblock %}
 
 {% block content %}
@@ -12,30 +12,83 @@
     }
     </style>
 <div class="card card-body bg-light instructions">
-    <ul>
-        <li>
-            The firm’s profit will be determined by the revenue that the project generates (i.e., 6000 Lira) minus the manager's cost report.
-        </li>
-        <li>
-            Your team keeps the difference between the funds provided by corporate headquarters (based on the manager’s cost report) and the actual project cost. This difference will be split equally between you and the other participant.
-        </li>
-        <li>
-            In addition, you and the other participant will also receive the base salary of 500 Lira.
-        </li>
-        <li>
-            Afterward, we will give you an overview of what happened.
-        </li>
-    </ul>
+    <p>Please read the following an overview about what will happen in part 2 below.</p>
+    {% if player.communication == 0 and player.self_selection == 0 %}
+            <ol>
+                <li>
+                    You and the other participant observe the actual project cost.
+                </li>
+                <li>
+                    Both of you  choose the cost report you would like to submit in case you become the manager.
+                </li>
+                <li>
+                    The computer randomly selects one of you as the manager and submits that participant’s cost report to corporate headquarters.
+                </li>
+            </ol>
+    {% elif player.communication == 0 and player.self_selection == 1 %}
+            <ol>
+                <li>
+                    You and the other participant choose whether you would like to become the manager.
+                </li>
+                <li>
+                    Both of you observe the actual project cost.
+                </li>
+                <li>
+                    Both of you choose the cost report you would like to submit in case you become the manager.
+                </li>
+                <li>
+                    If only one of you expresses a preference to become the manager, the computer will submit that participant’s cost report. However, if both of you or none of you express a preference to become the manager, the computer will randomly submit one of the two cost reports to corporate headquarters.
+                </li>
+            </ol>
+    {% elif player.communication == 1 and player.self_selection == 0 %}
+            <ol>
+                <li>
+                    You and the other participant observe the actual project cost.
+                </li>
+                <li>
+                    Both of you recommend to each other which cost your team should report to corporate headquarters. Recommendations are not binding, and you are free to choose your recommendation as you wish.
+                </li>
+                <li>
+                    Both of you will observe each other’s recommendations.
+                </li>
+                <li>
+                    Both of you choose the cost report you would like to submit in case you become the manager
+                </li>
+                <li>
+                    The computer randomly selects one of you as the manager and submits that participant’s cost report to corporate headquarters.
+                </li>
+            </ol>
+    {% elif player.communication == 1 and player.self_selection == 1 %}
+            <ol>
+                <li>
+                    You and the other participant choose whether you would like to become the manager.
+                </li>
+                <li>
+                    Both of you observe the actual project cost.
+                </li>
+                <li>
+                    Both of you recommend to each other which cost your team should report to corporate headquarters. Recommendations are not binding, and you are free to choose your recommendation as you wish.
+                </li>
+                <li>
+                    Both of you will observe each other’s recommendations.
+                </li>
+                <li>
+                    Both of you choose the cost report you would like to submit in case you become the manager.
+                </li>
+                <li>
+                    If only one of you expresses a preference to become the manager, the computer will submit that participant’s cost report. However, if both of you or none of you express a preference to become the manager, the computer will randomly submit one of the two cost reports to corporate headquarters.
+                </li>
+            </ol>
+    {% endif %}
 </div>
 <br>
     <p>
         <b>Please evaluate the following statement.</b>
     </p>
     <p>
-        {% formfield player.Instr4 label="My team keeps the difference between the funds provided by corporate headquarters (based on the manager’s cost report) and the actual project cost." %}
+        {% formfield player.Instr4 label="The computer will submit either your or the other participant’s cost report to corporate headquarters." %}
     </p>
 <br>
-
 {% next_button %}
 
 {% endblock %}

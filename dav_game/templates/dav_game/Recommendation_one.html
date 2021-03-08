@@ -51,14 +51,6 @@
         -webkit-appearance: none;
     }
     </style>
-{#    <div class="card card-body bg-light instructions" align="center">#}
-{#        {% if group.self_selection == 1 and group.select_one == 1 %}#}
-{#            You expressed a preference to become the manager.#}
-{#        {% elif group.self_selection == 1 and group.select_one == 0 %}#}
-{#            You did not express a preference to become the manager.#}
-{#        {% endif %}#}
-{#    </div>#}
-{#    <br>#}
     <div class="card card-body bg-light instructions" align="center">
     The project cost equals {{ group.cost_realization|to0 }}.
     </div>
@@ -94,7 +86,7 @@
             $('input[name=recommendation_one]').addClass('myclass');
         });
 	    $('input[name=recommendation_one]').on('input', function() {
-        	document.getElementById("feedback_recommendation_one").innerHTML = `You have selected `+$(this).val()+' Lira!';
+        	document.getElementById("feedback_recommendation_one").innerHTML = `Your recommendation: `+$(this).val()+' Lira!';
         	$('#id_check_recommendation_one').val(1);
     	});
     });

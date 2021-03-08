@@ -51,22 +51,14 @@
         -webkit-appearance: none;
     }
     </style>
-{#    <div class="card card-body bg-light instructions" align="center">#}
-{#    {% if group.self_selection == 1 and group.select_one == 1 %}#}
-{#        You expressed a preference to become the manager.#}
-{#    {% elif group.self_selection == 1 and group.select_one == 0 %}#}
-{#        You did not express a preference to become the manager.#}
-{#    {% endif %}#}
-{#    </div>#}
-{#    <br>#}
     <div class="card card-body bg-light instructions" align="center">
         The project cost equals {{ group.cost_realization|to0 }}.
     </div>
     {% if group.communication == 1 %}
         <br>
         <div class="card card-body bg-light instructions" align="center">
-        You submitted the following cost report recommendation: {{ group.recommendation_one }}.<br>
-        The other participant submitted the following cost report recommendation: {{ group.recommendation_two }}.
+        Your cost report recommendation: {{ group.recommendation_one }}.<br>
+        The other participant's cost report recommendation: {{ group.recommendation_two }}.
         </div>
     {% endif %}
     <br>
@@ -102,7 +94,7 @@
             $('input[name=report_one]').addClass('myclass');
         });
 	    $('input[name=report_one]').on('input', function() {
-        	document.getElementById("feedback_report_one").innerHTML = `You have selected `+$(this).val()+' Lira!';
+        	document.getElementById("feedback_report_one").innerHTML = `Your cost report: `+$(this).val()+' Lira!';
         	$('#id_check_report_one').val(1);
     	});
     });

@@ -92,6 +92,7 @@ class Instruct_four(Page):
         if self.player.Instr4 != 1 or self.timeout_happened:
             return upcoming_apps[-1]
 
+
 page_sequence = [
     Instruct_one,
     Instruct_two,

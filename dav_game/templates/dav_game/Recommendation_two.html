@@ -94,7 +94,7 @@
             $('input[name=recommendation_two]').addClass('myclass');
         });
 	    $('input[name=recommendation_two]').on('input', function() {
-        	document.getElementById("feedback_recommendation_two").innerHTML = `You have selected `+$(this).val()+' Lira!';
+        	document.getElementById("feedback_recommendation_two").innerHTML = `Your recommendation: `+$(this).val()+' Lira!';
         	$('#id_check_recommendation_two').val(1);
     	});
     });
