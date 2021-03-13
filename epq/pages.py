@@ -165,7 +165,9 @@ class Demographics(Page):
     form_fields = [
         'gender',
         'age',
-        'trust',
+        'trusting',
+        'trustworthy',
+        'risk',
         'education',
         'english',
         'corona'

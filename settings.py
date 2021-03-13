@@ -75,11 +75,11 @@ mturk_hit_settings = {
 
     #'grant_qualification_id': 'YOUR_QUALIFICATION_ID_HERE',# to prevent retakes
     'qualification_requirements': [
-        # # No-retakers
-        # {
-        #     'QualificationTypeId': "30LLG2NWCXJ09FSUO3LGVGEKYUS095",
-        #     'Comparator': "DoesNotExist",
-        # },
+        # No-retakers
+        {
+            'QualificationTypeId': "3Z755UFFEJQ0G4DCKMPG9LXU3S719U",
+            'Comparator': "DoesNotExist",
+        },
         # # Masters
         # {
         #         'QualificationTypeId': "2F1QJWKUDD8XADTFD2Q0G6UTO95ALH",
@@ -145,5 +145,6 @@ PARTICIPANT_FIELDS = [
     'is_dofus',
     'communication',
     'self_selection',
-    'task_rounds'
+    'task_rounds',
+    'wait_page_arrival'
 ]

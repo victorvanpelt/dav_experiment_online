@@ -1,6 +1,7 @@
 from otree.api import Currency as c, currency_range
 from ._builtin import Page, WaitPage
 from .models import Constants
+import time
 
 
 class Instruct_one(Page):
@@ -80,6 +81,7 @@ class Instruct_four(Page):
         return 120
 
     def before_next_page(self):
+        self.player.participant.wait_page_arrival = time.time()
         if self.player.Instr4 != 1 or self.timeout_happened:
             self.player.participant.is_dofus = True
             self.player.dofus = True

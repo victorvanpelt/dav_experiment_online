@@ -68,14 +68,14 @@ class Player(BasePlayer):
     #     choices=Constants.StandardChoicesFive
     # )
     recommendation_check = models.IntegerField(
-        label="Before I submitted my cost report, I received a cost report recommendation from the other participant.",
+        label="Before I submitted the cost report that I wanted my team to submit, I received a cost report recommendation from the other participant.",
         choices=[
             [0, 'False'],
             [1, 'True'],
         ]
     )
     self_select_check = models.IntegerField(
-        label="I chose whether I wanted to become my team’s manager.",
+        label="I could choose whether I wanted to become my team’s manager.",
         choices=[
             [0, 'False'],
             [1, 'True'],
@@ -307,14 +307,14 @@ class Player(BasePlayer):
         ]
     )
     age = models.IntegerField(label="Please enter your age.", min=14, max=100, blank=False)
-    trust = models.IntegerField(
-        label="Generally speaking, would you say that most people can be trusted or that you can’t be too careful in dealing with people?",
-        blank=False,
-        choices=[
-            [1, 'Most people can be trusted'],
-            [0, "One can't be too careful"]
-        ]
-    )
+    # trust = models.IntegerField(
+    #     label="Generally speaking, would you say that most people can be trusted or that you can’t be too careful in dealing with people?",
+    #     blank=False,
+    #     choices=[
+    #         [1, 'Most people can be trusted'],
+    #         [0, "One can't be too careful"]
+    #     ]
+    # )
     education = models.IntegerField(
         label = "What is the highest level of education that you have completed?",
         choices = [
@@ -337,4 +337,30 @@ class Player(BasePlayer):
         label="I am worried about the Corona virus (COVID2019).",
         blank=False,
         choices=Constants.StandardChoicesFive
+    )
+    risk = models.IntegerField(
+        label="Please rate your willingness to take risks in general on a scale from 0 (not at all willing) to 10 (very willing)",
+        min=0,
+        step=1,
+        max=10,
+        blank=False,
+        initial=None
+    )
+
+    trustworthy = models.IntegerField(
+        label="If someone does me a favor, I am ready to return it. Please rate how strongly this applies to you on a scale from 0 (does not apply to me at all) to 10 (applies to me completely)",
+        min=0,
+        step=1,
+        max=10,
+        blank=False,
+        initial=None
+    )
+
+    trusting = models.IntegerField(
+        label="Generally speaking, would you say that most people can be trusted or that you can’t be too careful in dealing with people?",
+        blank=False,
+        choices=[
+            [0, 'Most people can be trusted'],
+            [1, 'One can`t be too careful']
+        ]
     )
