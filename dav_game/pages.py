@@ -9,7 +9,7 @@ class WaitForMatch(WaitPage):
     group_by_arrival_time = True
     after_all_players_arrive = "assign_stuff"
     title_text = "Please wait"
-    body_text = "Please wait to be matched to another participant (max 5 minutes)."
+    body_text = "Please wait for the other participant."
 
     def app_after_this_page(self, upcoming_apps):
         if len(self.group.get_players()) == 1:
