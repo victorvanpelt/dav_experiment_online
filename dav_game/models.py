@@ -28,6 +28,12 @@ class Constants(BaseConstants):
     #Maximum cost realization and report
     max_cost = cu(6000)
 
+    #Pre-drawn cost realizations for each group
+    cost_realization = [4488, 4090, 4096, 5081, 4115, 4017, 5161, 5393, 4087, 4070, 4306, 4123, 4603, 4041, 5844, 4671,
+                        5647, 4262, 5297, 4939, 5073, 4529, 4422, 5124, 4133, 5364, 5248, 4723, 5121, 4288, 5771, 5790,
+                        4113, 5335, 5550, 5909, 4642, 5825, 4889, 4327, 4365, 5948, 5733, 4088, 5415, 5677, 5662, 5280,
+                        4429, 4119, 5888, 4830, 5741, 4215, 5050, 5953, 5554, 5007, 4247, 4432]
+
 class Subsession(BaseSubsession):
     def group_by_arrival_time_method(self, waiting_players):
         if len(waiting_players) >= 2:
@@ -44,7 +50,7 @@ class Group(BaseGroup):
 
     def assign_stuff(self):
         # Assign cost realization and base dropout variables
-        self.cost_realization = cu(random.randint(4000,6000))
+        self.cost_realization = cu(Constants.cost_realization[self.id_in_subsession-2])
 
         # Load dropout variables
         for p in self.get_players():
