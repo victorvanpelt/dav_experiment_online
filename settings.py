@@ -11,18 +11,18 @@ SESSION_CONFIGS = [
     },
     {
         'name': 'dav_full_ss',
-        'display_name': "Dav full select",
+        'display_name': "Dav full no select no comm ",
         'num_demo_participants': 4,
         'app_sequence': ['instructions','dav_game', 'epq', 'payment_info'],
-        'communication': 3,
-        'self_selection': 1
+        'communication': 0,
+        'self_selection': 0
     },
     {
         'name': 'dav_full_no_ss',
-        'display_name': "DAV full no select",
+        'display_name': "DAV full no select comm",
         'num_demo_participants': 4,
         'app_sequence': ['instructions','dav_game', 'epq', 'payment_info'],
-        'communication': 3,
+        'communication': 1,
         'self_selection': 0
     },
     {
