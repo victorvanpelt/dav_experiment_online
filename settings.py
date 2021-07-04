@@ -2,6 +2,14 @@ from os import environ
 
 SESSION_CONFIGS = [
     {
+        'name': 'paper_example',
+        'display_name': "Paper example - Main treatment",
+        'num_demo_participants': 2,
+        'app_sequence': ['dav_game', 'epq', 'payment_info'],
+        'communication': 1,
+        'self_selection': 0
+    },
+    {
         'name': 'dav_full_ss_comm',
         'display_name': "Dav full select comm",
         'num_demo_participants': 4,
