@@ -5,7 +5,7 @@ SESSION_CONFIGS = [
         'name': 'paper_example',
         'display_name': "Paper example - Main treatment",
         'num_demo_participants': 2,
-        'app_sequence': ['dav_game', 'epq', 'payment_info'],
+        'app_sequence': ['instructions','dav_game', 'epq', 'payment_info'],
         'communication': 1,
         'self_selection': 0
     },
