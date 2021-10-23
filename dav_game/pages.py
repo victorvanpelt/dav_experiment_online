@@ -106,6 +106,49 @@ class WaitForRecommendation(WaitPage):
     def is_displayed(self):
         return self.group.communication == 1 and self.player.participant.is_dropout == False and self.player.participant.is_dropout_mate == False
 
+class Chat_one(Page):
+    form_model = ''
+    form_fields = []
+
+    def is_displayed(self):
+        return self.group.communication == 1 and self.player.id_in_group == 1 and self.player.participant.is_dropout == False and self.player.participant.is_dropout_mate == False
+
+    def get_timeout_seconds(self):
+        return 90
+
+    # def error_message(self, value):
+    #     if value["check_report_one"] == None:
+    #         return 'Please use the slider to make a decision.'
+
+    def before_next_page(self):
+        if self.timeout_happened:
+            self.group.drop_out_trigger_one()
+
+class Chat_two(Page):
+    form_model = ''
+    form_fields = []
+
+    def is_displayed(self):
+        return self.group.communication == 1 and self.player.id_in_group == 2 and self.player.participant.is_dropout == False and self.player.participant.is_dropout_mate == False
+
+    def get_timeout_seconds(self):
+        return 90
+
+    # def error_message(self, value):
+    #     if value["check_report_two"] == None:
+    #         return 'Please use the slider to make a decision.'
+
+    def before_next_page(self):
+        if self.timeout_happened:
+            self.group.drop_out_trigger_two()
+
+class WaitForChat(WaitPage):
+    title_text = "Please wait"
+    body_text = "Please wait for the other participant."
+    def is_displayed(self):
+        return self.group.communication == 1 and self.player.participant.is_dropout == False and self.player.participant.is_dropout_mate == False
+
+
 class Report_one(Page):
     form_model = 'group'
     form_fields = ['report_one', 'check_report_one']
@@ -170,6 +213,9 @@ page_sequence = [
     Recommendation_one,
     Recommendation_two,
     WaitForRecommendation,
+    Chat_one,
+    Chat_two,
+    WaitForChat,
     Report_one,
     Report_two,
     WaitForResults,
