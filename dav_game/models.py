@@ -47,6 +47,16 @@ class Group(BaseGroup):
     cost_realization = models.CurrencyField()
     communication = models.IntegerField()
     self_selection = models.IntegerField()
+    confirm_chat_one= models.IntegerField(
+        blank=False,
+        initial=0,
+        min=0,
+        max=1)
+    confirm_chat_two = models.IntegerField(
+        blank=False,
+        initial=0,
+        min=0,
+        max=1)
 
     def assign_stuff(self):
         # Assign cost realization and base dropout variables

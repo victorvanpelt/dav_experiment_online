@@ -6,7 +6,7 @@
 {% endblock %}
 
 {% block content %}
-        <style>
+     <style>
     .otree-timer {
         display: none;
     }
@@ -22,7 +22,7 @@
         </div>
         <br>
         <div class="card card-body bg-light instructions" align="center">
-            You can use the chatbox below to chat with the other participant. When you finished chatting, click "next" to continue.
+            You can use the chatbox below to chat with the other participant.
         </div>
     {% endif %}
     <br>
@@ -30,6 +30,11 @@
     {{ chat }}
     </div>
     <br>
+{#    {% formfield group.confirm_chat_one label=None %}#}
+    {{ formfield_errors 'confirm_chat_one' }}
+    <input name="confirm_chat_one" id="confirm_chat_one" type="checkbox" value="0"/>
+    <label for="confirm_chat_one">I finished chatting with the other participant</label>
+    <p></p>
     {% next_button %}
 {% endblock %}
 

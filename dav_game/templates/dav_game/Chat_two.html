@@ -30,6 +30,11 @@
     {{ chat }}
     </div>
     <br>
+{#    {% formfield group.confirm_chat_two label=None %}#}
+    {{ formfield_errors 'confirm_chat_two' }}
+    <input name="confirm_chat_two" id="confirm_chat_two" type="checkbox" value="0"/>
+    <label for="confirm_chat_two">I finished chatting with the other participant</label>
+    <p></p>
         {% next_button %}
 {% endblock %}
 

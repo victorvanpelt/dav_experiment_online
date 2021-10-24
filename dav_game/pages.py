@@ -107,36 +107,36 @@ class WaitForRecommendation(WaitPage):
         return self.group.communication == 1 and self.player.participant.is_dropout == False and self.player.participant.is_dropout_mate == False
 
 class Chat_one(Page):
-    form_model = ''
-    form_fields = []
+    form_model = 'group'
+    form_fields = ['confirm_chat_one']
 
     def is_displayed(self):
         return self.group.communication == 1 and self.player.id_in_group == 1 and self.player.participant.is_dropout == False and self.player.participant.is_dropout_mate == False
 
     def get_timeout_seconds(self):
-        return 90
+        return 120
 
     # def error_message(self, value):
-    #     if value["check_report_one"] == None:
-    #         return 'Please use the slider to make a decision.'
+    #     if value["confirm_chat_one"] == 0:
+    #         return 'Please confirm that you finished chatting.'
 
     def before_next_page(self):
         if self.timeout_happened:
             self.group.drop_out_trigger_one()
 
 class Chat_two(Page):
-    form_model = ''
-    form_fields = []
+    form_model = 'group'
+    form_fields = ['confirm_chat_two']
 
     def is_displayed(self):
         return self.group.communication == 1 and self.player.id_in_group == 2 and self.player.participant.is_dropout == False and self.player.participant.is_dropout_mate == False
 
     def get_timeout_seconds(self):
-        return 90
+        return 120
 
     # def error_message(self, value):
-    #     if value["check_report_two"] == None:
-    #         return 'Please use the slider to make a decision.'
+    #     if value["confirm_chat_two"] == 0:
+    #         return 'Please confirm that you finished chatting.'
 
     def before_next_page(self):
         if self.timeout_happened:

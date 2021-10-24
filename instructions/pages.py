@@ -16,9 +16,6 @@ class Instruct_one(Page):
             self.player.participant.is_dofus = True
             self.player.dofus = True
             self.player.dofus_trigger()
-        # if self.timeout_happened:
-        #     self.player.drop_out = True
-        #     self.player.participant.is_dropout = True
 
     def app_after_this_page(self, upcoming_apps):
         if self.player.Instr1 != 2 or self.timeout_happened:
@@ -28,9 +25,6 @@ class Instruct_two(Page):
     form_model = 'player'
     form_fields = ['Instr2']
 
-    # def is_displayed(self):
-    #     return self.player.participant.is_dofus == False
-
     def get_timeout_seconds(self):
         return 120
 
@@ -39,9 +33,6 @@ class Instruct_two(Page):
             self.player.participant.is_dofus = True
             self.player.dofus = True
             self.player.dofus_trigger()
-        # if self.timeout_happened:
-        #     self.player.drop_out = True
-        #     self.player.participant.is_dropout = True
 
     def app_after_this_page(self, upcoming_apps):
         if self.player.Instr2 != 1 or self.timeout_happened:
@@ -51,9 +42,6 @@ class Instruct_three(Page):
     form_model = 'player'
     form_fields = ['Instr3']
 
-    # def is_displayed(self):
-    #     return self.player.participant.is_dofus == False
-
     def get_timeout_seconds(self):
         return 120
 
@@ -62,9 +50,6 @@ class Instruct_three(Page):
             self.player.participant.is_dofus = True
             self.player.dofus = True
             self.player.dofus_trigger()
-        # if self.timeout_happened:
-        #     self.player.drop_out = True
-        #     self.player.participant.is_dropout = True
 
     def app_after_this_page(self, upcoming_apps):
         if self.player.Instr3 != 1 or self.timeout_happened:
@@ -73,9 +58,6 @@ class Instruct_three(Page):
 class Instruct_four(Page):
     form_model = 'player'
     form_fields = ['Instr4']
-
-    # def is_displayed(self):
-    #     return self.player.participant.is_dofus == False
 
     def get_timeout_seconds(self):
         return 120
@@ -86,9 +68,6 @@ class Instruct_four(Page):
             self.player.participant.is_dofus = True
             self.player.dofus = True
             self.player.dofus_trigger()
-        # if self.timeout_happened:
-        #     self.player.drop_out = True
-        #     self.player.participant.is_dropout = True
 
     def app_after_this_page(self, upcoming_apps):
         if self.player.Instr4 != 1 or self.timeout_happened:
