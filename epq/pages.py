@@ -39,11 +39,15 @@ class Checks(Page):
     def is_displayed(self):
         return self.round_number == self.participant.vars['task_rounds']['B'] and self.participant.is_dropout == False and self.participant.is_dropout_mate == False
 
-    def vars_for_template(self):
-        progress = self.progress()
-        return {
-            'progress': progress
-        }
+    def vars_for_template(player: Player):
+        curpageindex = player.round_number-1
+        progress = curpageindex / tot_pages * 100
+        return dict(
+            curpageindex=curpageindex,
+            tot_pages=tot_pages,
+            round_number=player.round_number,
+            progress=progress
+        )
 
 class Page_2(Page):
     form_model = 'player'
@@ -67,11 +71,15 @@ class Page_2(Page):
     def is_displayed(self):
         return self.round_number == self.participant.vars['task_rounds']['C'] and self.participant.is_dropout == False and self.participant.is_dropout_mate == False
 
-    def vars_for_template(self):
-        progress = self.progress()
-        return {
-            'progress': progress
-        }
+    def vars_for_template(player: Player):
+        curpageindex = player.round_number-1
+        progress = curpageindex / tot_pages * 100
+        return dict(
+            curpageindex=curpageindex,
+            tot_pages=tot_pages,
+            round_number=player.round_number,
+            progress=progress
+        )
 
 class Page_3(Page):
     form_model = 'player'
@@ -95,11 +103,15 @@ class Page_3(Page):
     def is_displayed(self):
         return self.round_number == self.participant.vars['task_rounds']['D'] and self.participant.is_dropout == False and self.participant.is_dropout_mate == False
 
-    def vars_for_template(self):
-        progress = self.progress()
-        return {
-            'progress': progress
-        }
+    def vars_for_template(player: Player):
+        curpageindex = player.round_number-1
+        progress = curpageindex / tot_pages * 100
+        return dict(
+            curpageindex=curpageindex,
+            tot_pages=tot_pages,
+            round_number=player.round_number,
+            progress=progress
+        )
 
 class Page_4(Page):
     form_model = 'player'
@@ -123,11 +135,15 @@ class Page_4(Page):
     def is_displayed(self):
         return self.round_number == self.participant.vars['task_rounds']['E'] and self.participant.is_dropout == False and self.participant.is_dropout_mate == False
 
-    def vars_for_template(self):
-        progress = self.progress()
-        return {
-            'progress': progress
-        }
+    def vars_for_template(player: Player):
+        curpageindex = player.round_number-1
+        progress = curpageindex / tot_pages * 100
+        return dict(
+            curpageindex=curpageindex,
+            tot_pages=tot_pages,
+            round_number=player.round_number,
+            progress=progress
+        )
 
 class Page_5(Page):
     form_model = 'player'
@@ -172,11 +188,15 @@ class Page_5(Page):
     def is_displayed(self):
         return self.round_number == self.participant.vars['task_rounds']['F'] and self.participant.is_dropout == False and self.participant.is_dropout_mate == False
 
-    def vars_for_template(self):
-        progress = self.progress()
-        return {
-            'progress': progress
-        }
+    def vars_for_template(player: Player):
+        curpageindex = player.round_number-1
+        progress = curpageindex / tot_pages * 100
+        return dict(
+            curpageindex=curpageindex,
+            tot_pages=tot_pages,
+            round_number=player.round_number,
+            progress=progress
+        )
 
 class Demographics(Page):
     form_model = 'player'
@@ -213,11 +233,15 @@ class Demographics(Page):
         progress = curpageindex / tot_pages * 100
         return progress
 
-    def vars_for_template(self):
-        progress = self.progress()
-        return {
-            'progress': progress
-        }
+    def vars_for_template(player: Player):
+        curpageindex = player.round_number-1
+        progress = curpageindex / tot_pages * 100
+        return dict(
+            curpageindex=curpageindex,
+            tot_pages=tot_pages,
+            round_number=player.round_number,
+            progress=progress
+        )
 
 page_sequence = [
     Introduction,
@@ -228,5 +252,4 @@ page_sequence = [
     Page_5,
     Demographics
 ]
-
 tot_pages = len(page_sequence)
