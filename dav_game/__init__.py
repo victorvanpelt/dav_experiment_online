@@ -118,7 +118,7 @@ class Player(BasePlayer):
     drop_out = models.BooleanField(initial=False)
     drop_out_mate = models.BooleanField(initial=False)
     dofus = models.BooleanField(initial=False)
-
+    confirm_chat = models.IntegerField(blank=False, initial=0, min=0, max=1)
 
 # FUNCTIONS
 def group_by_arrival_time_method(subsession: Subsession, waiting_players):
@@ -411,16 +411,14 @@ class WaitForRecommendation(WaitPage):
             and player.participant.is_dropout_mate == False
         )
 
-
-class Chat_one(Page):
-    form_model = 'group'
-    form_fields = ['confirm_chat_one']
+class Chat(Page):
+    form_model = 'player'
+    form_fields = ['confirm_chat']
 
     @staticmethod
     def is_displayed(player: Player):
         return (
             player.group.communication == 1
-            and player.id_in_group == 1
             and player.participant.is_dropout == False
             and player.participant.is_dropout_mate == False
         )
@@ -430,32 +428,84 @@ class Chat_one(Page):
         return 120
 
     @staticmethod
-    def before_next_page(player: Player, timeout_happened):
-        if timeout_happened:
-            drop_out_trigger_one(player.group)
-
-
-class Chat_two(Page):
-    form_model = 'group'
-    form_fields = ['confirm_chat_two']
+    def live_method(player: Player, data):
+        if data['type'] == 'leaving':
+            return {0: dict(type='leaving', id_in_group=player.id_in_group)}
 
     @staticmethod
-    def is_displayed(player: Player):
-        return (
-            player.group.communication == 1
-            and player.id_in_group == 2
-            and player.participant.is_dropout == False
-            and player.participant.is_dropout_mate == False
-        )
-
-    @staticmethod
-    def get_timeout_seconds(player: Player):
-        return 120
+    def js_vars(player: Player):
+        return dict(my_id=player.id_in_group)
 
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
         if timeout_happened:
-            drop_out_trigger_two(player.group)
+            if player.id_in_group == 1:
+                drop_out_trigger_one(player.group)
+            elif player.id_in_group == 2:
+                drop_out_trigger_two(player.group)
+
+# class Chat_one(Page):
+#     form_model = 'group'
+#     form_fields = ['confirm_chat_one']
+#
+#     @staticmethod
+#     def is_displayed(player: Player):
+#         return (
+#             player.group.communication == 1
+#             and player.id_in_group == 1
+#             and player.participant.is_dropout == False
+#             and player.participant.is_dropout_mate == False
+#         )
+#
+#     @staticmethod
+#     def get_timeout_seconds(player: Player):
+#         return 120
+#
+#     @staticmethod
+#     def live_method(player: Player, data):
+#         if data['type'] == 'leaving':
+#             return {0: dict(type='leaving', id_in_group=player.id_in_group)}
+#
+#     @staticmethod
+#     def js_vars(player: Player):
+#         return dict(my_id=player.id_in_group)
+#
+#     @staticmethod
+#     def before_next_page(player: Player, timeout_happened):
+#         if timeout_happened:
+#             drop_out_trigger_one(player.group)
+
+
+# class Chat_two(Page):
+#     form_model = 'group'
+#     form_fields = ['confirm_chat_two']
+#
+#     @staticmethod
+#     def is_displayed(player: Player):
+#         return (
+#             player.group.communication == 1
+#             and player.id_in_group == 2
+#             and player.participant.is_dropout == False
+#             and player.participant.is_dropout_mate == False
+#         )
+#
+#     @staticmethod
+#     def get_timeout_seconds(player: Player):
+#         return 120
+#
+#     @staticmethod
+#     def live_method(player: Player, data):
+#         if data['type'] == 'leaving':
+#             return {0: dict(type='leaving', id_in_group=player.id_in_group)}
+#
+#     @staticmethod
+#     def js_vars(player: Player):
+#         return dict(my_id=player.id_in_group)
+#
+#     @staticmethod
+#     def before_next_page(player: Player, timeout_happened):
+#         if timeout_happened:
+#             drop_out_trigger_two(player.group)
 
 
 class WaitForChat(WaitPage):
@@ -564,8 +614,9 @@ page_sequence = [
     Recommendation_one,
     Recommendation_two,
     WaitForRecommendation,
-    Chat_one,
-    Chat_two,
+    # Chat_one,
+    # Chat_two,
+    Chat,
     WaitForChat,
     Report_one,
     Report_two,

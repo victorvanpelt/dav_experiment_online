@@ -34,7 +34,8 @@
     <input name="confirm_chat_one" id="confirm_chat_one" type="checkbox" value="0"/>
     <label for="confirm_chat_one">I finished chatting with the other participant</label>
     <p></p>
-    {% next_button %}
+{#    {% next_button %}#}
+    <button type="btn" class="btn btn-primary" onclick="leaving()">Next</button>
 {% endblock %}
 
 {% block scripts %}
@@ -46,5 +47,20 @@
             }
         });
     });
+</script>
+<script>
+    function leaving() {
+        liveSend({'type': 'leaving'})
+    }
+
+    function liveRecv(data) {
+        if (data.type === 'leaving') {
+            if (data.id_in_group === js_vars.my_id) {
+                document.getElementById('form').submit();
+            } else {
+                alert(`Player ${data.id_in_group} left the chat`)
+            }
+        }
+    }
 </script>
 {% endblock %}

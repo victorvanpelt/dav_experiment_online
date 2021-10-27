@@ -6,7 +6,7 @@
 {% endblock %}
 
 {% block content %}
-    <style>
+     <style>
     .otree-timer {
         display: none;
     }
@@ -14,7 +14,17 @@
     <div class="card card-body bg-light instructions" align="center">
         The project cost equals {{ group.cost_realization|to0 }}.
     </div>
-    {% if group.communication == 1 %}
+    {% if group.communication == 1 and player.id_in_group == 1 %}
+        <br>
+        <div class="card card-body bg-light instructions" align="center">
+        Your cost report recommendation: {{ group.recommendation_two }}.<br>
+        The other participant's cost report recommendation: {{ group.recommendation_one }}.<br>
+        </div>
+        <br>
+        <div class="card card-body bg-light instructions" align="center">
+            You can use the chatbox below to chat with the other participant.
+        </div>
+    {% elif group.communication == 1 and player.id_in_group == 2 %}
         <br>
         <div class="card card-body bg-light instructions" align="center">
         Your cost report recommendation: {{ group.recommendation_two }}.<br>
@@ -29,13 +39,14 @@
     {{ chat }}
     </div>
     <br>
-{#    {% formfield group.confirm_chat_two label=None %}#}
-    {{ formfield_errors 'confirm_chat_two' }}
-    <input name="confirm_chat_two" id="confirm_chat_two" type="checkbox" value="0"/>
-    <label for="confirm_chat_two">I finished chatting with the other participant</label>
+    {{ formfield_errors 'confirm_chat' }}
+    <input name="confirm_chat" id="confirm_chat" type="checkbox" value="1" onclick="reveal()"/>
+    <label for="confirm_chat">I finished chatting with the other participant</label>
     <p></p>
-{#        {% next_button %}#}
+{#    {% next_button %}#}
+    <div id="buttonreveal" style="display:none;">
     <button type="btn" class="btn btn-primary" onclick="leaving()">Next</button>
+    </div>
 {% endblock %}
 
 {% block scripts %}
@@ -49,6 +60,10 @@
     });
 </script>
 <script>
+    function reveal() {
+        document.getElementById("buttonreveal").style.display = "block"
+    }
+
     function leaving() {
         liveSend({'type': 'leaving'})
     }
