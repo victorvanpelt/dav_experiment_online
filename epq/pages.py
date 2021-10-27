@@ -22,7 +22,12 @@ class Checks(Page):
     ]
 
     def get_form_fields(self):
-        fields = self.form_fields
+        fields = [
+        'recommendation_check',
+        'self_select_check',
+        'concerned_about_honest',
+        'attractive_dishonesty'
+        ]
         random.shuffle(fields)
         return fields
 
@@ -142,7 +147,20 @@ class Page_5(Page):
     ]
 
     def get_form_fields(self):
-        fields = self.form_fields
+        fields = [
+        'faith1',
+        'faith2',
+        'faith3',
+        'faith4',
+        'human1',
+        'human2',
+        'human3',
+        'human4',
+        'kant1',
+        'kant2',
+        'kant3',
+        'kant4'
+        ]
         random.shuffle(fields)
         return fields
 
@@ -174,7 +192,16 @@ class Demographics(Page):
     ]
 
     def get_form_fields(self):
-        fields = self.form_fields
+        fields = [
+        'gender',
+        'age',
+        'trusting',
+        'trustworthy',
+        'risk',
+        'education',
+        'english',
+        'corona'
+        ]
         random.shuffle(fields)
         return fields
 
