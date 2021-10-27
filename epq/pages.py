@@ -39,13 +39,13 @@ class Checks(Page):
     def is_displayed(self):
         return self.round_number == self.participant.vars['task_rounds']['B'] and self.participant.is_dropout == False and self.participant.is_dropout_mate == False
 
-    def vars_for_template(player: Player):
-        curpageindex = player.round_number-1
+    def vars_for_template(self):
+        curpageindex = self.player.round_number-1
         progress = curpageindex / tot_pages * 100
         return dict(
             curpageindex=curpageindex,
             tot_pages=tot_pages,
-            round_number=player.round_number,
+            round_number=self.player.round_number,
             progress=progress
         )
 
@@ -71,13 +71,13 @@ class Page_2(Page):
     def is_displayed(self):
         return self.round_number == self.participant.vars['task_rounds']['C'] and self.participant.is_dropout == False and self.participant.is_dropout_mate == False
 
-    def vars_for_template(player: Player):
-        curpageindex = player.round_number-1
+    def vars_for_template(self):
+        curpageindex = self.player.round_number-1
         progress = curpageindex / tot_pages * 100
         return dict(
             curpageindex=curpageindex,
             tot_pages=tot_pages,
-            round_number=player.round_number,
+            round_number=self.player.round_number,
             progress=progress
         )
 
@@ -103,13 +103,13 @@ class Page_3(Page):
     def is_displayed(self):
         return self.round_number == self.participant.vars['task_rounds']['D'] and self.participant.is_dropout == False and self.participant.is_dropout_mate == False
 
-    def vars_for_template(player: Player):
-        curpageindex = player.round_number-1
+    def vars_for_template(self):
+        curpageindex = self.player.round_number-1
         progress = curpageindex / tot_pages * 100
         return dict(
             curpageindex=curpageindex,
             tot_pages=tot_pages,
-            round_number=player.round_number,
+            round_number=self.player.round_number,
             progress=progress
         )
 
@@ -135,13 +135,13 @@ class Page_4(Page):
     def is_displayed(self):
         return self.round_number == self.participant.vars['task_rounds']['E'] and self.participant.is_dropout == False and self.participant.is_dropout_mate == False
 
-    def vars_for_template(player: Player):
-        curpageindex = player.round_number-1
+    def vars_for_template(self):
+        curpageindex = self.player.round_number-1
         progress = curpageindex / tot_pages * 100
         return dict(
             curpageindex=curpageindex,
             tot_pages=tot_pages,
-            round_number=player.round_number,
+            round_number=self.player.round_number,
             progress=progress
         )
 
@@ -188,13 +188,13 @@ class Page_5(Page):
     def is_displayed(self):
         return self.round_number == self.participant.vars['task_rounds']['F'] and self.participant.is_dropout == False and self.participant.is_dropout_mate == False
 
-    def vars_for_template(player: Player):
-        curpageindex = player.round_number-1
+    def vars_for_template(self):
+        curpageindex = self.player.round_number-1
         progress = curpageindex / tot_pages * 100
         return dict(
             curpageindex=curpageindex,
             tot_pages=tot_pages,
-            round_number=player.round_number,
+            round_number=self.player.round_number,
             progress=progress
         )
 
@@ -233,13 +233,13 @@ class Demographics(Page):
         progress = curpageindex / tot_pages * 100
         return progress
 
-    def vars_for_template(player: Player):
-        curpageindex = player.round_number-1
+    def vars_for_template(self):
+        curpageindex = self.player.round_number-1
         progress = curpageindex / tot_pages * 100
         return dict(
             curpageindex=curpageindex,
             tot_pages=tot_pages,
-            round_number=player.round_number,
+            round_number=self.player.round_number,
             progress=progress
         )
 
