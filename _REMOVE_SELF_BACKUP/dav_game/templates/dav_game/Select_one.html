@@ -1,0 +1,37 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Part 2 - Choosing a role
+{% endblock %}
+
+{% block content %}
+    <style>
+    .otree-timer {
+        display: none;
+    }
+    </style>
+    <div class="card card-body bg-light instructions" align="center">
+        Please check the box below only if you would like to become your team’s manager.<br>
+        <br>
+        If both of you or none of you express a preference to become the manager, the computer will randomly submit one of the two cost reports to corporate headquarters.
+    </div>
+    <br>
+    <input name="select_one" id="select_one" type="checkbox" />
+    <label for="select_one">I want to assume the manager’s role.</label>
+    <br>
+    <br>
+    {% next_button %}
+
+{% endblock %}
+{% block scripts %}
+<script>
+    $(function () {
+        $('.otree-timer__time-left').on('update.countdown', function (event) {
+            if (event.offset.totalSeconds === 30) {
+                $('.otree-timer').show();
+            }
+        });
+    });
+</script>
+{% endblock %}

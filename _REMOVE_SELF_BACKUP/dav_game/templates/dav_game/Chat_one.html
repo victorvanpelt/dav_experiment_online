@@ -1,0 +1,50 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Part 2 - Cost report
+{% endblock %}
+
+{% block content %}
+     <style>
+    .otree-timer {
+        display: none;
+    }
+    </style>
+    <div class="card card-body bg-light instructions" align="center">
+        The project cost equals {{ group.cost_realization|to0 }}.
+    </div>
+    {% if group.communication == 1 %}
+        <br>
+        <div class="card card-body bg-light instructions" align="center">
+        Your cost report recommendation: {{ group.recommendation_two }}.<br>
+        The other participant's cost report recommendation: {{ group.recommendation_one }}.<br>
+        </div>
+        <br>
+        <div class="card card-body bg-light instructions" align="center">
+            You can use the chatbox below to chat with the other participant.
+        </div>
+    {% endif %}
+    <div align="center">
+    {{ chat }}
+    </div>
+    <br>
+{#    {% formfield group.confirm_chat_one label=None %}#}
+    {{ formfield_errors 'confirm_chat_one' }}
+    <input name="confirm_chat_one" id="confirm_chat_one" type="checkbox" value="0"/>
+    <label for="confirm_chat_one">I finished chatting with the other participant</label>
+    <p></p>
+    {% next_button %}
+{% endblock %}
+
+{% block scripts %}
+<script>
+    $(function () {
+        $('.otree-timer__time-left').on('update.countdown', function (event) {
+            if (event.offset.totalSeconds === 30) {
+                $('.otree-timer').show();
+            }
+        });
+    });
+</script>
+{% endblock %}
