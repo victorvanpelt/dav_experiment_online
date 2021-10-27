@@ -116,10 +116,6 @@ class Chat_one(Page):
     def get_timeout_seconds(self):
         return 120
 
-    # def error_message(self, value):
-    #     if value["confirm_chat_one"] == 0:
-    #         return 'Please confirm that you finished chatting.'
-
     def before_next_page(self):
         if self.timeout_happened:
             self.group.drop_out_trigger_one()
@@ -133,10 +129,6 @@ class Chat_two(Page):
 
     def get_timeout_seconds(self):
         return 120
-
-    # def error_message(self, value):
-    #     if value["confirm_chat_two"] == 0:
-    #         return 'Please confirm that you finished chatting.'
 
     def before_next_page(self):
         if self.timeout_happened:
