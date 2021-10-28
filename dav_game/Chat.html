@@ -2,7 +2,7 @@
 {% load otree static %}
 
 {% block title %}
-    Part 2 - Discussion
+    Part 2 - Chat
 {% endblock %}
 
 {% block content %}
@@ -22,7 +22,8 @@
         </div>
         <br>
         <div class="card card-body bg-light instructions" align="center">
-            You can use the chatbox below to chat with the other participant.
+            Before choosing the cost report you would like to submit in case you become the manager, you can use the chatbox below to chat with the other participant.<br>
+            You and the other participant have at most 2 minutes to chat.
         </div>
     {% elif group.communication == 1 and player.id_in_group == 2 %}
         <br>
@@ -32,7 +33,8 @@
         </div>
         <br>
         <div class="card card-body bg-light instructions" align="center">
-            You can use the chatbox below to chat with the other participant.
+            Before choosing the cost report you would like to submit in case you become the manager, you can use the chatbox below to chat with the other participant.<br>
+            You and the other participant have at most 2 minutes to chat.
         </div>
     {% endif %}
     <div align="center">
