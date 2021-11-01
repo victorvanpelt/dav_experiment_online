@@ -429,7 +429,7 @@ class Chat(Page):
 
     @staticmethod
     def get_timeout_seconds(player: Player):
-        return 150
+        return 120
 
     @staticmethod
     def live_method(player: Player, data):
@@ -440,13 +440,13 @@ class Chat(Page):
     def js_vars(player: Player):
         return dict(my_id=player.id_in_group)
 
-    @staticmethod
-    def before_next_page(player: Player, timeout_happened):
-        if timeout_happened:
-            if player.id_in_group == 1:
-                drop_out_trigger_one(player.group)
-            elif player.id_in_group == 2:
-                drop_out_trigger_two(player.group)
+    # @staticmethod
+    # def before_next_page(player: Player, timeout_happened):
+    #     if timeout_happened:
+    #         if player.id_in_group == 1:
+    #             drop_out_trigger_one(player.group)
+    #         elif player.id_in_group == 2:
+    #             drop_out_trigger_two(player.group)
 
 class WaitForChat(WaitPage):
     title_text = "Please wait"
