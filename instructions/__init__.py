@@ -69,7 +69,7 @@ def creating_session(subsession: Subsession):
 
 
 def dofus_trigger(player: Player):
-    player.payoff = -cu(500)
+    player.payoff = cu(0)
 
 
 # PAGES
@@ -79,7 +79,7 @@ class Instruct_one(Page):
 
     @staticmethod
     def get_timeout_seconds(player: Player):
-        return 120
+        return 180
 
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
@@ -90,7 +90,6 @@ class Instruct_one(Page):
 
     @staticmethod
     def app_after_this_page(player: Player, upcoming_apps):
-        # if player.Instr1 != 2 or timeout_happened:
         if player.dofus:
             return upcoming_apps[-1]
 
@@ -101,7 +100,7 @@ class Instruct_two(Page):
 
     @staticmethod
     def get_timeout_seconds(player: Player):
-        return 120
+        return 180
 
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
@@ -123,7 +122,7 @@ class Instruct_three(Page):
 
     @staticmethod
     def get_timeout_seconds(player: Player):
-        return 120
+        return 180
 
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
@@ -144,7 +143,7 @@ class Instruct_four(Page):
 
     @staticmethod
     def get_timeout_seconds(player: Player):
-        return 120
+        return 180
 
     @staticmethod
     def before_next_page(player: Player, timeout_happened):

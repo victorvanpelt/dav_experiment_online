@@ -154,7 +154,7 @@ def drop_out_trigger(group: Group):
     for p in group.get_players():
         p.participant.is_dropout = True
         p.drop_out = True
-        p.payoff = -cu(500)
+        #p.payoff = -cu(500)
 
 
 def drop_out_trigger_one(group: Group):
@@ -162,12 +162,14 @@ def drop_out_trigger_one(group: Group):
         if p.id_in_group == 1:
             p.participant.is_dropout = True
             p.drop_out = True
-            p.payoff = -cu(500)
+            #p.payoff = -cu(500)
+            p.payoff = cu(0)
         elif p.id_in_group == 2:
             p.participant.is_dropout_mate = True
             p.drop_out_mate = True
             if p.participant.is_dropout == False:
-                p.payoff = cu(0)
+                #p.payoff = cu(0)
+                p.payoff = cu(500)
 
 
 def drop_out_trigger_two(group: Group):
@@ -175,12 +177,14 @@ def drop_out_trigger_two(group: Group):
         if p.id_in_group == 2:
             p.participant.is_dropout = True
             p.drop_out = True
-            p.payoff = -cu(500)
+            #p.payoff = -cu(500)
+            p.payoff = cu(0)
         elif p.id_in_group == 1:
             p.participant.is_dropout_mate = True
             p.drop_out_mate = True
             if p.participant.is_dropout == False:
-                p.payoff = cu(0)
+                #p.payoff = cu(0)
+                p.payoff = cu(500)
 
 
 def recommendation_one_min(group: Group):
@@ -235,9 +239,9 @@ def set_report_payoffs(group: Group):
     group.payoff_two = group.group_profit / 2
     for p in group.get_players():
         if p.id_in_group == 1:
-            p.payoff = group.payoff_one
+            p.payoff = group.payoff_one + cu(500)
         elif p.id_in_group == 2:
-            p.payoff = group.payoff_two
+            p.payoff = group.payoff_two + cu(500)
 
 
 # def dofus_trigger(self):
@@ -533,9 +537,9 @@ class Results(Page):
     @staticmethod
     def vars_for_template(player: Player):
         return {
-            'total_payoff': player.participant.payoff + cu(500),
+            'total_payoff': player.participant.payoff,
             'firm_profit': cu(6000) - player.group.group_report,
-            'total_eur': (player.participant.payoff + cu(500)).to_real_world_currency(
+            'total_eur': (player.participant.payoff).to_real_world_currency(
                 player.session
             ),
         }

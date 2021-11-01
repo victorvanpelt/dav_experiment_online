@@ -50,11 +50,10 @@ class PaymentInfo(Page):
     @staticmethod
     def vars_for_template(player: Player):
         return {
-            #'redemption_code': self.participant.label or self.participant.code,
             'participation_fee': player.session.config['participation_fee'],
             'payoff': player.participant.payoff,
-            'total_payoff': player.participant.payoff + cu(500),
-            'total_eur_main': (player.participant.payoff + cu(500)).to_real_world_currency(
+            'total_payoff': player.participant.payoff,
+            'total_eur_main': (player.participant.payoff).to_real_world_currency(
                 player.session
             ),
             'total_eur': player.participant.payoff_plus_participation_fee(),

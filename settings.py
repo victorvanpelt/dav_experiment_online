@@ -118,7 +118,7 @@ POINTS_CUSTOM_NAME = 'Lira'
 
 SESSION_CONFIG_DEFAULTS = dict(
     real_world_currency_per_point=0.0027,
-    participation_fee=1.60,
+    participation_fee=0.25,
     doc="",
     mturk_hit_settings=mturk_hit_settings
 )
