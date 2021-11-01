@@ -425,7 +425,7 @@ class Chat(Page):
 
     @staticmethod
     def get_timeout_seconds(player: Player):
-        return 120
+        return 150
 
     @staticmethod
     def live_method(player: Player, data):
