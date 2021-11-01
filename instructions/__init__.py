@@ -134,7 +134,6 @@ class Instruct_three(Page):
 
     @staticmethod
     def app_after_this_page(player: Player, upcoming_apps):
-        # if player.Instr1 != 2 or timeout_happened:
         if player.dofus:
             return upcoming_apps[-1]
 
@@ -157,7 +156,6 @@ class Instruct_four(Page):
 
     @staticmethod
     def app_after_this_page(player: Player, upcoming_apps):
-        # if player.Instr1 != 2 or timeout_happened:
         if player.dofus:
             return upcoming_apps[-1]
 
