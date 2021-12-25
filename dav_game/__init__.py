@@ -12,14 +12,14 @@ DAV Experiment
 """
 
 
-class Constants(BaseConstants):
-    name_in_url = 'dav_game'
-    players_per_group = 2
-    num_rounds = 1
+class C(BaseConstants):
+    NAME_IN_URL = 'dav_game'
+    PLAYERS_PER_GROUP = 2
+    NUM_ROUNDS = 1
     # Maximum cost realization and report
-    max_cost = cu(6000)
+    MAX_COST = cu(6000)
     # Pre-drawn cost realizations for each group
-    cost_realization = [
+    COST_REALIZATION = [
         4488,
         4090,
         4096,
@@ -94,15 +94,15 @@ class Group(BaseGroup):
     confirm_chat_one = models.IntegerField(blank=False, initial=0, min=0, max=1)
     confirm_chat_two = models.IntegerField(blank=False, initial=0, min=0, max=1)
     check_recommendation_one = models.IntegerField(initial=None, blank=True)
-    recommendation_one = models.CurrencyField(initial=None, blank=False, max=Constants.max_cost)
+    recommendation_one = models.CurrencyField(initial=None, blank=False, max=C.MAX_COST)
     check_recommendation_two = models.IntegerField(initial=None, blank=True)
-    recommendation_two = models.CurrencyField(initial=None, blank=False, max=Constants.max_cost)
+    recommendation_two = models.CurrencyField(initial=None, blank=False, max=C.MAX_COST)
     select_one = models.BooleanField(initial=False, blank=True)
     select_two = models.BooleanField(initial=False, blank=True)
     check_report_one = models.IntegerField(initial=None, blank=True)
-    report_one = models.CurrencyField(initial=None, blank=False, max=Constants.max_cost)
+    report_one = models.CurrencyField(initial=None, blank=False, max=C.MAX_COST)
     check_report_two = models.IntegerField(initial=None, blank=True)
-    report_two = models.CurrencyField(initial=None, blank=False, max=Constants.max_cost)
+    report_two = models.CurrencyField(initial=None, blank=False, max=C.MAX_COST)
     group_report = models.CurrencyField(initial=None, blank=False)
     # Which report will be selected?
     select_report_one = models.IntegerField()
@@ -132,7 +132,7 @@ def group_by_arrival_time_method(subsession: Subsession, waiting_players):
 
 def assign_stuff(group: Group):
     # Assign cost realization and base dropout variables
-    group.cost_realization = cu(Constants.cost_realization[group.id_in_subsession - 2])
+    group.cost_realization = cu(C.COST_REALIZATION[group.id_in_subsession - 2])
     # Load dropout variables
     for p in group.get_players():
         p.drop_out = p.participant.is_dropout

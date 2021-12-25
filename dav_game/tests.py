@@ -12,7 +12,7 @@ class PlayerBot(Bot):
     def play_round(self):
 
         #some info for the round
-        cost_realization = Constants.cost_realization[self.subsession.round_number - 1]
+        cost_realization = C.COST_REALIZATION[self.subsession.round_number - 1]
 
         # Assign types and condition
         light = random.randint(0,1)
@@ -34,7 +34,7 @@ class PlayerBot(Bot):
 
         yield Start_round
 
-        if self.subsession.round_number == Constants.num_rounds:
+        if self.subsession.round_number == C.NUM_ROUNDS:
             if self.player.id_in_group == 1:
                 if light == 1:
                     yield Select_one, dict(select_one=0)
@@ -76,5 +76,5 @@ class PlayerBot(Bot):
                     yield Report_two, dict(report_two=cost_realization, check_report_two=1)
             else:
                 yield Report_two, dict(report_two=cu(400), check_report_two=1)
-        if self.subsession.round_number == Constants.num_rounds:
+        if self.subsession.round_number == C.NUM_ROUNDS:
             yield Results

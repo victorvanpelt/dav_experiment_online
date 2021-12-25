@@ -11,12 +11,12 @@ Ex-post Questionnaire
 """
 
 
-class Constants(BaseConstants):
-    name_in_url = 'epq'
-    players_per_group = None
-    tasks = ['A', 'B', 'C', 'D', 'E', 'F', 'G']
-    num_rounds = len(tasks)
-    StandardChoicesFive = [
+class C(BaseConstants):
+    NAME_IN_URL = 'epq'
+    PLAYERS_PER_GROUP = None
+    TASKS = ['A', 'B', 'C', 'D', 'E', 'F', 'G']
+    NUM_ROUNDS = len(TASKS)
+    STANDARDCHOICESFIVE = [
         [1, 'Disagree strongly'],
         [2, 'Disagree'],
         [3, 'Neither agree nor disagree'],
@@ -39,15 +39,15 @@ class Player(BasePlayer):
     # EPQ 1 - Randomization, understandability, and motivation
     # serious = models.IntegerField(
     #     label="I participated seriously in the study.",
-    #     choices=Constants.StandardChoicesFive
+    #     choices=C.STANDARDCHOICESFIVE
     # )
     # lose_interest = models.IntegerField(
     #     label="I started to lose my interest as the study progressed.",
-    #     choices=Constants.StandardChoicesFive
+    #     choices=C.STANDARDCHOICESFIVE
     # )
     # cared = models.IntegerField(
     #     label="I cared about the outcomes of my decisions.",
-    #     choices=Constants.StandardChoicesFive
+    #     choices=C.STANDARDCHOICESFIVE
     # )
     recommendation_check = models.IntegerField(
         label="Before I submitted the cost report that I wanted my team to submit, I received a cost report recommendation from the other participant.",
@@ -65,191 +65,191 @@ class Player(BasePlayer):
     )
     concerned_about_honest = models.IntegerField(
         label="I was concerned about reporting about our team’s project cost honestly to corporate headquarters.",
-        choices=Constants.StandardChoicesFive,
+        choices=C.STANDARDCHOICESFIVE,
     )
     attractive_dishonesty = models.IntegerField(
         label="It was attractive to report a project cost above the actual project cost.",
-        choices=Constants.StandardChoicesFive,
+        choices=C.STANDARDCHOICESFIVE,
     )
     # EPQ 2 - Mach
     mach1 = models.IntegerField(
-        label="It’s not wise to tell your secrets.", choices=Constants.StandardChoicesFive
+        label="It’s not wise to tell your secrets.", choices=C.STANDARDCHOICESFIVE
     )
     mach2 = models.IntegerField(
         label="I like to use clever manipulation to get my way.",
-        choices=Constants.StandardChoicesFive,
+        choices=C.STANDARDCHOICESFIVE,
     )
     mach3 = models.IntegerField(
         label="Whatever it takes, you must get the important people on your side.",
-        choices=Constants.StandardChoicesFive,
+        choices=C.STANDARDCHOICESFIVE,
     )
     mach4 = models.IntegerField(
         label="Avoid direct conflict with others because they may be useful in the future.",
-        choices=Constants.StandardChoicesFive,
+        choices=C.STANDARDCHOICESFIVE,
     )
     mach5 = models.IntegerField(
         label="It's wise to keep track of information that you can use against people later.",
-        choices=Constants.StandardChoicesFive,
+        choices=C.STANDARDCHOICESFIVE,
     )
     mach6 = models.IntegerField(
         label="You should wait for the right time to get back at people.",
-        choices=Constants.StandardChoicesFive,
+        choices=C.STANDARDCHOICESFIVE,
     )
     mach7 = models.IntegerField(
         label="There are things you should hide from other people to preserve your reputation.",
-        choices=Constants.StandardChoicesFive,
+        choices=C.STANDARDCHOICESFIVE,
     )
     mach8 = models.IntegerField(
         label="Make sure your plans benefit yourself, not others.",
-        choices=Constants.StandardChoicesFive,
+        choices=C.STANDARDCHOICESFIVE,
     )
     mach9 = models.IntegerField(
-        label="Most people can be manipulated.", choices=Constants.StandardChoicesFive
+        label="Most people can be manipulated.", choices=C.STANDARDCHOICESFIVE
     )
     # EPQ 3 - Narc
     narc1 = models.IntegerField(
-        label="People see me as a natural leader.", choices=Constants.StandardChoicesFive
+        label="People see me as a natural leader.", choices=C.STANDARDCHOICESFIVE
     )
     narc2 = models.IntegerField(
-        label="I hate being the center of attention.", choices=Constants.StandardChoicesFive
+        label="I hate being the center of attention.", choices=C.STANDARDCHOICESFIVE
     )
     narc3 = models.IntegerField(
         label="Many group activities tend to be dull without me.",
-        choices=Constants.StandardChoicesFive,
+        choices=C.STANDARDCHOICESFIVE,
     )
     narc4 = models.IntegerField(
         label="I know that I am special because everyone keeps telling me so.",
-        choices=Constants.StandardChoicesFive,
+        choices=C.STANDARDCHOICESFIVE,
     )
     narc5 = models.IntegerField(
         label="I like to get acquainted with important people.",
-        choices=Constants.StandardChoicesFive,
+        choices=C.STANDARDCHOICESFIVE,
     )
     narc6 = models.IntegerField(
-        label="I feel embarrassed if someone compliments me.", choices=Constants.StandardChoicesFive
+        label="I feel embarrassed if someone compliments me.", choices=C.STANDARDCHOICESFIVE
     )
     narc7 = models.IntegerField(
-        label="I have been compared to famous people.", choices=Constants.StandardChoicesFive
+        label="I have been compared to famous people.", choices=C.STANDARDCHOICESFIVE
     )
     narc8 = models.IntegerField(
-        label="I am an average person.", choices=Constants.StandardChoicesFive
+        label="I am an average person.", choices=C.STANDARDCHOICESFIVE
     )
     narc9 = models.IntegerField(
-        label="I insist on getting the respect I deserve.", choices=Constants.StandardChoicesFive
+        label="I insist on getting the respect I deserve.", choices=C.STANDARDCHOICESFIVE
     )
     # EPQ 4 - Psy
     psy1 = models.IntegerField(
-        label="I like to get revenge on authorities.", choices=Constants.StandardChoicesFive
+        label="I like to get revenge on authorities.", choices=C.STANDARDCHOICESFIVE
     )
     psy2 = models.IntegerField(
-        label="I avoid dangerous situations.", choices=Constants.StandardChoicesFive
+        label="I avoid dangerous situations.", choices=C.STANDARDCHOICESFIVE
     )
     psy3 = models.IntegerField(
-        label="Payback needs to be quick and nasty.", choices=Constants.StandardChoicesFive
+        label="Payback needs to be quick and nasty.", choices=C.STANDARDCHOICESFIVE
     )
     psy4 = models.IntegerField(
-        label="People often say I’m out of control.", choices=Constants.StandardChoicesFive
+        label="People often say I’m out of control.", choices=C.STANDARDCHOICESFIVE
     )
     psy5 = models.IntegerField(
-        label="It’s true that I can be mean to others.", choices=Constants.StandardChoicesFive
+        label="It’s true that I can be mean to others.", choices=C.STANDARDCHOICESFIVE
     )
     psy6 = models.IntegerField(
-        label="People who mess with me always regret it.", choices=Constants.StandardChoicesFive
+        label="People who mess with me always regret it.", choices=C.STANDARDCHOICESFIVE
     )
     psy7 = models.IntegerField(
         label="I have never gotten into trouble with the law.",
-        choices=Constants.StandardChoicesFive,
+        choices=C.STANDARDCHOICESFIVE,
     )
     psy8 = models.IntegerField(
-        label="I enjoy having sex with people I hardly know.", choices=Constants.StandardChoicesFive
+        label="I enjoy having sex with people I hardly know.", choices=C.STANDARDCHOICESFIVE
     )
     psy9 = models.IntegerField(
-        label="I’ll say anything to get what I want.", choices=Constants.StandardChoicesFive
+        label="I’ll say anything to get what I want.", choices=C.STANDARDCHOICESFIVE
     )
     # EPQ 5 - Light Triad
     faith1 = models.IntegerField(
-        label="I tend to see the best in people.", choices=Constants.StandardChoicesFive
+        label="I tend to see the best in people.", choices=C.STANDARDCHOICESFIVE
     )
     faith2 = models.IntegerField(
         label="I tend to trust that other people will deal fairly with me.",
-        choices=Constants.StandardChoicesFive,
+        choices=C.STANDARDCHOICESFIVE,
     )
     faith3 = models.IntegerField(
-        label="I think people are mostly good.", choices=Constants.StandardChoicesFive
+        label="I think people are mostly good.", choices=C.STANDARDCHOICESFIVE
     )
     faith4 = models.IntegerField(
         label="I am quick to forgive people who have hurt me.",
-        choices=Constants.StandardChoicesFive,
+        choices=C.STANDARDCHOICESFIVE,
     )
     human1 = models.IntegerField(
-        label="I tend to admire others.", choices=Constants.StandardChoicesFive
+        label="I tend to admire others.", choices=C.STANDARDCHOICESFIVE
     )
     human2 = models.IntegerField(
         label="I tend to applaud the successes of other people.",
-        choices=Constants.StandardChoicesFive,
+        choices=C.STANDARDCHOICESFIVE,
     )
     human3 = models.IntegerField(
-        label="I tend to treat others as valuable.", choices=Constants.StandardChoicesFive
+        label="I tend to treat others as valuable.", choices=C.STANDARDCHOICESFIVE
     )
     human4 = models.IntegerField(
         label="I enjoy listening to people from all walks of life.",
-        choices=Constants.StandardChoicesFive,
+        choices=C.STANDARDCHOICESFIVE,
     )
     kant1 = models.IntegerField(
-        label="I prefer honesty over charm.", choices=Constants.StandardChoicesFive
+        label="I prefer honesty over charm.", choices=C.STANDARDCHOICESFIVE
     )
     kant2 = models.IntegerField(
         label="I don't feel comfortable overtly manipulating people to do something I want.",
-        choices=Constants.StandardChoicesFive,
+        choices=C.STANDARDCHOICESFIVE,
     )
     kant3 = models.IntegerField(
         label="I would like to be authentic even if it may damage my reputation.",
-        choices=Constants.StandardChoicesFive,
+        choices=C.STANDARDCHOICESFIVE,
     )
     kant4 = models.IntegerField(
         label="When I talk to people, I am rarely thinking about what I want from them.",
-        choices=Constants.StandardChoicesFive,
+        choices=C.STANDARDCHOICESFIVE,
     )
     # # EPQ 6 - Big 5 Short
     # big1 = models.IntegerField(
     #     label="I see myself as extraverted, enthusiastic.",
-    #     choices=Constants.StandardChoicesFive
+    #     choices=C.STANDARDCHOICESFIVE
     # )
     # big2 = models.IntegerField(
     #     label="I see myself as critical, quarrelsome.",
-    #     choices=Constants.StandardChoicesFive
+    #     choices=C.STANDARDCHOICESFIVE
     # )
     # big3 = models.IntegerField(
     #     label="I see myself as dependable, self-disciplined.",
-    #     choices=Constants.StandardChoicesFive
+    #     choices=C.STANDARDCHOICESFIVE
     # )
     # big4 = models.IntegerField(
     #     label="I see myself as anxious, easily upset.",
-    #     choices=Constants.StandardChoicesFive
+    #     choices=C.STANDARDCHOICESFIVE
     # )
     # big5 = models.IntegerField(
     #     label="I see myself as open to new experiences, complex.",
-    #     choices=Constants.StandardChoicesFive
+    #     choices=C.STANDARDCHOICESFIVE
     # )
     # big6 = models.IntegerField(
     #     label="I see myself as reserved, quiet.",
-    #     choices=Constants.StandardChoicesFive
+    #     choices=C.STANDARDCHOICESFIVE
     # )
     # big7 = models.IntegerField(
     #     label="I see myself as sympathetic, warm.",
-    #     choices=Constants.StandardChoicesFive
+    #     choices=C.STANDARDCHOICESFIVE
     # )
     # big8 = models.IntegerField(
     #     label="I see myself as disorganized, careless.",
-    #     choices=Constants.StandardChoicesFive
+    #     choices=C.STANDARDCHOICESFIVE
     # )
     # big9 = models.IntegerField(
     #     label="I see myself as calm, emotionally stable.",
-    #     choices=Constants.StandardChoicesFive
+    #     choices=C.STANDARDCHOICESFIVE
     # )
     # big10 = models.IntegerField(
     #     label="I see myself as conventional, uncreative.",
-    #     choices=Constants.StandardChoicesFive
+    #     choices=C.STANDARDCHOICESFIVE
     # )
     # EPQ 6 - Demographics
     gender = models.IntegerField(
@@ -291,7 +291,7 @@ class Player(BasePlayer):
     corona = models.IntegerField(
         label="I am worried about the Corona virus (COVID2019).",
         blank=False,
-        choices=Constants.StandardChoicesFive,
+        choices=C.STANDARDCHOICESFIVE,
     )
     risk = models.IntegerField(
         label="Please rate your willingness to take risks in general on a scale from 0 (not at all willing) to 10 (very willing)",
@@ -329,14 +329,14 @@ def creating_session(subsession: Subsession):
                 random_numbers = [4, 5, 6, 3]
             p.randomized_pages = json.dumps(random_numbers)
             # Add everything to complete round_numbers list
-            round_numbers = [1, 2, Constants.num_rounds]  # Actual order of tasks
+            round_numbers = [1, 2, C.NUM_ROUNDS]  # Actual order of tasks
             round_numbers = (
                 round_numbers[: round_numbers.index(2)]
                 + [2]
                 + random_numbers
                 + round_numbers[round_numbers.index(2) + 1 :]
             )  # Adds randomized list at 2
-            p.participant.vars['task_rounds'] = dict(zip(Constants.tasks, round_numbers))
+            p.participant.vars['task_rounds'] = dict(zip(C.TASKS, round_numbers))
             p.task_rounds = json.dumps(round_numbers)
 
 
