@@ -1,2 +1,2 @@
 ## What Do You Recommend? The Effects of Communication and Dark Personality on Misreporting in Autonomous Teams
-This repository contains the oTree code for our study [Ressi, Schaupp, and Van pelt (2021)](https://papers.ssrn.com/abstract=3937303). It can be used freely as long as you cite [Chen, Schonger, and Wickens (2016)](https://doi.org/10.1016/j.jbef.2015.12.001) when using it for your research.
+This repository contains the oTree code for our study [Ressi, Schaupp, and Van Pelt (2021)](https://papers.ssrn.com/abstract=3937303). It can be used freely as long as you cite [Chen, Schonger, and Wickens (2016)](https://doi.org/10.1016/j.jbef.2015.12.001) when using it for your research.
