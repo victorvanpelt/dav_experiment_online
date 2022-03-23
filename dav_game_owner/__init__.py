@@ -13,7 +13,7 @@ DAV Experiment
 
 
 class C(BaseConstants):
-    NAME_IN_URL = 'dav_game_one'
+    NAME_IN_URL = 'dav_game_three'
     PLAYERS_PER_GROUP = 2
     NUM_ROUNDS = 1
     # Maximum cost realization and report

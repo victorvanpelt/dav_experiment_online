@@ -1,0 +1,53 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+
+{% block title %}
+    Part 1 - Instructions (Page 3/4)
+{% endblock %}
+
+{% block content %}
+    <style>
+    .otree-timer {
+        display: none;
+    }
+    </style>
+<div class="card card-body bg-light instructions">
+    <ul>
+        <li>
+            The firm’s profit equals the revenue that the project generates (i.e., 6000 Lira) minus the manager's cost report.
+        </li>
+        <li>
+            Your team keeps the difference between the funds provided by corporate headquarters (based on the manager’s cost report) and the actual project cost randomly determined by the computer. This difference will be split equally between you and the other participant.
+        </li>
+        <li>
+            Also, you and the other participant will also receive the base salary of 500 Lira.
+        </li>
+        <li>
+            Afterward, we will give you an overview of what happened.
+        </li>
+    </ul>
+</div>
+<br>
+    <p>
+        <b>Please evaluate the following statement.</b>
+    </p>
+    <p>
+        {% formfield player.Instr3 label="My team keeps the difference between the funds provided by corporate headquarters (based on the manager’s cost report) and the actual project cost." %}
+    </p>
+<br>
+
+{% next_button %}
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+    $(function () {
+        $('.otree-timer__time-left').on('update.countdown', function (event) {
+            if (event.offset.totalSeconds === 30) {
+                $('.otree-timer').show();
+            }
+        });
+    });
+</script>
+{% endblock %}

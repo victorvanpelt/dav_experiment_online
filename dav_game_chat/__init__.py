@@ -13,7 +13,7 @@ DAV Experiment
 
 
 class C(BaseConstants):
-    NAME_IN_URL = 'dav_game_one'
+    NAME_IN_URL = 'dav_game_two'
     PLAYERS_PER_GROUP = 2
     NUM_ROUNDS = 1
     # Maximum cost realization and report
@@ -91,8 +91,8 @@ class Group(BaseGroup):
     cost_realization = models.CurrencyField()
     communication = models.IntegerField()
     self_selection = models.IntegerField()
-    #confirm_chat_one = models.IntegerField(blank=False, initial=0, min=0, max=1)
-    #confirm_chat_two = models.IntegerField(blank=False, initial=0, min=0, max=1)
+    confirm_chat_one = models.IntegerField(blank=False, initial=0, min=0, max=1)
+    confirm_chat_two = models.IntegerField(blank=False, initial=0, min=0, max=1)
     check_recommendation_one = models.IntegerField(initial=None, blank=True)
     recommendation_one = models.CurrencyField(initial=None, blank=False, max=C.MAX_COST)
     check_recommendation_two = models.IntegerField(initial=None, blank=True)
@@ -119,7 +119,7 @@ class Player(BasePlayer):
     drop_out = models.BooleanField(initial=False)
     drop_out_mate = models.BooleanField(initial=False)
     dofus = models.BooleanField(initial=False)
-    #confirm_chat = models.IntegerField(blank=False, initial=0, min=0, max=1)
+    confirm_chat = models.IntegerField(blank=False, initial=0, min=0, max=1)
 
 # FUNCTIONS
 def group_by_arrival_time_method(subsession: Subsession, waiting_players):
@@ -412,42 +412,42 @@ class WaitForRecommendation(WaitPage):
             and player.participant.is_dropout_mate == False
         )
 
-# class Chat(Page):
-#     form_model = 'player'
-#     form_fields = ['confirm_chat']
-#
-#     @staticmethod
-#     def is_displayed(player: Player):
-#         return (
-#             player.group.communication == 1
-#             and player.participant.is_dropout == False
-#             and player.participant.is_dropout_mate == False
-#         )
-#
-#     @staticmethod
-#     def get_timeout_seconds(player: Player):
-#         return 120
-#
-#     @staticmethod
-#     def live_method(player: Player, data):
-#         if data['type'] == 'leaving':
-#             return {0: dict(type='leaving', id_in_group=player.id_in_group)}
-#
-#     @staticmethod
-#     def js_vars(player: Player):
-#         return dict(my_id=player.id_in_group)
+class Chat(Page):
+    form_model = 'player'
+    form_fields = ['confirm_chat']
 
-# class WaitForChat(WaitPage):
-#     title_text = "Please wait"
-#     body_text = "Please wait for the other participant."
-#
-#     @staticmethod
-#     def is_displayed(player: Player):
-#         return (
-#             player.group.communication == 1
-#             and player.participant.is_dropout == False
-#             and player.participant.is_dropout_mate == False
-#         )
+    @staticmethod
+    def is_displayed(player: Player):
+        return (
+            player.group.communication == 1
+            and player.participant.is_dropout == False
+            and player.participant.is_dropout_mate == False
+        )
+
+    @staticmethod
+    def get_timeout_seconds(player: Player):
+        return 120
+
+    @staticmethod
+    def live_method(player: Player, data):
+        if data['type'] == 'leaving':
+            return {0: dict(type='leaving', id_in_group=player.id_in_group)}
+
+    @staticmethod
+    def js_vars(player: Player):
+        return dict(my_id=player.id_in_group)
+
+class WaitForChat(WaitPage):
+    title_text = "Please wait"
+    body_text = "Please wait for the other participant."
+
+    @staticmethod
+    def is_displayed(player: Player):
+        return (
+            player.group.communication == 1
+            and player.participant.is_dropout == False
+            and player.participant.is_dropout_mate == False
+        )
 
 
 class Report_one(Page):
@@ -543,8 +543,8 @@ page_sequence = [
     Recommendation_one,
     Recommendation_two,
     WaitForRecommendation,
-    # Chat,
-    # WaitForChat,
+    Chat,
+    WaitForChat,
     Report_one,
     Report_two,
     WaitForResults,

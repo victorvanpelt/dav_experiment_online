@@ -2,67 +2,51 @@ from os import environ
 
 SESSION_CONFIGS = [
     {
-        'name': 'paper_example',
-        'display_name': "Paper example - Main treatment",
-        'num_demo_participants': 2,
+        'name': 'dav_full_exp1',
+        'display_name': "Experimental Study 1 - Communication",
+        'num_demo_participants': 4,
         'app_sequence': ['instructions','dav_game', 'epq', 'payment_info'],
         'communication': 1,
         'self_selection': 0
     },
+    # {
+    #     'name': 'dav_full_ss_comm',
+    #     'display_name': "Dav full select comm",
+    #     'num_demo_participants': 4,
+    #     'app_sequence': ['instructions','dav_game', 'epq', 'payment_info'],
+    #     'communication': 1,
+    #     'self_selection': 1
+    # },
     {
-        'name': 'dav_full_ss_comm',
-        'display_name': "Dav full select comm",
-        'num_demo_participants': 4,
-        'app_sequence': ['instructions','dav_game', 'epq', 'payment_info'],
-        'communication': 1,
-        'self_selection': 1
-    },
-    {
-        'name': 'dav_full_ss',
-        'display_name': "Dav full no select no comm ",
+        'name': 'dav_full_control',
+        'display_name': "Control Study - No Communication",
         'num_demo_participants': 4,
         'app_sequence': ['instructions','dav_game', 'epq', 'payment_info'],
         'communication': 0,
         'self_selection': 0
     },
     {
-        'name': 'dav_full_no_ss',
-        'display_name': "DAV full no select comm",
+        'name': 'dav_full_exp2',
+        'display_name': "Experimental Study 2 - Communication including Chat",
         'num_demo_participants': 4,
-        'app_sequence': ['instructions','dav_game', 'epq', 'payment_info'],
+        'app_sequence': ['instructions_chat','dav_game_chat', 'epq', 'payment_info'],
         'communication': 1,
         'self_selection': 0
     },
     {
-        'name': 'dav_simple_no_comm_ss',
-        'display_name': "DAV simple no comm select",
+        'name': 'dav_full_exp3a',
+        'display_name': "Experimental Study 3 - Communication including Owner",
         'num_demo_participants': 4,
-        'app_sequence': ['instructions','dav_game', 'payment_info'],
+        'app_sequence': ['instructions','dav_game_owner', 'epq', 'payment_info'],
         'communication': 0,
         'self_selection': 1
     },
     {
-        'name': 'dav_simple_no_comm_no_ss',
-        'display_name': "DAV simple no comm no select",
+        'name': 'dav_full_exp3b',
+        'display_name': "Experimental Study 3 - Owner",
         'num_demo_participants': 4,
-        'app_sequence': ['instructions','dav_game', 'payment_info'],
+        'app_sequence': ['instructions_owner','dav_game_owner', 'epq', 'payment_info'],
         'communication': 0,
-        'self_selection': 0
-    },
-    {
-        'name': 'dav_simple_comm_ss',
-        'display_name': "DAV simple comm select",
-        'num_demo_participants': 4,
-        'app_sequence': ['instructions','dav_game', 'payment_info'],
-        'communication': 1,
-        'self_selection': 1
-    },
-    {
-        'name': 'dav_simple_comm_no_ss',
-        'display_name': "DAV simple comm no select",
-        'num_demo_participants': 4,
-        'app_sequence': ['instructions','dav_game', 'payment_info'],
-        'communication': 1,
         'self_selection': 0
     },
 ]

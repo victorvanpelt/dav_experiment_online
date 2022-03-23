@@ -9,7 +9,7 @@ Instructions
 
 
 class C(BaseConstants):
-    NAME_IN_URL = 'instructions_one'
+    NAME_IN_URL = 'instructions_three'
     PLAYERS_PER_GROUP = None
     NUM_ROUNDS = 1
 
