@@ -554,8 +554,6 @@ page_sequence = [
     Recommendation_one,
     Recommendation_two,
     WaitForRecommendation,
-    # Chat_one,
-    # Chat_two,
     Chat,
     WaitForChat,
     Report_one,
