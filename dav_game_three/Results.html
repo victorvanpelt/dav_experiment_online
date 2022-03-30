@@ -12,7 +12,7 @@
     }
     </style>
     <div class="card card-body bg-light instructions" align="center">
-    You and the other participant have both earned {{ total_payoff }} each for part 2.<br>
+    You and the other team member have both earned {{ total_payoff }} each for part 2.<br>
     {% if player.id_in_group == 1 %}
         This amount consists of the fixed salary of 500 Lira and your share of the difference, which is {{ group.payoff_one }}.<br>
     {% elif player.id_in_group == 2 %}
@@ -34,7 +34,7 @@
         <th>Were you selected as the manager?</th>
         <th>Team's cost report</th>
         <th>Difference kept by the team</th>
-        <th>Profit for the firm</th>
+        <th>Profit for the firm's owner</th>
     </tr>
     {% for p in player.in_all_rounds %}
         <tr>

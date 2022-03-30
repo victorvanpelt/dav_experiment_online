@@ -9,14 +9,6 @@ SESSION_CONFIGS = [
         'communication': 1,
         'self_selection': 0
     },
-    # {
-    #     'name': 'dav_full_ss_comm',
-    #     'display_name': "Dav full select comm",
-    #     'num_demo_participants': 4,
-    #     'app_sequence': ['instructions','dav_game', 'epq', 'payment_info'],
-    #     'communication': 1,
-    #     'self_selection': 1
-    # },
     {
         'name': 'dav_full_control',
         'display_name': "Control Study - No Communication",
@@ -37,17 +29,15 @@ SESSION_CONFIGS = [
         'name': 'dav_full_exp3a',
         'display_name': "Experimental Study 3 - Communication including Owner",
         'num_demo_participants': 4,
-        'app_sequence': ['instructions','dav_game_owner', 'epq', 'payment_info'],
-        'communication': 0,
-        'self_selection': 1
+        'app_sequence': ['instructions_three','dav_game_three', 'epq_three', 'payment_info'],
+        'communication': 1,
+        'self_selection': 0
     },
     {
         'name': 'dav_full_exp3b',
         'display_name': "Experimental Study 3 - Owner",
         'num_demo_participants': 4,
-        'app_sequence': ['instructions_owner','dav_game_owner', 'epq', 'payment_info'],
-        'communication': 0,
-        'self_selection': 0
+        'app_sequence': ['instructions_owner','dav_game_owner', 'epq_owner', 'payment_info'],
     },
 ]
 

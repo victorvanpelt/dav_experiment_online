@@ -2,7 +2,7 @@
 {% load otree static %}
 
 {% block title %}
-    Part 2 - Cost report
+    Part 2 - Recommendation
 {% endblock %}
 
 {% block content %}
@@ -121,31 +121,24 @@
     }
     </style>
     <div class="card card-body bg-light instructions" align="center">
-        The project cost equals {{ group.cost_realization|to0 }}.
+    The project cost equals {{ group.cost_realization|to0 }}.
     </div>
-    {% if group.communication == 1 %}
-        <br>
-        <div class="card card-body bg-light instructions" align="center">
-        Your cost report recommendation: {{ group.recommendation_two }}.<br>
-        The other participant's cost report recommendation: {{ group.recommendation_one }}.
-        </div>
-    {% endif %}
     <br>
     <div align="center">
     <p>
-    Please click on the bar and drag the slider (or use the arrow keys) to choose the cost report that you would like your team to submit. Remember that your decision will serve as your team’s cost report if you become the manager.
+    Please click on the bar and drag the slider (or use the arrow keys) to recommend the project cost you want your team to report to the firm’s owner.<br>
+    The computer will pass your cost report recommendation on to the team member.
     </p>
     <br>
-    <p id="feedback_report_two">
+    <p id="feedback_recommendation_two">
         <br>
     </p>
-        <input type="range" id="report_two" name="report_two" class="slider" step="1" min={{ group.cost_realization }} max="6000">
-    <br>
-        {% next_button %}
+        <input type="range" id="recommendation_two" name="recommendation_two" class="slider" step="1" min={{ group.cost_realization }} max="6000">
+        <br>
+    {% next_button %}
     </div>
-    <input type="hidden" name="check_report_two" value="" id="id_check_report_two"/>
+    <input type="hidden" name="check_recommendation_two" value="" id="id_check_recommendation_two"/>
 {% endblock %}
-
 {% block scripts %}
 <script>
     $(function () {
@@ -158,13 +151,13 @@
 </script>
 <script>
 	$(document).ready(function () {
-    	$('input[name=report_two]').on('input change', function () {
-    	    $('input[name=report_two]').removeClass('slider');
-            $('input[name=report_two]').addClass('myclass');
+    	$('input[name=recommendation_two]').on('input change', function () {
+    	    $('input[name=recommendation_two]').removeClass('slider');
+            $('input[name=recommendation_two]').addClass('myclass');
         });
-	    $('input[name=report_two]').on('input', function() {
-        	document.getElementById("feedback_report_two").innerHTML = `Your cost report: `+$(this).val()+' Lira!';
-        	$('#id_check_report_two').val(1);
+	    $('input[name=recommendation_two]').on('input', function() {
+        	document.getElementById("feedback_recommendation_two").innerHTML = `Your recommendation: `+$(this).val()+' Lira!';
+        	$('#id_check_recommendation_two').val(1);
     	});
     });
 </script>

@@ -1,0 +1,106 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+
+{% block title %}
+    Part 1 - Instructions (Page 4/4)
+{% endblock %}
+
+{% block content %}
+    <style>
+    .otree-timer {
+        display: none;
+    }
+    </style>
+<div class="card card-body bg-light instructions">
+    <p>Please read the following an overview about what will happen in part 2 below.</p>
+{#    {% if player.communication == 0 and player.self_selection == 0 %}#}
+{#            <ol>#}
+{#                <li>#}
+{#                    You and the other participant observe the actual project cost.#}
+{#                </li>#}
+{#                <li>#}
+{#                    Both of you  choose the cost report you would like to submit in case you become the manager.#}
+{#                </li>#}
+{#                <li>#}
+{#                    The computer randomly selects one of you as the manager and submits that participant’s cost report to corporate headquarters.#}
+{#                </li>#}
+{#            </ol>#}
+{#    {% elif player.communication == 0 and player.self_selection == 1 %}#}
+{#            <ol>#}
+{#                <li>#}
+{#                    You and the other participant choose whether you would like to become the manager.#}
+{#                </li>#}
+{#                <li>#}
+{#                    Both of you observe the actual project cost.#}
+{#                </li>#}
+{#                <li>#}
+{#                    Both of you choose the cost report you would like to submit in case you become the manager.#}
+{#                </li>#}
+{#                <li>#}
+{#                    If only one of you expresses a preference to become the manager, the computer will submit that participant’s cost report. However, if both of you or none of you express a preference to become the manager, the computer will randomly submit one of the two cost reports to corporate headquarters.#}
+{#                </li>#}
+{#            </ol>#}
+{#    {% elif player.communication == 1 and player.self_selection == 0 %}#}
+            <ol>
+                <li>
+                    You and the other team member observe the actual project cost.
+                </li>
+                <li>
+                    Both of you recommend to each other which cost your team should report to the firm’s owner. Recommendations are not binding, and you are free to choose your recommendation as you wish.
+                </li>
+                <li>
+                    Both of you will observe each other’s recommendations.
+                </li>
+                <li>
+                    Both of you will choose the cost report you would like to submit in case you become the manager.
+                </li>
+                <li>
+                    The computer randomly selects one of you as the manager and submits that participant’s cost report to the firm’s owner.
+                </li>
+            </ol>
+{#    {% elif player.communication == 1 and player.self_selection == 1 %}#}
+{#            <ol>#}
+{#                <li>#}
+{#                    You and the other participant choose whether you would like to become the manager.#}
+{#                </li>#}
+{#                <li>#}
+{#                    Both of you observe the actual project cost.#}
+{#                </li>#}
+{#                <li>#}
+{#                    Both of you recommend to each other which cost your team should report to corporate headquarters. Recommendations are not binding, and you are free to choose your recommendation as you wish.#}
+{#                </li>#}
+{#                <li>#}
+{#                    Both of you will observe each other’s recommendations.#}
+{#                </li>#}
+{#                <li>#}
+{#                    Both of you choose the cost report you would like to submit in case you become the manager.#}
+{#                </li>#}
+{#                <li>#}
+{#                    If only one of you expresses a preference to become the manager, the computer will submit that participant’s cost report. However, if both of you or none of you express a preference to become the manager, the computer will randomly submit one of the two cost reports to corporate headquarters.#}
+{#                </li>#}
+{#            </ol>#}
+{#    {% endif %}#}
+</div>
+<br>
+    <p>
+        <b>Please evaluate the following statement.</b>
+    </p>
+    <p>
+        {% formfield player.Instr4 label="Both of you choose the cost report you would like to submit in case you become the manager." %}
+    </p>
+<br>
+{% next_button %}
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+    $(function () {
+        $('.otree-timer__time-left').on('update.countdown', function (event) {
+            if (event.offset.totalSeconds === 30) {
+                $('.otree-timer').show();
+            }
+        });
+    });
+</script>
+{% endblock %}

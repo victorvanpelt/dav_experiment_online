@@ -2,7 +2,7 @@
 {% load staticfiles otree %}
 
 {% block title %}
-    Part 1 - Instructions (Page 2/3)
+    Part 1 - Instructions (Page 2/4)
 {% endblock %}
 
 {% block content %}
@@ -17,13 +17,16 @@
             The computer randomly drew a number between 4000 Lira and 6000 Lira to determine the actual project cost. Each whole number on that range was equally likely to be drawn.
         </li>
         <li>
-            The other two participants observed the actual project cost, and the randomly selected manager requested the funds for financing the project by submitting a cost report.
+            You and the other team member will observe the actual project cost.
         </li>
         <li>
-            As the owner, you cannot observe the actual costs, nor could you reject the team’s cost report.
+            The team’s manager requests the funds for financing the project by submitting a cost report to your firm’s owner.
         </li>
         <li>
-            Instead, after observing the cost report, you provided the funds requested by the cost report.
+            The owner does not know the actual costs, but only that they are between 4000 and 6000 Lira.
+        </li>
+        <li>
+            After receiving the cost report, the owner must provide the funds requested by the cost report. They cannot reject it.
         </li>
     </ul>
 </div>
@@ -32,7 +35,7 @@
         <b>Please evaluate the following statement.</b>
     </p>
     <p>
-        {% formfield player.Instr2 label="The team’s cost report does not have to equal the actual project costs." %}
+        {% formfield player.Instr2 label="My team will always receive the funds requested by our cost report from the owner." %}
     </p>
 <br>
 {% next_button %}

@@ -23,14 +23,14 @@
         {% next_button %}
     </div>
 {% endblock %}
-{% block scripts %}
-<script>
-    $(function () {
-        $('.otree-timer__time-left').on('update.countdown', function (event) {
-            if (event.offset.totalSeconds === 25) {
-                $('.otree-timer').show();
-            }
-        });
-    });
-</script>
-{% endblock %}
+{#{% block scripts %}#}
+{#<script>#}
+{#    $(function () {#}
+{#        $('.otree-timer__time-left').on('update.countdown', function (event) {#}
+{#            if (event.offset.totalSeconds === 25) {#}
+{#                $('.otree-timer').show();#}
+{#            }#}
+{#        });#}
+{#    });#}
+{#</script>#}
+{#{% endblock %}#}

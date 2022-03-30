@@ -2,7 +2,7 @@
 {% load otree static %}
 
 {% block title %}
-    Part 2 - Recommendation
+    Part 2 - Cost report
 {% endblock %}
 
 {% block content %}
@@ -120,33 +120,32 @@
         border: 0.0px solid #ffffff;
     }
     </style>
-{#    <div class="card card-body bg-light instructions" align="center">#}
-{#        {% if group.self_selection == 1 and group.select_two == 1 %}#}
-{#            You expressed a preference to become the manager.#}
-{#        {% elif group.self_selection == 1 and group.select_two == 0 %}#}
-{#            You did not express a preference to become the manager.#}
-{#        {% endif %}#}
-{#    </div>#}
-{#    <br>#}
     <div class="card card-body bg-light instructions" align="center">
-    The project cost equals {{ group.cost_realization|to0 }}.
+        The project cost equals {{ group.cost_realization|to0 }}.
     </div>
+    {% if group.communication == 1 %}
+        <br>
+        <div class="card card-body bg-light instructions" align="center">
+        Your cost report recommendation: {{ group.recommendation_one }}.<br>
+        The other team member's cost report recommendation: {{ group.recommendation_two }}.
+        </div>
+    {% endif %}
     <br>
-    <div align="center">
+        <div align="center">
     <p>
-    Please click on the bar and drag the slider (or use the arrow keys) to recommend the project cost you want your team to report to corporate headquarters.<br>
-    The computer will pass your cost report recommendation on to the other participant.
+    Please click on the bar and drag the slider (or use the arrow keys) to choose the cost report that will be submitted to the firm’s owner if you become the manager.
     </p>
     <br>
-    <p id="feedback_recommendation_two">
+    <p id="feedback_report_one">
         <br>
     </p>
-        <input type="range" id="recommendation_two" name="recommendation_two" class="slider" step="1" min={{ group.cost_realization }} max="6000">
-        <br>
-    {% next_button %}
-    </div>
-    <input type="hidden" name="check_recommendation_two" value="" id="id_check_recommendation_two"/>
+        <input type="range" id="report_one" name="report_one" class="slider" step="1" min={{ group.cost_realization }} max="6000">
+    <br>
+        {% next_button %}
+        </div>
+    <input type="hidden" name="check_report_one" value="" id="id_check_report_one"/>
 {% endblock %}
+
 {% block scripts %}
 <script>
     $(function () {
@@ -159,13 +158,13 @@
 </script>
 <script>
 	$(document).ready(function () {
-    	$('input[name=recommendation_two]').on('input change', function () {
-    	    $('input[name=recommendation_two]').removeClass('slider');
-            $('input[name=recommendation_two]').addClass('myclass');
+    	$('input[name=report_one]').on('input change', function () {
+    	    $('input[name=report_one]').removeClass('slider');
+            $('input[name=report_one]').addClass('myclass');
         });
-	    $('input[name=recommendation_two]').on('input', function() {
-        	document.getElementById("feedback_recommendation_two").innerHTML = `Your recommendation: `+$(this).val()+' Lira!';
-        	$('#id_check_recommendation_two').val(1);
+	    $('input[name=report_one]').on('input', function() {
+        	document.getElementById("feedback_report_one").innerHTML = `Your cost report: `+$(this).val()+' Lira!';
+        	$('#id_check_report_one').val(1);
     	});
     });
 </script>

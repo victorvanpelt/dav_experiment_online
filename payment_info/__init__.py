@@ -30,7 +30,6 @@ class Player(BasePlayer):
         label="Do you have any feedback for us or anything you would like to say to us?", blank=True
     )
 
-
 # FUNCTIONS
 # PAGES
 class PaymentInfo(Page):
