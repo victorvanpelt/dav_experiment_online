@@ -23,7 +23,6 @@ class C(BaseConstants):
         [5, 'Agree strongly'],
     ]
 
-
 class Subsession(BaseSubsession):
     pass
 
